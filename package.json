@@ -1,0 +1,14 @@
+{
+  "name": "subtitles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mathew78540/subtitles.git"
+  },
+  "license": "GNU GPL",
+  "devDependencies": {
+    "gulp": "^3.8.11"
+  }
+}
