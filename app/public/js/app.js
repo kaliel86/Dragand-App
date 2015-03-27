@@ -16,7 +16,6 @@ angular.module('subtitles', ['ui.router'])
 
 .run(function() {
 	console.log('----------------------');
-	console.log('Subtitles : launched');
-	console.log('By: BangBang');
+	console.log('DragAndWatch : launched');
 	console.log('----------------------');
 });

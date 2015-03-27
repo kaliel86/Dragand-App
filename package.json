@@ -8,6 +8,12 @@
     "url": "https://github.com/Mathew78540/subtitles.git"
   },
   "license": "GNU GPL",
+  "window": {
+    "title": "DragandWatch",
+    "toolbar": true,
+    "frame": true,
+    "position": "center"
+  },
   "devDependencies": {
     "bower": "^1.3.12",
     "gulp": "^3.8.11",
