@@ -1,10 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="subtitles">
 <head>
     <meta charset="UTF-8">
     <title>Subtitles</title>
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="public/css/style.css"/>
 </head>
 <body>
-    Hello World
+
+    <div ui-view></div>
+
+    <!-- JAVASCRIPT -->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- APP -->
+    <script src="public/js/app.js"></script>
+    <script src="public/js/config/config.js"></script>
 </body>
 </html>

@@ -29,3 +29,7 @@ node_modules
 
 # PHP STORM
 .idea/
+
+# APP
+app/public/css/
+app/vendor/
