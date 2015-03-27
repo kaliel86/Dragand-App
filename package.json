@@ -12,6 +12,9 @@
     "title": "DragandWatch",
     "toolbar": true,
     "frame": true,
+    "width" : 300,
+    "height" : 300,
+    "resizable" : false,
     "position": "center"
   },
   "devDependencies": {
