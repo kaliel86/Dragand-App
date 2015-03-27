@@ -1,4 +1,6 @@
 'use strict';
+var path = require('path');
+
 
 var daw = angular.module('daw', ['ui.router'])
 
