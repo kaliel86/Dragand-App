@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('daw', ['ui.router'])
+var daw = angular.module('daw', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
