@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('subtitles', ['ui.router'])
+angular.module('daw', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 

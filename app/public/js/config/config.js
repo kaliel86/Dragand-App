@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('subtitles').constant('config', {
+angular.module('daw').constant('config', {
 
 });
