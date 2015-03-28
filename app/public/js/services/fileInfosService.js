@@ -15,10 +15,13 @@ daw.service('fileInfosService', function() {
 	that.parse = function(path) {
 		if((m = regex.show.exec(path)) !== null){
 			return {
-				name	: m[1],
-				season	: m[2],
-				episode	: m[3]
+				original : m[0],
+				name	 : m[1],
+				season	 : m[2],
+				episode	 : m[3]
 			};
+		} else {
+			return null;
 		}
 	};
 
