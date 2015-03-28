@@ -11,6 +11,7 @@ daw.service('playerService', function(settingsService) {
 	 * Function call in controller
 	 */
 	that.play = function(path) {
+
 		settingsService.get('player').then(function(result) {
 			if(!result) {
 				open(encodeURI(path));

@@ -13,16 +13,22 @@ daw.service('fileInfosService', function() {
 	 * Parse the name file and return information in object
 	 */
 	that.parse = function(path) {
+
 		if((m = regex.show.exec(path)) !== null){
-			return {
-				original : m[0],
-				name	 : m[1],
-				season	 : m[2],
-				episode	 : m[3]
-			};
+			if(m[0] && m[1] && m[2] && m[3]) {
+				return {
+					original : m[0],
+					name	 : m[1],
+					season	 : m[2],
+					episode	 : m[3]
+				};
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
+
 	};
 
 });
