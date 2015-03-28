@@ -10,6 +10,7 @@ daw.service('subtitlesService', function($q, settingsService) {
 	/*
 	 * Common search
 	 * 1. OpenSubtitles
+	 * 2. SubtitleSeeker
 	 */
 	that.find = function(imdbId, season, episode, filename) {
 
@@ -49,6 +50,13 @@ daw.service('subtitlesService', function($q, settingsService) {
 
 		return deferred.promise;
 
+	};
+
+	/*
+	 * Search in SubtitleSeeker
+	 */
+	that.subtitleSeeker = function(information) {
+		// TODO Wait API KEY
 	};
 
 });

@@ -28,7 +28,7 @@ var daw = angular.module('daw', ['ui.router'])
 	/*
 	 * Basic Exemple :)
 	 */
-	var file = "The.Flash.2014.S01E15.720p.HDTV.X264-DIMENSION.mkv";
+	var file = "the.originals.215.hdtv-lol.mp4";
 	var fileInformation = fileInfosService.parse(file);
 
 	imdbService.get(fileInformation['name']).then(function(imdbInfos) {
