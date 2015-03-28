@@ -27,6 +27,7 @@ daw.service('subtitlesService', function($q, settingsService) {
 			});
 		}).catch(function(error) {
 			deferred.reject(error);
+			
 			// TODO Test other API
 		});
 
@@ -41,10 +42,12 @@ daw.service('subtitlesService', function($q, settingsService) {
 
 		var deferred = $q.defer();
 
+		console.log('Information Seed at OpenSubtitles.org : ', information);
+
 		opensubtitles.searchEpisode(information, 'OSTestUserAgent')
 			.then(function(result) {
 				deferred.resolve(result);
-			}).fail(function(error) {
+			}).catch(function(error) {
 				deferred.reject(error);
 			});
 
