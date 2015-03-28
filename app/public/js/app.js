@@ -1,7 +1,11 @@
 'use strict';
+
+// NPM Required
 var path = require('path');
 
-
+/*
+ * Init APP
+ */
 var daw = angular.module('daw', ['ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -16,8 +20,6 @@ var daw = angular.module('daw', ['ui.router'])
 
 })
 
-.run(function() {
-	console.log('----------------------');
-	console.log('DragAndWatch : launched');
-	console.log('----------------------');
+.run(function(settingsService) {
+	settingsService.init();
 });
