@@ -43,7 +43,7 @@ daw.service('settingsService', function($q){
 		});
 
 		return deferred.promise;
-		
+
 	};
 
 	/*

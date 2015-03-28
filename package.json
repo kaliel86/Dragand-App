@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "nedb": "^1.1.1",
+    "node-movie": "^2.0.0",
     "open": "0.0.5"
   }
 }
