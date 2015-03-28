@@ -11,7 +11,7 @@ daw.service('imdbService', function($q) {
 	 * Get IMDB Informations
 	 *
 	 * @return object imdbID
-	 * @return object poster
+	 * @return object Poster
 	 *
 	 */
 	that.get = function(name) {
