@@ -3,6 +3,10 @@
 daw.service('fileInfosService', function() {
 
 	var that = this;
+
+	/*
+	 * Variables use for REGEX
+	 */
 	var m;
 	var regex =  {
 		show  : /(.*?)\.S?(\d{1,2})E?(\d{2})\.(.*)/,
@@ -19,15 +23,15 @@ daw.service('fileInfosService', function() {
 				return {
 					original : m[0],
 					name	 : m[1].split(".").join(" "),
-					season	 : m[2],
-					episode	 : m[3]
+					season	 : parseInt(m[2]),
+					episode	 : parseInt(m[3])
 				};
-			} else {
-				return null;
 			}
 		} else {
-			return null;
+			// TODO Use REGEX FOR MOVIE
 		}
+
+		return null;
 
 	};
 
