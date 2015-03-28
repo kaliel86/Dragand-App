@@ -19,7 +19,6 @@ daw.service('settingsService', function($q){
 			// If settings is null, we create it with default Value
 			if(count == 0) {
 				db.insert({
-					'default'	: true,
 					'autoplay'	: false,
 					'player'	: null,
 					'language'	: 'fr'
