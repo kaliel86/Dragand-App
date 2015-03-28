@@ -13,10 +13,13 @@
     "title": "DragandWatch",
     "toolbar": true,
     "frame": true,
-    "width": 300,
-    "height": 300,
+    "min-width" : 320,
+    "width": 320,
+    "min-width" : 370,
+    "height": 320,
     "resizable": false,
-    "position": "center"
+    "position": "center",
+    "transparent": false
   },
   "webkit": {
     "page-cache": true
