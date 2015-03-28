@@ -52,26 +52,35 @@ daw.directive('droppable', function() {
 			}
 
 
-			// :::: Searching files in folders
-			function traverseFileTree(entry, path) {
-				path = path || "";
+			// :::: Return path of file or files in the first folder
+			function traverseFileTree(entry, elPath, firstDirectoryChecked) {
+				elPath = elPath || "";
 
 				var item = entry.item;
 
-				console.log(entry);
-				console.log(item.isFile);
+
 
 				if (item.isFile) {
+					console.log("------------- IS FILE -------------");
 					item.file(function(file) {
 						console.log("File: " +  entry.path);
 						console.log("Directory: " +  entry.directory);
 					});
-				} else if (item.isDirectory) {
+				} else if (item.isDirectory && !firstDirectoryChecked) {
+					console.log("------------- IS DIRECTORY -------------");
 					// Get folder contents
 					var dirReader = item.createReader();
+
 					dirReader.readEntries(function(entries) {
-						for (var i=0; i<entries.length; i++) {
-							traverseFileTree(entries[i], path + item.name + "/");
+						for (var i=0; i < entries.length; i++) {
+							var fileEntry = {
+								path : entry.path + path.sep + entries[i].name,
+								name : entries[i].name,
+								item : entries[i],
+								directory : entry.path
+							}
+
+							traverseFileTree(fileEntry, elPath + item.name + "/", true);
 						}
 					});
 				}
