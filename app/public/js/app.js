@@ -2,6 +2,7 @@
 
 // NPM Required
 var path = require('path');
+var gui  = require('nw.gui');
 
 /*
  * Init APP
@@ -20,6 +21,7 @@ var daw = angular.module('daw', ['ui.router'])
 
 })
 
-.run(function(settingsService) {
+.run(function(settingsService, checkUpdateService) {
+	checkUpdateService.launch();
 	settingsService.init();
 });

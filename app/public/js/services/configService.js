@@ -2,17 +2,19 @@
 
 daw.service('configService', function(config) {
 
+	var that = this;
+
 	/*
 	 * Set a value in Constant Config
 	 */
-	this.set = function(key, value) {
+	that.set = function(key, value) {
 		config[key] = value;
 	};
 
 	/*
 	 * Get a value in Constant Config
 	 */
-	this.get = function(key) {
+	that.get = function(key) {
 		return config[key];
 	};
 

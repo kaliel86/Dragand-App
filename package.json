@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app/index.html",
+  "manifestUrl": "https://raw.githubusercontent.com/Mathew78540/subtitles/master/package.json",
   "repository": {
     "type": "git",
     "url": "https://github.com/Mathew78540/subtitles.git"
@@ -26,6 +27,7 @@
   "dependencies": {
     "nedb": "^1.1.1",
     "node-movie": "^2.0.0",
+    "node-webkit-updater": "^0.2.4",
     "open": "0.0.5"
   }
 }
