@@ -1,14 +1,12 @@
 'use strict';
 
-daw.controller('DragController',  function($document, $window, $q, $scope) {
-
+daw.controller('DragController',  function($document, $window, $q, $scope, config) {
 	// :::: Return path of file or files in the first folder
 	$scope.getFilesPath = function(entry, elPath, firstDirectoryChecked) {
 		elPath = elPath || "";
 
 		var item = entry.item;
-
-		if (item.isFile) {
+		if (item.isFile && $scope.checkExtension(entry.name)) {
 			console.log("------------- IS FILE -------------");
 			item.file(function(file) {
 				console.log("Name: " +  entry.name);
@@ -33,6 +31,20 @@ daw.controller('DragController',  function($document, $window, $q, $scope) {
 				}
 			});
 		}
+	}
+	
+	// Check extension file
+	$scope.checkExtension = function(filename){
+		var ext = filename.substr(filename.lastIndexOf('.') + 1);
+
+		// Check if ext is in the const array of the ext list
+		if(config.acceptedFile.indexOf(ext) > -1) {
+			return true;
+		} else {
+			return false;
+		}
+
+		return false;
 	}
 
 });
