@@ -18,7 +18,7 @@ daw.service('fileInfosService', function() {
 			if(m[0] && m[1] && m[2] && m[3]) {
 				return {
 					original : m[0],
-					name	 : m[1], // TODO Replace . to ' '
+					name	 : m[1].split(".").join(" "),
 					season	 : m[2],
 					episode	 : m[3]
 				};
