@@ -5,6 +5,7 @@ var opensubtitles = require("popcorn-opensubtitles");
 var http 		  = require('http');
 var fs 		  	  = require('fs');
 var url 		  = require('url');
+var pathNode	  = require('path');
 
 daw.service('subtitlesService', function($q, settingsService) {
 
@@ -71,7 +72,7 @@ daw.service('subtitlesService', function($q, settingsService) {
 		var deferred = $q.defer();
 		var regex = /(.*)\.[^.]+$/;
 
-		var file = fs.createWriteStream(path + '/' + regex.exec(name)[1] + '.srt');
+		var file = fs.createWriteStream(path + pathNode.sep + regex.exec(name)[1] + '.srt');
 
 		http.get({
 			host: url.parse(subUrl).host,
