@@ -1,38 +1,40 @@
 'use strict';
 
-daw.service('fileInfosService', function() {
+// NPM Required
+var guessit = require('guessit-wrapper');
+
+daw.service('fileInfosService', function($q) {
 
 	var that = this;
 
 	/*
-	 * Variables use for REGEX
-	 */
-	var m;
-	var regex =  {
-		show  : /(.*?)\.S?(\d{1,2})E?(\d{2})\.(.*)/,
-		movie : /(.*?)\((\d{4})\)(.*)/
-	};
-
-	/*
 	 * Parse the name file and return information in object
+	 *
+	 * SERIE :
+	 *
+	 * @return string 	type (episode)
+	 * @return string 	series (The originals)
+	 * @return int 		episodeNumber (15)
+	 * @return int 		season (2)
+	 * @return string 	format (HTDV)
+	 * @return string 	releaseGroup (LOL)
+	 *
+	 * MOVIE :
+	 *
+	 * @return string	type (movie)
+	 * @return string	title (The Equalizer)
+	 * @return int		years (2014)
+	 *
 	 */
 	that.parse = function(path) {
 
-		if((m = regex.show.exec(path)) !== null){
-			if(m[0] && m[1] && m[2] && m[3]) {
-				return {
-					original : m[0],
-					name	 : m[1].split(".").join(" "),
-					season	 : parseInt(m[2]),
-					episode	 : parseInt(m[3])
-				};
-			}
-		} else {
-			// TODO Use REGEX FOR MOVIE
-		}
+		var deferred = $q.defer();
 
-		return null;
+		guessit.parseName(path, true).then(function (data) {
+			deferred.resolve(data);
+		});
 
+		return deferred.promise;
 	};
 
 });

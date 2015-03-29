@@ -12,24 +12,27 @@ daw.service('subtitlesService', function($q, settingsService) {
 	 * 1. OpenSubtitles
 	 * 2. SubtitleSeeker
 	 */
-	that.find = function(imdbId, season, episode, filename) {
+	that.find = function(imdbId, information, filename) {
 
 		var deferred = $q.defer();
 
-		that.openSubtitles({
-			imdbid: imdbId,
-			season: season,
-			episode: episode,
-			filename: filename
-		}).then(function(result) {
-			settingsService.get('language').then(function(language){
-				deferred.resolve(result[language]['url']);
+		if(information['series']) { // SERIE
+			that.openSubtitles({
+				imdbid	: imdbId,
+				season	: information['season'],
+				episode	: information['episodeNumber'],
+				filename: filename
+			}).then(function(result) {
+				settingsService.get('language').then(function(language){
+					deferred.resolve(result[language]['url']);
+				});
+			}).catch(function(error) {
+				deferred.reject(error);
+				// TODO Call subtitleSeeker
 			});
-		}).catch(function(error) {
-			deferred.reject(error);
-			
-			// TODO Test other API
-		});
+		} else { // MOVIE
+			// TODO Call YifySubtitles
+		}
 
 		return deferred.promise;
 

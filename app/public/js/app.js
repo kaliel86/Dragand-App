@@ -29,14 +29,17 @@ var daw = angular.module('daw', ['ui.router'])
 	 * Basic Exemple :)
 	 */
 	var file = "the.originals.215.hdtv-lol.mp4";
-	var fileInformation = fileInfosService.parse(file);
 
-	imdbService.get(fileInformation['name']).then(function(imdbInfos) {
+	fileInfosService.parse(file).then(function(result) {
 
-		console.log('Poster : ', imdbInfos['Poster']);
+		imdbService.get((result['series']) ? result['series'] : result['title']).then(function(imdb) {
 
-		subtitlesService.find(imdbInfos['imdbID'], fileInformation['season'], fileInformation['episode'], file).then(function(url) {
-			console.log('URL : ', url);
+			console.log('Poster : ', imdb['Poster']);
+
+			subtitlesService.find(imdb['imdbID'], result, file).then(function(url) {
+				console.log('URL : ', url);
+			});
+
 		});
 
 	});
