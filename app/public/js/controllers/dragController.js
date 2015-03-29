@@ -4,8 +4,10 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 	$scope.view = 'drop';
 	$scope.list = [];
-
-	// :::: Return path of file or files in the first folder
+	
+	/*
+	 * Return path of file or files in the first folder
+	 */
 	$scope.getFilesPath = function(entry, elPath, firstDirectoryChecked) {
 
 		elPath = elPath || "";
@@ -63,6 +65,9 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 	 * Get Subtitles and add it to the scope
 	 */
 	$scope.getSubtitles = function(name, path, directory) {
+
+		// 0. We display page List
+		$scope.view = 'list';
 
 		// 1. We add item in SCOPE with status loading
 		$scope.list[name] = {
