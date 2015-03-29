@@ -48,7 +48,7 @@ body, html {
     background: $darkGrey;
     border-bottom: 1px solid #1d2022;
     -webkit-user-select: none;
-    -webkit-app-region: drag;
+    -webkit-app-region: drag !important;
     cursor: default;
     h1 {
         vertical-align: middle;
@@ -58,8 +58,6 @@ body, html {
         padding: 0;
         cursor: default;
         color: white;
-        -webkit-user-select: none;
-        -webkit-app-region: drag;
         cursor: default;
         transform : translateY(-50px);
         transition: all 0.5s ease;
@@ -156,6 +154,11 @@ body, html {
         top: 17px;
         background: url('../img/patternBg.png') center repeat;
         animation: bgMove 10s linear infinite;
+        color: #888d94;
+        font-weight: 200;
+        text-decoration: none;
+        font-size: 16px;
+
         a {
             color: #888d94;
             font-weight: 200;
@@ -164,8 +167,9 @@ body, html {
             transition: all 0.5s ease;
             span {
                 color: $lightGrey;
-                text-decoration: underline;
                 transition: all 0.2s ease;
+                padding-bottom : 2px;
+                border-bottom : 1px solid white;
             }
             &:hover {
                 span {
@@ -173,12 +177,20 @@ body, html {
                 }
             }
         }
+        &.dragOver {
+            border: 3px dashed $red;
+            #dropIcon {
+                #arrow,#box {
+                    fill : $red;
+                }
+                #arrow {
+                    animation : jumping 1s ease infinite;
+                }
+            }
+        }
     }
     #dropIcon {
-        #arrow {
-            fill : $lightGrey;
-        }
-        #box {
+        #arrow,#box {
             fill : $lightGrey;
         }
     }
@@ -212,7 +224,7 @@ body, html {
             color : white;
             background : #1b1e20;
             &:before {
-                transform : scale('1.04')
+                transform : scale(1.04)
             }
         }
     }
@@ -223,3 +235,9 @@ body, html {
      0%   { background-position: 0 0 }
      100% { background-position: -200px -162px }
  }
+
+@keyframes jumping {
+    0%   { transform : translateY(6px);}
+    50% { transform : translateY(0px); }
+    100% { transform : translateY(6px); }
+}

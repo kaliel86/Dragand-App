@@ -5,6 +5,8 @@ daw.directive('droppable', function() {
 		restrict: 'A',
 
 		link: function($scope, element, attrs, DragController) {
+			$scope.dragState = 'waiting';
+
 			var el = element[0];
 
 			// :::: Prevent drag / drop auto opening file issues
@@ -16,12 +18,14 @@ daw.directive('droppable', function() {
 			window.ondrop = window.ondragover;
 
 			el.ondragover = function() {
-				this.className = "hover";
-				this.innerHTML = "PRESS alt and DROP to open files in VLC"
+				this.className = "dragOver";
+				$scope.dragState = 'dragOver';
+				$scope.$apply();
 			}
 			el.ondragleave = function() {
 				this.className = "";
-				this.innerHTML = "Drop your files here";
+				$scope.dragState = 'waiting';
+				$scope.$apply();
 			}
 
 			el.ondrop = function(e) {
@@ -44,9 +48,22 @@ daw.directive('droppable', function() {
 				}
 
 				this.className = "";
-				this.innerHTML = "Drop your files here";
+				$scope.dragState = 'waiting';
+				$scope.$apply();
 				return false;
 			}
+			// Greensock animation
+			var dropIconTl = new TimelineMax();
+			var arrow = document.getElementById('arrow');
+			var box = document.getElementById('box');
+
+
+			dropIconTl
+				.set(arrow, {y:'-40vh', opacity :0 }, 0)
+				.set(box, {y:'15vh'}, 0)
+
+				.to(arrow, 0.6, {css:{y:0, opacity: 1, scale: 1}, ease: 'ease'})
+				.to(box, 0.6, {css:{ y:0, opacity: 1, scaleX: 1}, ease: 'ease'}, -0.3)
 		}
 	}
 });

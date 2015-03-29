@@ -27,6 +27,7 @@ daw.directive('topWindow', function($timeout) {
 					$scope.win.maximize();
 				}
 			}
+
 		}
 	}
 });
