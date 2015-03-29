@@ -10,7 +10,6 @@ daw.service('subtitlesService', function($q, settingsService) {
 	/*
 	 * Common search
 	 * 1. OpenSubtitles
-	 * 2. SubtitleSeeker
 	 */
 	that.find = function(imdbId, information, filename) {
 
@@ -24,11 +23,14 @@ daw.service('subtitlesService', function($q, settingsService) {
 				filename: filename
 			}).then(function(result) {
 				settingsService.get('language').then(function(language){
-					deferred.resolve(result[language]['url']);
+					if(result[language]['url']){
+						deferred.resolve(result[language]['url']);
+					} else {
+						deferred.reject();
+					}
 				});
-			}).catch(function(error) {
-				deferred.reject(error);
-				// TODO Call subtitleSeeker
+			}).catch(function() {
+				deferred.reject();
 			});
 		} else { // MOVIE
 			// TODO Call YifySubtitles
@@ -56,13 +58,6 @@ daw.service('subtitlesService', function($q, settingsService) {
 
 		return deferred.promise;
 
-	};
-
-	/*
-	 * Search in SubtitleSeeker
-	 */
-	that.subtitleSeeker = function(information) {
-		// TODO Wait API KEY
 	};
 
 });
