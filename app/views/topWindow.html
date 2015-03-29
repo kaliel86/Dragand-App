@@ -1,12 +1,12 @@
 <div id="top-window">
 	<ul id="buttons">
-		<li id="close-btn">
+		<li id="close-btn" ng-click="appWindow.close()" title="Close the app">
 			<span>x</span>
 		</li>
-		<li id="minimize-btn">
+		<li id="minimize-btn" ng-click="appWindow.minimize()" title="Minimize the window">
 			<span>&ndash;</span>
 		</li>
-		<li id="zoom-btn">
+		<li id="zoom-btn" ng-click="appWindow.zoom()" title="Maximize the window">
 			<span>+</span>
 		</li>
 	</ul>

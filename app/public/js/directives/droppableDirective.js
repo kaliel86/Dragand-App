@@ -5,8 +5,6 @@ daw.directive('droppable', function() {
 		restrict: 'A',
 
 		link: function($scope, element, attrs, DragController) {
-			console.log('element :: ', element);
-
 			var el = element[0];
 
 			// :::: Prevent drag / drop auto opening file issues

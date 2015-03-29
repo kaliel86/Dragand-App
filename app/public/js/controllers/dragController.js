@@ -1,6 +1,8 @@
 'use strict';
 
 daw.controller('DragController',  function($document, $window, $q, $scope, config) {
+	$scope.view = 'drop';
+
 	// :::: Return path of file or files in the first folder
 	$scope.getFilesPath = function(entry, elPath, firstDirectoryChecked) {
 		elPath = elPath || "";
