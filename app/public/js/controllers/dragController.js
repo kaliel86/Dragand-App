@@ -4,7 +4,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 	$scope.view = 'drop';
 	$scope.list = [];
-	
+
 	/*
 	 * Return path of file or files in the first folder
 	 */
@@ -99,6 +99,8 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 					if(url) {
 
+						console.log('Subtitles finded : ', name);
+
 						subtitlesService.download(name, url, directory).then(function(data){
 
 							// 5. After download change the status to 'done'
@@ -107,6 +109,8 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 						});
 
 					} else {
+
+						console.log('Subtitles not find : ', name);
 
 						// 5. No url so we change the status to 'fail'
 						$scope.list[name]['status'] = 'fail';
