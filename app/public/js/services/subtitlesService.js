@@ -2,6 +2,9 @@
 
 // NPM Required
 var opensubtitles = require("popcorn-opensubtitles");
+var http 		  = require('http');
+var fs 		  	  = require('fs');
+var url 		  = require('url');
 
 daw.service('subtitlesService', function($q, settingsService) {
 
@@ -55,6 +58,32 @@ daw.service('subtitlesService', function($q, settingsService) {
 			}).catch(function(error) {
 				deferred.reject(error);
 			});
+
+		return deferred.promise;
+
+	};
+
+	/*
+	 * Service for download file and put in good folder
+	 */
+	that.download = function(name, subUrl, path) {
+
+		var deferred = $q.defer();
+		var regex = /(.*)\.[^.]+$/;
+
+		var file = fs.createWriteStream(path + '/' + regex.exec(name)[1] + '.str');
+
+		http.get({
+			host: url.parse(subUrl).host,
+			port: 80,
+			path: url.parse(subUrl).pathname
+		}, function(res) {
+			res.on('data', function(data) {
+				deferred.resolve(file.write(data));
+			}).on('end', function() {
+				deferred.reject(file.end());
+			});
+		});
 
 		return deferred.promise;
 

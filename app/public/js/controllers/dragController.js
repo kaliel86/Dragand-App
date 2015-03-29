@@ -89,9 +89,24 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 				subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
-					// 4. We add URL and change the status to 'done'
-					$scope.list[name]['url'] 	= url;
-					$scope.list[name]['status'] = 'done';
+					// 4. We add URL
+					$scope.list[name]['url'] = url;
+
+					if(url) {
+
+						subtitlesService.download(name, url, directory).then(function(data){
+
+							// 5. After download change the status to 'done'
+							$scope.list[name]['status'] = 'done';
+
+						});
+
+					} else {
+
+						// 5. No url so we change the status to 'fail'
+						$scope.list[name]['status'] = 'fail';
+
+					}
 
 				}).catch(function() {
 
