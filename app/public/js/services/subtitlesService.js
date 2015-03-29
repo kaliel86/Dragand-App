@@ -71,7 +71,7 @@ daw.service('subtitlesService', function($q, settingsService) {
 		var deferred = $q.defer();
 		var regex = /(.*)\.[^.]+$/;
 
-		var file = fs.createWriteStream(path + '/' + regex.exec(name)[1] + '.str');
+		var file = fs.createWriteStream(path + '/' + regex.exec(name)[1] + '.srt');
 
 		http.get({
 			host: url.parse(subUrl).host,
