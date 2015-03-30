@@ -132,5 +132,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 		});
 	};
 
-
+	$scope.removeItem = function(array, index){
+		array.splice(index, 1);
+	}
 });
