@@ -19,7 +19,19 @@
 
 	<ul id="list" droppable ng-show="view === 'list'">
 		<li class="item" ng-repeat="item in list track by $index">
-
+			<div class="itemOver">
+				<ul>
+					<li title="IMDB Info">
+						<span class="icon-movie"></span>
+					</li>
+					<li title="Play the video">
+						<span class="icon-controller-play"></span>
+					</li>
+					<li title="Remove from list">
+						<span class="icon-cross2"></span>
+					</li>
+				</ul>
+			</div>
 			<div class="poster">
 				<img ng-src="{{item.poster}}" alt=""/>
 			</div>

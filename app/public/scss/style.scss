@@ -1,4 +1,5 @@
 @import "fonts";
+@import "animations";
 @import "_config";
 
 * {
@@ -203,25 +204,51 @@ body, html {
     #list{
         width: 100%;
         height: 100%;
-        overflow-x: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         text-align: left;
         list-style : none;
         margin: 0; padding: 0;
+
         .item{
             background-color: #262a2c;
             position: relative;
             padding : 0 20px;
             height : 60px;
             box-sizing: border-box;
-            
+            cursor : pointer;
+            &:hover{
+                .itemOver {
+                    display : block;
+                }
+            }
+
             .itemOver {
                 position: absolute;
                 top : 0;
                 bottom: 0;
                 right: 0;
                 left: 0;
-                background : rgba(0,0,0,0.7);
+                background : rgba(0,0,0,0.9);
                 z-index: 10000;
+                display : none;
+                animation: flipInX 1s ease;
+                ul {
+                    float : right;
+                    list-style: none;
+                    margin: 0; padding: 0;
+                    margin-right : 20px;
+                    li {
+                        display : inline-block;
+                        margin-left : 10px;
+                        color : white;
+                        line-height : 60px;
+                        transition: all 0.2s ease;
+                        &:hover {
+                            color : $red;
+                        }
+                    }
+                }
             }
             
             .poster {
@@ -233,6 +260,9 @@ body, html {
                 width: 35px;
                 height: 35px;
                 border-radius : 100% !important;
+                animation : flipInY 1s ease;
+                background : black;
+
                 img {
                     // Center the img in the overflow circle ctn
                     position: absolute;
@@ -322,26 +352,3 @@ body, html {
     }
 }
 
-.rotating {
-    animation: rotating 2s linear infinite;
-}
-// KEYFRAMES
-
-@keyframes bgMove {
-     0%   { background-position: 0 0 }
-     100% { background-position: -200px -162px }
- }
-
-@keyframes jumping {
-    0%   { transform : translateY(6px);}
-    50% { transform : translateY(0px); }
-    100% { transform : translateY(6px); }
-}
-@keyframes rotating {
-    from{
-        transform : rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
