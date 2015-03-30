@@ -1,9 +1,9 @@
 'use strict';
 
-daw.controller('DragController',  function($document, $window, $q, $scope, config, fileInfosService, imdbService, subtitlesService) {
+daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService) {
 
-	$scope.view = 'drop';
-	$scope.list = [];
+	$rootScope.view = 'drop';
+	$rootScope.list = [];
 
 	/*
 	 * Return path of file or files in the first folder
@@ -67,12 +67,12 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 	$scope.getSubtitles = function(name, path, directory) {
 
 		// 0. We display page List
-		$scope.view = 'list';
+		$rootScope.view = 'list';
 
 		var id = $scope.list.length;
 
 		// 1. We add item in SCOPE with status loading
-		$scope.list[id] = {
+		$rootScope.list[id] = {
 			'status': 'loading'
 		};
 
@@ -80,24 +80,24 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 			// 2. We add the name
 			if(result['series']) {
-				$scope.list[id]['type']    = 'series';
-				$scope.list[id]['name']    = result['series'];
-				$scope.list[id]['episode'] = (result['episodeNumber'] < 10) ? '0'+result['episodeNumber'] : result['episodeNumber'];
-				$scope.list[id]['season']  = (result['season'] < 10) ? '0'+result['season'] : result['season'];
+				$rootScope.list[id]['type']    = 'series';
+				$rootScope.list[id]['name']    = result['series'];
+				$rootScope.list[id]['episode'] = (result['episodeNumber'] < 10) ? '0'+result['episodeNumber'] : result['episodeNumber'];
+				$rootScope.list[id]['season']  = (result['season'] < 10) ? '0'+result['season'] : result['season'];
 			} else {
-				$scope.list[id]['type'] = 'movie';
-				$scope.list[id]['name'] = result['title'];
+				$rootScope.list[id]['type'] = 'movie';
+				$rootScope.list[id]['name'] = result['title'];
 			}
 
 			imdbService.get((result['series']) ? result['series'] : result['title']).then(function(imdb) {
 
 				// 3. We add the Poster
-				$scope.list[id]['poster'] = imdb['Poster'];
+				$rootScope.list[id]['poster'] = imdb['Poster'];
 
 				subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
 					// 4. We add URL
-					$scope.list[id]['url'] = url;
+					$rootScope.list[id]['url'] = url;
 
 					if(url) {
 
@@ -106,7 +106,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 						subtitlesService.download(name, url, directory).then(function(data){
 
 							// 5. After download change the status to 'done'
-							$scope.list[id]['status'] = 'done';
+							$rootScope.list[id]['status'] = 'done';
 							console.log($scope.list);
 
 						});
@@ -116,14 +116,14 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 						console.log('Subtitles not find : ', name);
 
 						// 5. No url so we change the status to 'fail'
-						$scope.list[id]['status'] = 'fail';
+						$rootScope.list[id]['status'] = 'fail';
 
 					}
 
 				}).catch(function() {
 
 					// 4. Fail so we change the status to 'fail'
-					$scope.list[id]['status'] = 'fail';
+					$rootScope.list[id]['status'] = 'fail';
 
 				});
 
