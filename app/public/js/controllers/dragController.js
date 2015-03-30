@@ -1,5 +1,8 @@
 'use strict';
 
+// NPM Required
+var open = require('open');
+
 daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService) {
 
 	$rootScope.view = 'drop';
@@ -94,6 +97,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 				// 3. We add the Poster
 				$rootScope.list[id]['poster'] = imdb['Poster'];
+				$rootScope.list[id]['imdbId'] = imdb['imdbID'];
 
 				subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
@@ -133,10 +137,15 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 		});
 	};
 
-	$scope.removeItem = function(array, index){
+	$scope.removeItem = function(array, index) {
 		array.splice(index, 1);
 		if(array.length < 1) {
 			$rootScope.view = 'drop';
 		}
-	}
+	};
+
+	$scope.goToImdb = function(imdbId) {
+		open('http://www.imdb.com/showtimes/title/'+imdbId);
+	};
+
 });
