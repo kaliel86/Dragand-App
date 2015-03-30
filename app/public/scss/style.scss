@@ -209,10 +209,21 @@ body, html {
         margin: 0; padding: 0;
         .item{
             background-color: #262a2c;
+            position: relative;
             padding : 0 20px;
             height : 60px;
             box-sizing: border-box;
-
+            
+            .itemOver {
+                position: absolute;
+                top : 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background : rgba(0,0,0,0.7);
+                z-index: 10000;
+            }
+            
             .poster {
                 overflow : hidden;
                 display: block;
@@ -245,15 +256,13 @@ body, html {
                 float : right;
                 position: relative;
                 top : 20px;
+                font-size : 0.9rem;
+                margin-top: 1px;
                 .fail {
-                    fill : $red;
-                    width : 13px;
-                    height : 19px;
+                    color : $red;
                 }
-                .sucess {
-                    fill : $green;
-                    width : 13px;
-                    height : 19px;
+                .success {
+                    color : $green;
                 }
                 .loading {
                     width: 10px;

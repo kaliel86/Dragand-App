@@ -21,13 +21,15 @@
     font-style:   normal;
     font-weight:  400;
 }
+
+
 @font-face {
     font-family: 'icomoon';
-    src:url('../fonts/icomoon.eot?-ab0koc');
-    src:url('../fonts/icomoon.eot?#iefix-ab0koc') format('embedded-opentype'),
-    url('../fonts/icomoon.woff?-ab0koc') format('woff'),
-    url('../fonts/icomoon.ttf?-ab0koc') format('truetype'),
-    url('../fonts/icomoon.svg?-ab0koc#icomoon') format('svg');
+    src:url('../fonts/icomoon.eot?u914mn');
+    src:url('../fonts/icomoon.eot?#iefixu914mn') format('embedded-opentype'),
+    url('../fonts/icomoon.woff?u914mn') format('woff'),
+    url('../fonts/icomoon.ttf?u914mn') format('truetype'),
+    url('../fonts/icomoon.svg?u914mn#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -46,6 +48,26 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-cross3:before {
+    content: "\e616";
+}
+
+.icon-movie:before {
+    content: "\e617";
+}
+
+.icon-play:before {
+    content: "\e618";
+}
+
+.icon-fail:before {
+    content: "\e619";
+}
+
+.icon-success:before {
+    content: "\e61a";
+}
+
 .icon-cross:before {
     content: "\e603";
 }
@@ -58,16 +80,79 @@
     content: "\e605";
 }
 
+.icon-controller-play:before {
+    content: "\e606";
+}
+
 .icon-trash:before {
     content: "\e600";
+}
+
+.icon-triangle-right:before {
+    content: "\e607";
+}
+
+.icon-attachment:before {
+    content: "\e608";
 }
 
 .icon-cog:before {
     content: "\e601";
 }
 
-.icon-info:before {
+.icon-cross2:before {
+    content: "\e609";
+}
+
+.icon-drop2:before {
+    content: "\e60a";
+}
+
+.icon-info-with-circle:before {
     content: "\e602";
 }
 
+.icon-info:before {
+    content: "\e60b";
+}
+
+.icon-switch:before {
+    content: "\e60c";
+}
+
+.icon-thumbs-down:before {
+    content: "\e60d";
+}
+
+.icon-thumbs-up:before {
+    content: "\e60e";
+}
+
+.icon-ticket:before {
+    content: "\e60f";
+}
+
+.icon-time-slot:before {
+    content: "\e610";
+}
+
+.icon-tools:before {
+    content: "\e611";
+}
+
+.icon-traffic-cone:before {
+    content: "\e612";
+}
+
+.icon-typing:before {
+    content: "\e613";
+}
+
+.icon-users:before {
+    content: "\e614";
+}
+
+.icon-video:before {
+    content: "\e615";
+}
 
