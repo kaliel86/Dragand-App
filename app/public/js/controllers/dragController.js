@@ -137,6 +137,9 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 		});
 	};
 
+	/*
+	 * Remove item in list
+	 */
 	$scope.removeItem = function(array, index) {
 		array.splice(index, 1);
 		if(array.length < 1) {
@@ -144,8 +147,13 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 		}
 	};
 
+	/*
+	 * Show item to imdb
+	 */
 	$scope.goToImdb = function(imdbId) {
-		open('http://www.imdb.com/showtimes/title/'+imdbId);
+		if(imdbId){
+			open('http://www.imdb.com/showtimes/title/'+imdbId);
+		}
 	};
 
 });

@@ -18,10 +18,10 @@
 	</div>
 
 	<ul id="list" class="fadeIn" droppable ng-show="view === 'list'">
-		<li class="item item-stag-anim" ng-repeat="item in list track by $index">
+		<li class="item item-stag-anim" ng-repeat="item in list">
 			<div class="itemOver">
 				<ul>
-					<li title="IMDB Info">
+					<li title="IMDB Info" ng-show="item.imdbId">
 						<span class="icon-movie" ng-click="goToImdb(item.imdbId)"></span>
 					</li>
 					<li title="Play the video">
@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 			<div class="poster">
-				<img ng-src="{{item.poster}}" alt=""/>
+				<img ng-src="{{item.poster}}" alt="{{item.imdbId}}"/>
 			</div>
 			<p ng-if="item.type === 'series'">{{item.name}} (S{{item.season}}E{{item.episode}})</p>
 			<span class="status">
