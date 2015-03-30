@@ -152,13 +152,24 @@ body, html {
         position:
         relative;
         top: 17px;
-        background: url('../img/patternBg.png') center repeat;
-        animation: bgMove 10s linear infinite;
         color: #888d94;
         font-weight: 200;
         text-decoration: none;
         font-size: 16px;
-
+        overflow : hidden;
+        &::before {
+            content: '';
+            display: block;
+            position: relative;
+            width : 130%;
+            height : 160%;
+            margin-left : -10%;
+            margin-top : -20%;
+            transform : rotate(30deg);
+            z-index: 1;
+            background: url('../img/patternBg.png') center repeat;
+            animation: bgMove 10s linear infinite;
+        }
         a {
             color: #888d94;
             font-weight: 200;
@@ -228,7 +239,7 @@ body, html {
                 line-height: 60px;
                 text-transform: capitalize;
                 width : calc(100% - 110px);
-                text-align : center;
+                text-align : left;
             }
             .status {
                 float : right;
