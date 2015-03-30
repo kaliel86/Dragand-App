@@ -2,11 +2,14 @@
 
 daw.service('translateService', function($translate, configService) {
 
-	var that = this;
-	var defaultLanguage = configService.get('defaultLanguage');
-	var languages 		= configService.get('languages');
+	var that 		= this;
+	var languages 	= configService.get('languages');
 
+	/*
+	 * Search the language navigator, if we have this language available we use it
+	 */
 	that.init = function() {
+
 		for(var i in languages) {
 			if(languages[i] == navigator.language){
 				$translate.use(languages[i]);
@@ -14,6 +17,7 @@ daw.service('translateService', function($translate, configService) {
 		}
 
 		return false;
+
 	};
 
 });
