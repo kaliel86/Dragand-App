@@ -1,6 +1,6 @@
 "use strict";
 
-daw.directive('droppable', function() {
+daw.directive('droppable', function($rootScope) {
 	return {
 		restrict: 'A',
 
@@ -20,11 +20,17 @@ daw.directive('droppable', function() {
 			el.ondragover = function() {
 				this.className = "dragOver";
 				$scope.dragState = 'dragOver';
+				$rootScope.view = 'drop';
 				$scope.$apply();
 			}
 			el.ondragleave = function() {
 				this.className = "";
 				$scope.dragState = 'waiting';
+				if($scope.list.length > 0) {
+					$rootScope.view = 'list';
+				} else {
+					$scope.dragState = 'waiting';
+				}
 				$scope.$apply();
 			}
 

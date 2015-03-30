@@ -68,6 +68,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 		// 0. We display page List
 		$rootScope.view = 'list';
+		$rootScope.$apply();
 
 		var id = $scope.list.length;
 
@@ -134,5 +135,8 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 	$scope.removeItem = function(array, index){
 		array.splice(index, 1);
+		if(array.length < 1) {
+			$rootScope.view = 'drop';
+		}
 	}
 });

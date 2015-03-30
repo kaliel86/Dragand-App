@@ -294,8 +294,8 @@ body, html {
                 animation : fadeIn 1s ease;
             }
             .status {
-                float : right;
-                position: relative;
+                right : 20px;
+                position: absolute;
                 top : 20px;
                 font-size : 0.9rem;
                 margin-top: 1px;
@@ -379,3 +379,6 @@ body, html {
     }
 }
 
+.fadeIn {
+    animation : fadeIn 1s ease;
+}
