@@ -3,7 +3,7 @@
 // NPM Required
 var open = require('open');
 
-daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService) {
+daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService, playerService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -77,7 +77,8 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 		// 1. We add item in SCOPE with status loading
 		$rootScope.list[id] = {
-			'status': 'loading'
+			'status': 'loading',
+			'path'	: path
 		};
 
 		fileInfosService.parse(name).then(function(result) {
@@ -154,6 +155,13 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 		if(imdbId){
 			open('http://www.imdb.com/showtimes/title/'+imdbId);
 		}
+	};
+
+	/*
+	 * Play movie/series with player in preferences
+	 */
+	$scope.play = function(path) {
+		playerService.play(path);
 	};
 
 });
