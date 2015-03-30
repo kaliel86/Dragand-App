@@ -281,6 +281,7 @@ body, html {
                 text-transform: capitalize;
                 width : calc(100% - 110px);
                 text-align : left;
+                animation : fadeIn 1s ease;
             }
             .status {
                 float : right;
@@ -309,6 +310,22 @@ body, html {
                 height: 0;
                 width: 0;
             }
+        }
+        .item-stag-anim.ng-enter-stagger,
+        .item-stag-anim.ng-leave-stagger,
+        .item-stag-anim.ng-move-stagger {
+            animation-delay:0.2s;
+            animation-duration:0s;
+        }
+
+        .item-stag-anim.ng-move,
+        .item-stag-anim.ng-enter {
+            opacity:0;
+            animation: fadeInRight 0.3s;
+        }
+
+        .item-stag-anim.ng-leave {
+            animation: fadeOutLeft 0.3s;
         }
     }
     #dropIcon {
