@@ -27,7 +27,7 @@ daw.service('subtitlesService', function($q, settingsService) {
 				filename: filename
 			}).then(function(result) {
 				settingsService.get('language').then(function(language){
-					if(typeof(result[language]) !== 'undefined'){
+					if(result && typeof(result[language]) !== 'undefined'){
 						deferred.resolve(result[language]['url']);
 					} else {
 						deferred.reject();
