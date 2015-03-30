@@ -69,8 +69,10 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 		// 0. We display page List
 		$scope.view = 'list';
 
+		var id = $scope.list.length;
+
 		// 1. We add item in SCOPE with status loading
-		$scope.list[name] = {
+		$scope.list[id] = {
 			'status': 'loading'
 		};
 
@@ -78,24 +80,24 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 
 			// 2. We add the name
 			if(result['series']) {
-				$scope.list[name]['type'] 	 = 'series';
-				$scope.list[name]['name'] 	 = result['series'];
-				$scope.list[name]['episode'] = result['episodeNumber'];
-				$scope.list[name]['season']  = result['season'];
+				$scope.list[id]['type']    = 'series';
+				$scope.list[id]['name']    = result['series'];
+				$scope.list[id]['episode'] = (result['episodeNumber'] < 10) ? '0'+result['episodeNumber'] : result['episodeNumber'];
+				$scope.list[id]['season']  = (result['season'] < 10) ? '0'+result['season'] : result['season'];
 			} else {
-				$scope.list[name]['type'] = 'movie';
-				$scope.list[name]['name'] = result['title'];
+				$scope.list[id]['type'] = 'movie';
+				$scope.list[id]['name'] = result['title'];
 			}
 
 			imdbService.get((result['series']) ? result['series'] : result['title']).then(function(imdb) {
 
 				// 3. We add the Poster
-				$scope.list[name]['poster'] = imdb['Poster'];
+				$scope.list[id]['poster'] = imdb['Poster'];
 
 				subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
 					// 4. We add URL
-					$scope.list[name]['url'] = url;
+					$scope.list[id]['url'] = url;
 
 					if(url) {
 
@@ -104,7 +106,8 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 						subtitlesService.download(name, url, directory).then(function(data){
 
 							// 5. After download change the status to 'done'
-							$scope.list[name]['status'] = 'done';
+							$scope.list[id]['status'] = 'done';
+							console.log($scope.list);
 
 						});
 
@@ -113,14 +116,14 @@ daw.controller('DragController',  function($document, $window, $q, $scope, confi
 						console.log('Subtitles not find : ', name);
 
 						// 5. No url so we change the status to 'fail'
-						$scope.list[name]['status'] = 'fail';
+						$scope.list[id]['status'] = 'fail';
 
 					}
 
 				}).catch(function() {
 
 					// 4. Fail so we change the status to 'fail'
-					$scope.list[name]['status'] = 'fail';
+					$scope.list[id]['status'] = 'fail';
 
 				});
 

@@ -6,7 +6,7 @@
 				<path id="box" d="M77.392 67.777H25.201c-1.636 0-2.963-1.336-2.963-2.985V47.708c0-1.649 1.327-2.986 2.963-2.986s2.963 1.337 2.963 2.986v14.097h46.264V47.708c0-1.649 1.327-2.986 2.963-2.986 1.637 0 2.963 1.337 2.963 2.986v17.083C80.355 66.441 79.028 67.777 77.392 67.777z"/>
 			</svg>
 			<div ng-show="dragState === 'waiting'">
-				<h2>{{ "HOME.DRAGANDDROP" | translate}}</h2>
+				<h2>{{ "HOME.DRAG_AND_DROP" | translate}}</h2>
 				<a href="#">{{ "HOME.OR" | translate}} <span title="Import videos from your hard drive">{{ "HOME.FILES" | translate}}</span></a>
 			</div>
 
@@ -16,4 +16,13 @@
 			</div>
 		</centered>
 	</div>
+
+	<div id="list" droppable ng-show="view === 'list'">
+		<div class="item" ng-repeat="item in list track by $index">
+			<img ng-src="{{item.poster}}" alt=""/>
+			<p ng-if="item.type === 'series'">{{item.name}} (S{{item.season}}E{{item.episode}})</p>
+			<span class="loading"></span>
+		</div>
+	</div>
+
 </div>
