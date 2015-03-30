@@ -21,17 +21,19 @@ var daw = angular.module('daw', ['ui.router', 'pascalprecht.translate'])
 
 })
 
-.config(function($translateProvider, languageService) {
+.config(function($translateProvider) {
 
 	$translateProvider.useStaticFilesLoader({
 		prefix: 'languages/',
 		suffix: '.json'
 	});
 
-	$translateProvider.preferredLanguage(languageService.getDefault());
+	$translateProvider.preferredLanguage('en');
+
 })
 
-.run(function(settingsService, checkUpdateService) {
+.run(function(settingsService, checkUpdateService, translateService) {
 	checkUpdateService.launch();
 	settingsService.init();
+	translateService.init();
 });
