@@ -1,5 +1,12 @@
 {
   "COMMON": {
-    "NAMEAPP": "DRAGAND"
+    "NAME_APP"  : "DRAGAND"
+  },
+  "HOME": {
+    "DRAG_AND_DROP"   : "DRAG AND DROP",
+    "OR"              : "Or browse your",
+    "FILES"           : "files",
+    "WANT_TO_PLAY_IT" : "WANT TO PLAY IT ?",
+    "PRESS_BTN"       : "Press the alt key to launch the video after drop"
   }
 }

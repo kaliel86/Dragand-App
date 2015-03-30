@@ -6,13 +6,13 @@
 				<path id="box" d="M77.392 67.777H25.201c-1.636 0-2.963-1.336-2.963-2.985V47.708c0-1.649 1.327-2.986 2.963-2.986s2.963 1.337 2.963 2.986v14.097h46.264V47.708c0-1.649 1.327-2.986 2.963-2.986 1.637 0 2.963 1.337 2.963 2.986v17.083C80.355 66.441 79.028 67.777 77.392 67.777z"/>
 			</svg>
 			<div ng-show="dragState === 'waiting'">
-				<h2>DRAG AND DROP</h2>
-				<a href="#">Or browse your <span title="Import videos from your hard drive">files</span></a>
+				<h2>{{ "HOME.DRAGANDDROP" | translate}}</h2>
+				<a href="#">{{ "HOME.OR" | translate}} <span title="Import videos from your hard drive">{{ "HOME.FILES" | translate}}</span></a>
 			</div>
 
 			<div ng-show="dragState === 'dragOver'">
-				<h2>WANT TO PLAY IT ?</h2>
-				Press the alt key to launch the video after drop
+				<h2>{{ "HOME.WANT_TO_PLAY_IT" | translate}}</h2>
+				{{ "HOME.PRESS_BTN" | translate }}
 			</div>
 		</centered>
 	</div>
