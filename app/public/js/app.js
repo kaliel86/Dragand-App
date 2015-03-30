@@ -33,7 +33,7 @@ var daw = angular.module('daw', ['ui.router', 'pascalprecht.translate'])
 })
 
 .run(function(settingsService, checkUpdateService, translateService) {
-	checkUpdateService.launch();
-	settingsService.init();
 	translateService.init();
+	settingsService.init();
+	checkUpdateService.launch();
 });
