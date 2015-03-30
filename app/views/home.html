@@ -19,7 +19,9 @@
 
 	<div id="list" droppable ng-show="view === 'list'">
 		<div class="item" ng-repeat="item in list track by $index">
-			<img ng-src="{{item.poster}}" alt=""/>
+			<div class="poster">
+				<img ng-src="{{item.poster}}" alt=""/>
+			</div>
 			<p ng-if="item.type === 'series'">{{item.name}} (S{{item.season}}E{{item.episode}})</p>
 			<span class="loading"></span>
 		</div>
