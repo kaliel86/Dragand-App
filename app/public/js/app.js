@@ -7,7 +7,7 @@ var gui  = require('nw.gui');
 /*
  * Init APP
  */
-var daw = angular.module('daw', ['ui.router', 'pascalprecht.translate'])
+var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.translate'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
