@@ -7,7 +7,7 @@
 			</svg>
 			<div ng-show="dragState === 'waiting'">
 				<h2>{{ "HOME.DRAG_AND_DROP" | translate}}</h2>
-				<a href="#">{{ "HOME.OR" | translate}} <span title="Import videos from your hard drive">{{ "HOME.FILES" | translate}}</span></a>
+				<a href="#">{{ "HOME.OR" | translate}} <file text="{{ 'HOME.FILES' | translate}}" multiple="multiple"></file></a>
 			</div>
 
 			<div ng-show="dragState === 'dragOver'">
