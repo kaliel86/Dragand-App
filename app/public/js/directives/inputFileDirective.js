@@ -12,15 +12,17 @@ daw.directive('file', function() {
 
 		link: function($scope, element, attr) {
 
-			var inputTypeFile = document.getElementById('inputTypeFile');
+			var textTypeFile  = document.querySelector('#textTypeFile');
+			var inputTypeFile = document.querySelector('#inputTypeFile');
+			var evObj 		  = document.createEvent('MouseEvents');
 
 			/*
 			 * Trigger click on input type File
 			 */
-			angular.element(document.querySelector('#textTypeFile')).on('click', function() {
+			textTypeFile.addEventListener("click", function() {
 
-				var evObj = document.createEvent('MouseEvents');
 				evObj.initEvent('click', true, false);
+
 				inputTypeFile.dispatchEvent(evObj);
 
 			});
