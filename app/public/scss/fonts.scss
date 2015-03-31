@@ -108,10 +108,16 @@
     content: "\e60a";
 }
 
+.icon-home:before {
+    content: "\e61b";
+}
+
 .icon-info-with-circle:before {
     content: "\e602";
 }
-
+.icon-circle:before {
+    content: "\e602";
+}
 .icon-info:before {
     content: "\e60b";
 }
