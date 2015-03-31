@@ -17,6 +17,10 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 		.state('home', {
 			url: "/",
 			templateUrl: "views/home.html"
+		})
+		.state('information', {
+			url: "/",
+			templateUrl: "views/information.html"
 		});
 
 })
