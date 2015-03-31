@@ -38,7 +38,7 @@
 			<p ng-if="item.type === 'series'">{{item.name}} (S{{item.season}}E{{item.episode}})</p>
 			<span class="status">
 				<!-- Status : Loading -->
-				<img src="public/img/loading.png" class="loading rotating" ng-show="item.status === 'loading'" alt="loading icon"/>
+				<img src="public/img/loading.png" class="loading" ng-class="{'rotating': item.status === 'loading' }" ng-show="item.status === 'loading'" alt="loading icon"/>
 
 				<!-- Status : Fail -->
 				<span ng-show ="item.status === 'fail'" class="fail icon-fail"></span>
