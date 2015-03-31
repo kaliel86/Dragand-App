@@ -22,7 +22,6 @@
     height: 100%;
     width: 100%;
     display: table;
-    pointer-events: none;
     z-index: 1;
     .ctn-centered {
         display: table-cell;
@@ -173,7 +172,7 @@ body, html {
             position: relative;
             width : 130%;
             height : 160%;
-            margin-left : -10%;
+            margin-left : -20%;
             margin-top : -20%;
             transform : rotate(30deg);
             z-index: 1;
