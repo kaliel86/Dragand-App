@@ -1,3 +1,13 @@
 <ul id="bottom-window">
-	<li class="icon-trash" ng-click="clearAll()" title="Clear All"></li><li class="icon-cog" ng-click="showSettings()" title="Settings"></li><li class="icon-info" ui-sref-active="active" ui-sref="information" title="Infos"></li>
+	<li
+		ng-class="{'icon-trash' : currentState === 'home', 'icon-home': currentState !== 'home'}"
+		ng-click="homeOrTrash()"></li><!--
+	--><li
+		class="icon-cog"
+		ui-sref="settings"
+		title="Settings"></li><!--
+	--><li
+		class="icon-info"
+		ui-sref="information"
+		title="Infos"></li>
 </ul>
