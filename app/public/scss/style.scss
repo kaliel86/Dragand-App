@@ -432,6 +432,9 @@ body, html {
             }
         }
     }
+    .active {
+        background: $darkGreyActive;
+    }
 }
 
 .fadeIn {
