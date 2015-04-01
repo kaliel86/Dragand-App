@@ -82,6 +82,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 			'path'	: path
 		};
 
+
 		fileInfosService.parse(name).then(function(result) {
 
 			// 2. We add the name

@@ -36,6 +36,7 @@
 				<img ng-src="{{item.poster}}" alt="{{item.imdbId}}"/>
 			</div>
 			<p ng-if="item.type === 'series'">{{item.name}} (S{{item.season}}E{{item.episode}})</p>
+			<p ng-if="item.type === 'movie'">{{item.name}}</p>
 			<span class="status">
 				<!-- Status : Loading -->
 				<img src="public/img/loading.png" class="loading" ng-class="{'rotating': item.status === 'loading' }" ng-show="item.status === 'loading'" alt="loading icon"/>
