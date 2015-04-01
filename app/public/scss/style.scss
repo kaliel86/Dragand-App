@@ -391,6 +391,15 @@ body, html {
                 }
             }
         }
+        .credits {
+            margin-bottom: 20px;
+            span {
+                text-decoration: none;
+                display: block;
+                font-size: 0.8rem;
+                color: $red;
+            }
+        }
     }
     #dropIcon {
         #arrow,#box {
