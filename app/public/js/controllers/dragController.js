@@ -172,7 +172,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
-			notificationService.create('DragAnd', 'Process completed');
+			notificationService.create('Process completed', 'lorem ipsum'); // TODO Do the text
 		}
 	});
 

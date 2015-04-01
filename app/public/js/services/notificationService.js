@@ -11,9 +11,11 @@ daw.service('notificationService', function() {
 	 * Create a notification
 	 */
 	that.create = function(title, message) {
+		// TODO Add 'icon'
 		notifier.notify({
 			'title': title,
-			'message': message
+			'message': message,
+			'wait': false
 		});
 	};
 

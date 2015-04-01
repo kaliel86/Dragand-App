@@ -1,4 +1,4 @@
-<div id="top-window">
+<div id="top-window" ng-controller="topWindowController">
 	<ul id="buttons">
 		<li id="close-btn" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
 			<span>x</span>
@@ -13,7 +13,7 @@
 
 	<h1>{{ "COMMON.NAME_APP" | translate }}</h1>
 
-	<div id="update" ng-class="{'available' : newUpdate'}">
+	<div id="update" ng-click="update()" ng-class="{'available' : newVersionAvailable}">
 		<div class="icon-update"></div>
 		<div id="update-indicator"></div>
 	</div>
