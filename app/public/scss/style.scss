@@ -396,13 +396,7 @@ body, html {
                 width : 55px;
                 clear : both;
             }
-            select {
-                position : absolute;
-                right : 20px;
-                top : 21px;
-                z-index : 1000;
-                clear : both;
-            }
+
 
             &:nth-child(2n+1){
                 background-color: #222729;
@@ -543,57 +537,109 @@ body, html {
 
 // -- Switch Button
 
+.switch {
+    &:empty
+    {
+        position : absolute;
+        left : -100000px;
+    }
+    &:empty ~ label
+    {
+        position: relative;
+        float: left;
+        line-height: 1.4em;
+        text-indent: 4em;
+        margin: 0.4em 0;
+        cursor: pointer;
+        user-select: none;
+    }
+    &:empty ~ label:before,
+    &:empty ~ label:after {
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        content: ' ';
+        width: 2.25em;
+        background-color: #ddd;
+        border-radius: 1em;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: all 100ms ease-in;
+    }
 
-input.switch:empty
-{
-    position : absolute;
-    left : -100000px;
+    &:empty ~ label:after
+    {
+        width: 1.2em;
+        top: 0.1em;
+        bottom: 0.1em;
+        margin-left: 0.1em;
+        background-color: #f1f1f1;
+        border-radius: 1em;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    &:checked ~ label:before
+    {
+        background-color: $green;
+    }
+
+    &:checked ~ label:after
+    {
+        margin-left: 1em;
+    }
 }
 
-input.switch:empty ~ label
-{
-    position: relative;
-    float: left;
-    line-height: 1.4em;
-    text-indent: 4em;
-    margin: 0.4em 0;
-    cursor: pointer;
-    user-select: none;
-}
 
-input.switch:empty ~ label:before,
-input.switch:empty ~ label:after
-{
+/* Custom dropdown */
+.dropdown {
     position: absolute;
-    display: block;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    content: ' ';
-    width: 2.25em;
-    background-color: #ddd;
-    border-radius: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: all 100ms ease-in;
+    right : 17px;
+    top : 20px;
+    vertical-align: middle;
+    line-height : normal;
+
+    select {
+        background-color: $green;
+        color: #fff;
+        font-size: inherit;
+        padding: .5em;
+        padding-right: 2.5em;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        font-size : 0.7em;
+        -webkit-appearance: button;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: "\25BC";
+        height: 1em;
+        font-size: .65em;
+        line-height: 1;
+        right: 0.5em;
+        top: 50%;
+        margin-top: -0.5em;
+        color: rgba(0,0,0,0.4);
+    }
+
+    &::before {
+        width: 1.2em;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(0,0,0,0.15);
+    }
 }
 
-input.switch:empty ~ label:after
-{
-    width: 1.2em;
-    top: 0.1em;
-    bottom: 0.1em;
-    margin-left: 0.1em;
-    background-color: #f1f1f1;
-    border-radius: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
 
-input.switch:checked ~ label:before
-{
-    background-color: #3dd84c;
-}
 
-input.switch:checked ~ label:after
-{
-    margin-left: 1em;
-}
+
