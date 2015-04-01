@@ -266,6 +266,9 @@ body, html {
                 .itemOver {
                     display : block;
                 }
+                .poster, p {
+                    opacity : 0.5;
+                }
             }
 
             .itemOver {
@@ -275,7 +278,7 @@ body, html {
                 right: 0;
                 left: 0;
                 background : rgba(0,0,0,0.9);
-                z-index: 10000;
+                z-index: 1;
                 display : none;
                 animation: flipInX 1s ease;
                 ul {
@@ -307,6 +310,7 @@ body, html {
                 border-radius : 100% !important;
                 animation : flipInY 1s ease;
                 background : black;
+                z-index : 10;
 
                 img {
                     // Center the img in the overflow circle ctn
@@ -319,6 +323,7 @@ body, html {
 
             p{
                 float : left;
+                position : relative;
                 font-size: 0.8rem;
                 color: white;
                 margin  : 0 10px;
@@ -327,6 +332,7 @@ body, html {
                 width : calc(100% - 110px);
                 text-align : left;
                 animation : fadeIn 1s ease;
+                z-index : 10;
             }
             .status {
                 right : 20px;
