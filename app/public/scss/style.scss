@@ -43,6 +43,9 @@ body, html {
     font-weight : 200;
 }
 
+.inline {
+    display: inline;
+}
 #app-wrapper {
     position: relative;
     width: 100%;
@@ -545,6 +548,8 @@ body, html {
     display: inline-block;
     padding-bottom: 2px;
     border-bottom: 1px solid $lightGrey;
+    position : relative;
+    z-index : 10000;
 }
 #inputTypeFile {
     visibility: hidden;
