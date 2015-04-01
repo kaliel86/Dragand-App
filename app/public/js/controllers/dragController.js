@@ -3,10 +3,12 @@
 // NPM Required
 var open = require('open');
 
-daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService, playerService) {
+daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
+
+	$scope.count = 0;
 
 	/*
 	 * Return path of file or files in the first folder
@@ -71,7 +73,6 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 		// 0. We display page List
 		$rootScope.view = 'list';
-		$rootScope.$apply();
 
 		var id = $scope.list.length;
 
@@ -113,7 +114,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 							// 5. After download change the status to 'done'
 							$rootScope.list[id]['status'] = 'done';
-							console.log($scope.list);
+							$scope.count++;
 
 						});
 
@@ -123,6 +124,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 						// 5. No url so we change the status to 'fail'
 						$rootScope.list[id]['status'] = 'fail';
+						$scope.count++;
 
 					}
 
@@ -130,6 +132,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 					// 4. Fail so we change the status to 'fail'
 					$rootScope.list[id]['status'] = 'fail';
+					$scope.count++;
 
 				});
 
@@ -163,5 +166,14 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 	$scope.play = function(path) {
 		playerService.play(path);
 	};
+
+	/*
+	 * Seed notification when all movies/series are done
+	 */
+	$scope.$watch('count', function() {
+		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
+			notificationService.create('DragAnd', 'Process completed');
+		}
+	});
 
 });
