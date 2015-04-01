@@ -137,7 +137,44 @@ body, html {
         }
 
     }
+
+    #update {
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.6s ease;
+        .icon-update {
+            transition: all 0.6s ease;
+        }
+        &:hover {
+            .icon-update {
+                transform: rotate(130deg);
+                color: white;
+            }
+        }
+        #update-indicator {
+            display: none;
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: $red;
+            border-radius: 100%;
+            right: -1px;
+            top: 0;
+            animation: flash 1s linear 1s;
+        }
+        &.available {
+            #update-indicator {
+                display: block;
+            }
+        }
+    }
 }
+
 
 #middle-container {
     display: block;
@@ -158,8 +195,7 @@ body, html {
         border: 3px dashed $lightGrey;
         border-radius: 12px;
         margin: auto;
-        position:
-        relative;
+        position: relative;
         top: 17px;
         color: #888d94;
         font-weight: 200;
