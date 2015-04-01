@@ -37,7 +37,7 @@ gulp.task('watch', ['style'], function() {
 gulp.task('build', function() {
 	var nw = new NwBuilder({
 		files: '**/*', // use the glob format
-		platforms: ['osx', 'win']
+		platforms: ['osx64']
 	});
 
 	nw.build(function(err) {
