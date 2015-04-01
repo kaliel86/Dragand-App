@@ -1,12 +1,12 @@
 <div id="top-window">
 	<ul id="buttons">
-		<li id="close-btn" ng-click="appWindow.close()" title="Close the app">
+		<li id="close-btn" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
 			<span>x</span>
 		</li>
-		<li id="minimize-btn" ng-click="appWindow.minimize()" title="Minimize the window">
+		<li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ 'MENU.TOP.MINIMIZE' | translate }}">
 			<span>&ndash;</span>
 		</li>
-		<li id="zoom-btn" ng-click="appWindow.zoom()" title="Maximize the window">
+		<li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ 'MENU.TOP.MAXIMIZE' | translate }}">
 			<span>+</span>
 		</li>
 	</ul>

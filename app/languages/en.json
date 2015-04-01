@@ -1,12 +1,30 @@
 {
-  "COMMON": {
-    "NAME_APP"  : "DRAGAND"
+  "COMMON":{
+    "NAME_APP":"DRAGAND"
   },
-  "HOME": {
-    "DRAG_AND_DROP"   : "DRAG AND DROP",
-    "OR"              : "Or browse your",
-    "FILES"           : "files",
-    "WANT_TO_PLAY_IT" : "WANT TO PLAY IT ?",
-    "PRESS_BTN"       : "Press the alt key to launch the video after drop"
+  "MENU":{
+    "BOTTOM":{
+      "SETTINGS":"Settings",
+      "INFORMATION":"Information"
+    },
+    "TOP":{
+      "CLOSE":"Close",
+      "MINIMIZE":"Minimize",
+      "MAXIMIZE":"Maximize"
+    }
+  },
+  "HOME":{
+    "DRAG_AND_DROP":"DRAG AND DROP",
+    "OR":"Or browse your",
+    "FILES":"files",
+    "WANT_TO_PLAY_IT":"WANT TO PLAY IT ?",
+    "PRESS_BTN":"Press the alt key to launch the video after drop"
+  },
+  "INFORMATION":{
+    "THE_PROJECT":"The project",
+    "THE_PROJECT_CONTENT":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum mollitia perspiciatis sint voluptatem!",
+    "TEAM":"The team",
+    "DEVELOPER":"Developer",
+    "CREDITS":"Credits"
   }
 }
