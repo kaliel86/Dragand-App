@@ -372,6 +372,49 @@ body, html {
         .item-stag-anim.ng-leave {
             animation: fadeOutRight 0.3s;
         }
+
+        // ----- SETTINGS ITEM
+        .settings-el {
+            background-color: #262a2c;
+            position: relative;
+            padding : 0 20px;
+            height : 60px;
+            line-height: 60px;
+            box-sizing: border-box;
+            cursor : pointer;
+            color : white;
+            p {
+                font-size : 0.8rem;
+                padding : 0;
+                margin : 0;
+            }
+            .switchCtn {
+                position : absolute;
+                right : 0px;
+                top : 13px;
+                z-index : 1000;
+                width : 55px;
+                clear : both;
+            }
+            select {
+                position : absolute;
+                right : 20px;
+                top : 21px;
+                z-index : 1000;
+                clear : both;
+            }
+
+            &:nth-child(2n+1){
+                background-color: #222729;
+            }
+            &::after {
+                content: '';
+                display: block;
+                clear : both;
+                height: 0;
+                width: 0;
+            }
+        }
     }
     #information {
         width: 100%;
@@ -442,6 +485,7 @@ body, html {
             fill : $lightGrey;
         }
     }
+
 }
 
 #bottom-window {
@@ -453,6 +497,9 @@ body, html {
     background: $darkGrey;
     border-top: 1px solid #1d2022;
     list-style : none;
+    position: fixed;
+    bottom :0;
+    z-index: 1000;
     li {
         width : calc(33.333333% - 1px);
         color : $lightGrey;
@@ -494,6 +541,59 @@ body, html {
     position: absolute;
 }
 
-.fadeIn {
-    animation : fadeIn 1s ease;
+// -- Switch Button
+
+
+input.switch:empty
+{
+    position : absolute;
+    left : -100000px;
+}
+
+input.switch:empty ~ label
+{
+    position: relative;
+    float: left;
+    line-height: 1.4em;
+    text-indent: 4em;
+    margin: 0.4em 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+input.switch:empty ~ label:before,
+input.switch:empty ~ label:after
+{
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+    width: 2.25em;
+    background-color: #ddd;
+    border-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 100ms ease-in;
+}
+
+input.switch:empty ~ label:after
+{
+    width: 1.2em;
+    top: 0.1em;
+    bottom: 0.1em;
+    margin-left: 0.1em;
+    background-color: #f1f1f1;
+    border-radius: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+input.switch:checked ~ label:before
+{
+    background-color: #3dd84c;
+}
+
+input.switch:checked ~ label:after
+{
+    margin-left: 1em;
 }
