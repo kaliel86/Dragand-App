@@ -1,6 +1,7 @@
 var gulp 				= require('gulp');
 	scss 				= require('gulp-sass'),
 	autoprefixer 		= require('gulp-autoprefixer'),
+ 	NwBuilder 			= require('node-webkit-builder'),
 	path				= {
 		'public': 'app/public'
 	},
@@ -31,6 +32,17 @@ gulp.task('style', function() {
  */
 gulp.task('watch', ['style'], function() {
 	gulp.watch(path.public+'/scss/**/*.scss', ['style']);
+});
+
+gulp.task('build', function() {
+	var nw = new NwBuilder({
+		files: '**/*', // use the glob format
+		platforms: ['osx', 'win']
+	});
+
+	nw.build(function(err) {
+		if(err) console.log(err);
+	});
 });
 
 /*
