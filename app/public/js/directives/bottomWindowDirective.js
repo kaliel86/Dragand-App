@@ -1,6 +1,6 @@
 'use strict';
 
-daw.directive('bottomWindow', function($window, $rootScope, $state) {
+daw.directive('bottomWindow', function($window, $rootScope, $state, $timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
@@ -20,8 +20,12 @@ daw.directive('bottomWindow', function($window, $rootScope, $state) {
 			 */
 			$scope.homeOrTrash = function() {
 				if($scope.currentState === 'home') {
-					$rootScope.view = 'drop';
+					var tabLength = $rootScope.list.length;
 					$rootScope.list = [];
+					$timeout(function(){
+						$rootScope.view = 'drop';
+					},0.25*tabLength*1000)
+
 				} else {
 					$state.go('home');
 				}

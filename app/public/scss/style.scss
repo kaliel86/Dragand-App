@@ -94,36 +94,37 @@ body, html {
             transform : scale(0);
             span {
                 opacity: 0;
-                font-size: 10px;
                 vertical-align: top;
-                line-height: 11px;
+                line-height: 9px;
                 color : black;
                 cursor: pointer;
                 transition: opacity 0.3s ease;
-            }
-            &:hover span {
-                opacity: 1;
             }
         }
         #close-btn {
             margin-left: 0;
             background: #ff6052;
             transition : transform 0.2s ease;
-
             span {
-                font-size: 8px;
+                font-size: 16px;
             }
         }
         #minimize-btn {
             background: #ffbe06;
             transition : transform 0.2s ease 0.1s;
             span {
-                line-height: 9px;
+                line-height: 7px;
+                margin-left : -1px;
             }
         }
         #zoom-btn {
             transition : transform 0.2s ease 0.2s;
             background: #16cc37;
+            span {
+            }
+        }
+        &:hover li span {
+            opacity: 1;
         }
     }
     &.loaded {
@@ -151,7 +152,7 @@ body, html {
         }
         &:hover {
             .icon-update {
-                transform: rotate(130deg);
+                transform: rotate(180deg);
                 color: white;
             }
         }
@@ -185,14 +186,14 @@ body, html {
     text-align: center;
     h2 {
         font-size: 21px;
-        color: $lightGrey;
+        color: white;
         font-weight: 200;
         margin: 20px 0 15px 0;
     }
     #drop {
         height: calc(100vh - 82px - 40px);
         width: calc(100% - 40px);
-        border: 3px dashed $lightGrey;
+        border: 3px dashed rgba(255,255,255,0.8);
         border-radius: 12px;
         margin: auto;
         position: relative;
@@ -215,6 +216,14 @@ body, html {
             background: url('../img/patternBg.png') center repeat;
             animation: bgMove 10s linear infinite;
         }
+        .dropZone {
+            position : absolute;
+            top : 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index : 100;
+        }
         a {
             color: #888d94;
             font-weight: 200;
@@ -226,6 +235,7 @@ body, html {
                 transition: all 0.2s ease;
                 padding-bottom : 2px;
                 border-bottom : 1px solid white;
+                z-index : 101;
             }
             &:hover {
                 span {
@@ -258,8 +268,8 @@ body, html {
         .item{
             background-color: #262a2c;
             position: relative;
-            padding : 0 20px;
-            height : 60px;
+            padding : 0px 20px;
+            min-height : 60px;
             box-sizing: border-box;
             cursor : pointer;
             &:hover{
@@ -325,9 +335,9 @@ body, html {
                 float : left;
                 position : relative;
                 font-size: 0.8rem;
+                line-height : 1.3rem;
                 color: white;
-                margin  : 0 10px;
-                line-height: 60px;
+                margin  : 20px 10px;
                 text-transform: capitalize;
                 width : calc(100% - 110px);
                 text-align : left;
@@ -482,7 +492,7 @@ body, html {
     }
     #dropIcon {
         #arrow,#box {
-            fill : $lightGrey;
+            fill : white;
         }
     }
 

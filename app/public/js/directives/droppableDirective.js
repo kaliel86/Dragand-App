@@ -7,7 +7,8 @@ daw.directive('droppable', function($rootScope) {
 		link: function($scope, element, attrs, DragController) {
 			$scope.dragState = 'waiting';
 
-			var el = element[0];
+			var el = element[0].getElementsByClassName('dropZone')[0];
+			var dropZone = document.getElementById('drop');
 
 			// :::: Prevent drag / drop auto opening file issues
 			window.ondragover = function(e) {
@@ -18,13 +19,13 @@ daw.directive('droppable', function($rootScope) {
 			window.ondrop = window.ondragover;
 
 			el.ondragover = function() {
-				this.className = "dragOver";
+				dropZone.className = "dragOver";
 				$scope.dragState = 'dragOver';
 				$rootScope.view = 'drop';
 				$scope.$apply();
 			}
 			el.ondragleave = function() {
-				this.className = "";
+				dropZone.className  = "";
 				$scope.dragState = 'waiting';
 				if($scope.list.length > 0) {
 					$rootScope.view = 'list';
@@ -53,9 +54,7 @@ daw.directive('droppable', function($rootScope) {
 					}
 				}
 
-				this.className = "";
-				$scope.dragState = 'waiting';
-				$scope.$apply();
+				el.ondragleave();
 				return false;
 			}
 			// Greensock animation
@@ -67,7 +66,6 @@ daw.directive('droppable', function($rootScope) {
 			dropIconTl
 				.set(arrow, {y:'-40vh', opacity :0 }, 0)
 				.set(box, {y:'15vh'}, 0)
-
 				.to(arrow, 0.6, {css:{y:0, opacity: 1, scale: 1}, ease: 'ease'})
 				.to(box, 0.6, {css:{ y:0, opacity: 1, scaleX: 1}, ease: 'ease'}, -0.3)
 		}
