@@ -48,6 +48,8 @@ daw.service('checkUpdateService', function($rootScope) {
 		upd.checkNewVersion(function(error, newVersionExists, manifest) {
 			if (!error && newVersionExists && $rootScope.newVersionAvailable) {
 				download(manifest);
+			} else {
+				console.log('No update available !');
 			}
 		});
 	};

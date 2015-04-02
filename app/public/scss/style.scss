@@ -614,6 +614,7 @@ body, html {
 
 /* Custom dropdown */
 .dropdown {
+    width: 40%;
     position: absolute;
     right : 17px;
     top : 20px;
@@ -621,6 +622,7 @@ body, html {
     line-height : normal;
 
     select {
+        width: 100%;
         background-color: $green;
         color: #fff;
         font-size: inherit;

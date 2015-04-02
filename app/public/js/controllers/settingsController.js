@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('settingsController', function($scope, settingsService) {
+daw.controller('settingsController', function($scope, settingsService, translateService) {
 
 	/*
 	 * AutoPlay
@@ -19,5 +19,7 @@ daw.controller('settingsController', function($scope, settingsService) {
 	$scope.updateLanguage = function() {
 		settingsService.set('language', $scope.language);
 	};
+
+	$scope.countryCode = translateService.countryCode;
 
 });
