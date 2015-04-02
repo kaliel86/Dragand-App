@@ -32,7 +32,6 @@
   },
   "dependencies": {
     "guessit-wrapper": "^1.0.0",
-    "lodash": "^3.6.0",
     "node-movie": "^2.0.0",
     "node-notifier": "^4.1.2",
     "node-webkit-builder": "^1.0.11",

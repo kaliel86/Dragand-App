@@ -12,13 +12,13 @@ daw.service('playerService', function(settingsService) {
 	 */
 	that.play = function(path) {
 
-		settingsService.get('player').then(function(result) {
-			if(!result) {
-				open(encodeURI(path));
-			} else {
-				open(encodeURI(path), result);
-			}
-		});
+		var player = settingsService.get('player');
+
+		if(!player) {
+			open(encodeURI(path));
+		} else {
+			open(encodeURI(path), player);
+		}
 
 	};
 

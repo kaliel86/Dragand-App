@@ -26,13 +26,14 @@ daw.service('subtitlesService', function($q, settingsService) {
 				episode	: information['episodeNumber'],
 				filename: filename
 			}).then(function(result) {
-				settingsService.get('language').then(function(language){
-					if(result && typeof(result[language]) !== 'undefined'){
-						deferred.resolve(result[language]['url']);
-					} else {
-						deferred.reject();
-					}
-				});
+				var language = settingsService.get('language');
+				
+				if(result && typeof(result[language]) !== 'undefined'){
+					deferred.resolve(result[language]['url']);
+				} else {
+					deferred.reject();
+				}
+				
 			}).catch(function() {
 				deferred.reject();
 			});
