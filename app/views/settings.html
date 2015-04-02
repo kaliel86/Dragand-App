@@ -2,8 +2,8 @@
 	<ul id="list" class="fadeInUp">
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">Auto play at drop</p>
-			<div class="switchCtn"> <!-- TODO Switch ON with class when autoplay is true -->
-				<input type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay" ng-change="updateAutoplay()"/>
+			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
+				<input ng-checked="autoplay == 'true'" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>
 				<label for="playSwitch">&nbsp;</label>
 			</div>
 		</li>

@@ -7,9 +7,9 @@ daw.controller('settingsController', function($scope, settingsService) {
 	 */
 	$scope.autoplay = settingsService.get('autoplay');
 
-	$scope.updateAutoplay = function() {
-		settingsService.set('autoplay', $scope.autoplay);
-	};
+	$scope.$watch('autoplay', function(newVal) {
+		settingsService.set('autoplay', newVal);
+	});
 
 	/*
 	 * Languages
