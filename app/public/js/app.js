@@ -30,12 +30,6 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 })
 
 .config(function($translateProvider, config) {
-	// Add menu bar
-	var nw = require('nw.gui');
-	var win = nw.Window.get();
-	var nativeMenuBar = new nw.Menu({ type: "menubar" });
-	nativeMenuBar.createMacBuiltin("Dragand");
-	win.menu = nativeMenuBar;
 
 	$translateProvider.useStaticFilesLoader({
 		prefix: 'languages/',
@@ -46,8 +40,9 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 
 })
 
-.run(function(settingsService, checkUpdateService, translateService) {
+.run(function(settingsService, checkUpdateService, translateService, guiService) {
 	translateService.init();
 	settingsService.init();
+	guiService.init();
 	checkUpdateService.launch();
 });
