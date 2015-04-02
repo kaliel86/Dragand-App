@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('settingsController', function($scope, settingsService, translateService) {
+daw.controller('settingsController', function($scope, settingsService, yifyService) {
 
 	/*
 	 * AutoPlay
@@ -20,6 +20,6 @@ daw.controller('settingsController', function($scope, settingsService, translate
 		settingsService.set('language', $scope.language);
 	};
 
-	$scope.countryCode = translateService.countryCode;
+	$scope.countryCode = yifyService.languageMapping;
 
 });

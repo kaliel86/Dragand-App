@@ -7,7 +7,6 @@ var path 				= require('path');
 var gui  				= require('nw.gui');
 var pkg 				= require('../package.json');
 var updater 			= require('node-webkit-updater');
-var upd 				= new updater(pkg);
 var opensubtitles 		= require("popcorn-opensubtitles");
 var guessit 			= require('guessit-wrapper');
 var imdb 				= require('node-movie');
@@ -17,6 +16,7 @@ var http 		  		= require('http');
 var fs 		  	  		= require('fs');
 var url 		  		= require('url');
 var pathNode	  		= require('path');
+var upd 				= new updater(pkg);
 var copyPath, execPath;
 
 /*

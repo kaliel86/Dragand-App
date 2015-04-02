@@ -1,6 +1,6 @@
 'use strict';
 
-daw.service('subtitlesService', function($q, settingsService) {
+daw.service('subtitlesService', function($q, settingsService, yifyService, openSubtitlesService) {
 
 	var that = this;
 
@@ -13,7 +13,8 @@ daw.service('subtitlesService', function($q, settingsService) {
 		var deferred = $q.defer();
 
 		if(information['series']) { // SERIE
-			that.openSubtitles({
+
+			openSubtitlesService.get({
 				imdbid	: imdbId,
 				season	: information['season'],
 				episode	: information['episodeNumber'],
@@ -30,29 +31,18 @@ daw.service('subtitlesService', function($q, settingsService) {
 			}).catch(function() {
 				deferred.reject();
 			});
+
 		} else { // MOVIE
-			// TODO Call YifySubtitles
-		}
 
-		return deferred.promise;
+			var language = settingsService.get('language');
 
-	};
-
-	/*
-	 * Search in OpenSubtitles.org
-	 */
-	that.openSubtitles = function(information) {
-
-		var deferred = $q.defer();
-
-		console.log('Information Seed at OpenSubtitles.org : ', information);
-
-		opensubtitles.searchEpisode(information, 'OSTestUserAgent')
-			.then(function(result) {
-				deferred.resolve(result);
-			}).catch(function(error) {
-				deferred.reject(error);
+			yifyService.get(imdbId, language).then(function(url){
+				deferred.resolve(url);
+			}).catch(function() {
+				deferred.reject();
 			});
+
+		}
 
 		return deferred.promise;
 
