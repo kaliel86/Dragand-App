@@ -6,7 +6,7 @@ var updater = require('node-webkit-updater');
 var upd 	= new updater(pkg);
 var copyPath, execPath;
 
-daw.service('checkUpdateService', function($rootScope, notificationService) {
+daw.service('checkUpdateService', function($rootScope, $translate, notificationService) {
 
 	var that = this;
 
@@ -49,7 +49,7 @@ daw.service('checkUpdateService', function($rootScope, notificationService) {
 			if (!error && newVersionExists && $rootScope.newVersionAvailable) {
 				download(manifest);
 			} else {
-				notificationService.create('DragAnd', 'No update available'); // TODO Do the text
+				notificationService.create($translate('NOTIFICATION.UPDATE.TITLE'), $translate('NOTIFICATION.UPDATE.CONTENT'));
 			}
 		});
 	};

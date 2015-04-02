@@ -13,6 +13,16 @@
       "MAXIMIZE":"Maximize"
     }
   },
+  "NOTIFICATION": {
+    "UPDATE": {
+      "TITLE": "Lorem Ipsum",
+      "CONTENT": "Lorem Ipsum"
+    },
+    "SUB_DONE": {
+      "TITLE": "Lorem Ipsum",
+      "CONTENT": "Lorem Ipsum"
+    }
+  },
   "HOME":{
     "DRAG_AND_DROP":"DRAG AND DROP",
     "OR":"Or browse your",

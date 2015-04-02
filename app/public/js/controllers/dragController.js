@@ -3,7 +3,7 @@
 // NPM Required
 var open = require('open');
 
-daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService) {
+daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -173,7 +173,7 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
-			notificationService.create('Process completed', 'lorem ipsum'); // TODO Do the text
+			notificationService.create($translate('NOTIFICATION.SUB_DONE.TITLE'), $translate('NOTIFICATION.SUB_DONE.CONTENT'));
 		}
 	});
 
