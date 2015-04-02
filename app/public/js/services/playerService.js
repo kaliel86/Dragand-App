@@ -1,8 +1,5 @@
 'use strict';
 
-// NPM Required
-var open = require("open");
-
 daw.service('playerService', function(settingsService) {
 
 	var that = this;

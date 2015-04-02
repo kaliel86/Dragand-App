@@ -1,8 +1,5 @@
 'use strict';
 
-// NPM Required
-var open = require('open');
-
 daw.directive('open', function() {
 
 	return {

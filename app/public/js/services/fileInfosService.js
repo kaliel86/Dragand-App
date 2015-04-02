@@ -1,8 +1,5 @@
 'use strict';
 
-// NPM Required
-var guessit = require('guessit-wrapper');
-
 daw.service('fileInfosService', function($q) {
 
 	var that = this;

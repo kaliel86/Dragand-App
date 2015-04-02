@@ -1,8 +1,23 @@
 'use strict';
 
-// NPM Required
-var path = require('path');
-var gui  = require('nw.gui');
+/*
+ * NPM Required
+ */
+var path 				= require('path');
+var gui  				= require('nw.gui');
+var pkg 				= require('../package.json');
+var updater 			= require('node-webkit-updater');
+var upd 				= new updater(pkg);
+var opensubtitles 		= require("popcorn-opensubtitles");
+var guessit 			= require('guessit-wrapper');
+var imdb 				= require('node-movie');
+var notifier 			= require('node-notifier');
+var open 				= require("open");
+var http 		  		= require('http');
+var fs 		  	  		= require('fs');
+var url 		  		= require('url');
+var pathNode	  		= require('path');
+var copyPath, execPath;
 
 /*
  * Init APP

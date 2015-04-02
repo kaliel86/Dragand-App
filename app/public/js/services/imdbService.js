@@ -1,8 +1,5 @@
 'use strict';
 
-// NPM Required
-var imdb = require('node-movie');
-
 daw.service('imdbService', function($q) {
 
 	var that = this;

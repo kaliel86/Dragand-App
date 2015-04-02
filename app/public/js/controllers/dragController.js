@@ -1,8 +1,5 @@
 'use strict';
 
-// NPM Required
-var open = require('open');
-
 daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService) {
 
 	$rootScope.view = 'drop';

@@ -1,12 +1,5 @@
 'use strict';
 
-// NPM Required
-var opensubtitles = require("popcorn-opensubtitles");
-var http 		  = require('http');
-var fs 		  	  = require('fs');
-var url 		  = require('url');
-var pathNode	  = require('path');
-
 daw.service('subtitlesService', function($q, settingsService) {
 
 	var that = this;
