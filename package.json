@@ -11,15 +11,15 @@
   "license": "GNU GPL",
   "window": {
     "title": "DragandWatch",
-    "toolbar": false,
-    "frame": false,
+    "toolbar": true,
+    "frame": true,
     "min_width": 320,
     "min_height": 370,
     "width": 320,
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": true
+    "transparent": false
   },
   "webkit": {
     "page-cache": true
@@ -33,7 +33,6 @@
   "dependencies": {
     "guessit-wrapper": "^1.0.0",
     "lodash": "^3.6.0",
-    "nedb": "^1.1.1",
     "node-movie": "^2.0.0",
     "node-notifier": "^4.1.2",
     "node-webkit-builder": "^1.0.11",

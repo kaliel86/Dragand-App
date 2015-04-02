@@ -1,20 +1,20 @@
-<div id="middle-container">
+<div id="middle-container" ng-controller="settingsController">
 	<ul id="list" class="fadeInUp">
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">Auto play at drop</p>
-			<div class="switchCtn">
-				<input type="checkbox" id="playSwitch" name="playSwitch" class="switch" />
+			<div class="switchCtn"> <!-- TODO Switch ON with class when autoplay is true -->
+				<input type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay" ng-change="updateAutoplay()"/>
 				<label for="playSwitch">&nbsp;</label>
 			</div>
-		</li><li class="settings-el item-stag-anim">
+		</li>
+		<li class="settings-el item-stag-anim">
 			<p title="Your favorite subtitle language">Subtitle language</p>
 			<div class="dropdown">
-				<select name="subLanguage" id="subLanguage">
-					<option value="fr">fr</option>
-					<option value="en">en</option>
+				<select name="subLanguage" id="subLanguage" ng-model="language" ng-change="updateLanguage()">
+					<option value="fr" ng-selected="language == 'fr'">fr</option>
+					<option value="en" ng-selected="language == 'en'">en</option>
 				</select>
 			</div>
 		</li>
 	</ul>
-
 </div>
