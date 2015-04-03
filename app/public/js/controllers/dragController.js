@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('DragController',  function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -108,13 +108,33 @@ daw.controller('DragController',  function($document, $window, $q, $scope, $root
 
 						console.log('Subtitles finded : ', name);
 
-						subtitlesService.download(name, url, directory).then(function(data){
+						if ($rootScope.list[id]['type'] == 'series') {
 
-							// 5. After download change the status to 'done'
-							$rootScope.list[id]['status'] = 'done';
+							openSubtitlesService.download(name, url, directory).then(function(){
+
+								// 5. After download change the status to 'done'
+								$rootScope.list[id]['status'] = 'done';
+								$scope.count++;
+
+							});
+
+						} else if ($rootScope.list[id]['type'] == 'movie') {
+
+							yifyService.download(url, directory, name).then(function() {
+
+								// 5. After download change the status to 'done'
+								$rootScope.list[id]['status'] = 'done';
+								$scope.count++;
+
+							}).catch(function() {
+								$rootScope.list[id]['status'] = 'fail';
+								$scope.count++;
+							});
+
+						} else {
+							$rootScope.list[id]['status'] = 'fail';
 							$scope.count++;
-
-						});
+						}
 
 					} else {
 

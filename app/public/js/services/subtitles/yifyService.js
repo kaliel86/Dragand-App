@@ -11,6 +11,7 @@ daw.service('yifyService', function($q, $http) {
 	 * Get Subtitles link from Yify
 	 */
 	that.get = function (imdbId, language) {
+
 		var deferred = $q.defer();
 
 		$http.get(URL+imdbId).then(function(result) {
@@ -35,6 +36,7 @@ daw.service('yifyService', function($q, $http) {
 		});
 
 		return deferred.promise;
+
 	};
 
 	/*
@@ -70,6 +72,29 @@ daw.service('yifyService', function($q, $http) {
 		}
 		return list[index]['url'];
 
+	};
+
+	/*
+	 * Download a ZIP, unzip, rename file !
+	 */
+	that.download = function (url, path, filename) {
+
+		var deferred 	= $q.defer();
+		var regex 		= /(.*)\.[^.]+$/;
+
+		new download({mode: '755', extract: true})
+			.get(url)
+			.dest(path)
+			.rename(regex.exec(filename)[1] + '.srt')
+			.run(function (err, files) {
+				if(err !== 'null') {
+					deferred.resolve();
+				} else {
+					deferred.reject();
+				}
+			});
+
+		return deferred.promise;
 	};
 
 	/*
