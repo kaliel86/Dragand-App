@@ -15,20 +15,20 @@
   },
   "NOTIFICATION": {
     "UPDATE": {
-      "TITLE": "Lorem Ipsum",
-      "CONTENT": "Lorem Ipsum"
+      "TITLE": "No update available",
+      "CONTENT": "You will be notified when an update will be ready"
     },
     "SUB_DONE": {
-      "TITLE": "Lorem Ipsum",
-      "CONTENT": "Lorem Ipsum"
+      "TITLE": "Téléchargement fini",
+      "CONTENT": "Bon film"
     }
   },
   "HOME":{
     "DRAG_AND_DROP":"DRAG AND DROP",
     "OR":"Or browse your",
     "FILES":"files",
-    "WANT_TO_PLAY_IT":"WANT TO PLAY IT ?",
-    "PRESS_BTN":"Press the alt key to launch the video after drop"
+    "WANT_TO_PLAY_IT":"WANT TO PLAY IT?",
+    "PRESS_BTN":"Press the alt key while dropping to launch the video"
   },
   "INFORMATION":{
     "THE_PROJECT":"The project",
@@ -38,7 +38,7 @@
     "CREDITS":"Credits"
   },
   "SETTINGS": {
-    "AUTOPLAY": "Auto play at drop",
+    "AUTOPLAY": "Auto-play at drop",
     "LANGUAGES": "Subtitle language"
   }
 }

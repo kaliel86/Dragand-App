@@ -15,8 +15,8 @@
   },
   "NOTIFICATION": {
     "UPDATE": {
-      "TITLE": "Lorem Ipsum",
-      "CONTENT": "Lorem Ipsum"
+      "TITLE": "Aucune mise à jour",
+      "CONTENT": "Vous serez averti lorsqu'une mise à jour sera prêt"
     },
     "SUB_DONE": {
       "TITLE": "Lorem Ipsum",
