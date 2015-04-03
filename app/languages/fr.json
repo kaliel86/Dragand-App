@@ -1,0 +1,44 @@
+{
+  "COMMON":{
+    "NAME_APP":"DRAGAND"
+  },
+  "MENU":{
+    "BOTTOM":{
+      "SETTINGS":"Paramètres",
+      "INFORMATION":"Information"
+    },
+    "TOP":{
+      "CLOSE":"Fermer",
+      "MINIMIZE":"Minimiser",
+      "MAXIMIZE":"Maximiser"
+    }
+  },
+  "NOTIFICATION": {
+    "UPDATE": {
+      "TITLE": "Lorem Ipsum",
+      "CONTENT": "Lorem Ipsum"
+    },
+    "SUB_DONE": {
+      "TITLE": "Lorem Ipsum",
+      "CONTENT": "Lorem Ipsum"
+    }
+  },
+  "HOME":{
+    "DRAG_AND_DROP":"DRAG AND DROP",
+    "OR":"Ou parcourir vos",
+    "FILES":"fichiers",
+    "WANT_TO_PLAY_IT":"Envie de lancer le film ?",
+    "PRESS_BTN":"Appuyez sur la touche ALT pour lancer VLC"
+  },
+  "INFORMATION":{
+    "THE_PROJECT":"Le projet",
+    "THE_PROJECT_CONTENT":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum mollitia perspiciatis sint voluptatem!",
+    "TEAM":"L'équipe",
+    "DEVELOPER":"Développeur",
+    "CREDITS":"Crédits"
+  },
+  "SETTINGS": {
+    "AUTOPLAY": "Lancer VLC au drop",
+    "LANGUAGES": "Langue des sous-titres"
+  }
+}
