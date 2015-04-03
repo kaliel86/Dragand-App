@@ -65,6 +65,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 	/*
 	 * Get Subtitles and add it to the scope
+	 *
+	 * TODO : Rework ALL this fucking sheet
 	 */
 	$scope.getSubtitles = function(name, path, directory) {
 
@@ -107,20 +109,40 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 				if($rootScope.list[id]['type'] == 'series') { // SERIES
 
-					subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
+					if (typeof(imdb['imdbID']) !== 'undefined') {
 
-						openSubtitlesService.download(name, url, directory).then(function(){
+						subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
-							console.log('Subtitles found in OpenSubtitles');
+							openSubtitlesService.download(name, url, directory).then(function(){
 
-							// 5. After download change the status to 'done'
-							$rootScope.list[id]['status'] = 'done';
-							$scope.count++;
+								console.log('Subtitles found in OpenSubtitles');
 
+								// 5. After download change the status to 'done'
+								$rootScope.list[id]['status'] = 'done';
+								$scope.count++;
+
+							});
+
+						} ).catch(function() {
+							var language = settingsService.get('language');
+
+							theSubdbService.get(path, directory, name, language).then(function() {
+
+								console.log('Subtitles found in TheSubDB');
+
+								// 5. After download change the status to 'done'
+								$rootScope.list[id]['status'] = 'done';
+								$scope.count++;
+
+							}).catch(function(){
+
+								// 5. After download change the status to 'done'
+								$rootScope.list[id]['status'] = 'fail';
+								$scope.count++;
+
+							});
 						});
-
-					}).catch(function() {
-
+					} else {
 						var language = settingsService.get('language');
 
 						theSubdbService.get(path, directory, name, language).then(function() {
@@ -138,8 +160,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 							$scope.count++;
 
 						});
-
-					});
+					}
 
 				} else { // MOVIES
 					subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
