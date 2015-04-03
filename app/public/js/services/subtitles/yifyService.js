@@ -17,12 +17,15 @@ daw.service('yifyService', function($q, $http) {
 			if(result && typeof(result['data']['subs']) !== 'undefined') {
 
 				var list 			= result['data']['subs'][imdbId];
-
 				var languageMapped 	= that.getLanguageMapped(list, language);
 				var subtitles 		= list[languageMapped];
-				var url 			= that.getLink(subtitles);
 
-				deferred.resolve(DOWNLOAD+url);
+				if(typeof(subtitles) !== 'undefined'){
+					var url = that.getLink(subtitles);
+					deferred.resolve(DOWNLOAD+url);
+				} else {
+					deferred.reject();
+				}
 
 			} else {
 				deferred.reject();
@@ -34,6 +37,9 @@ daw.service('yifyService', function($q, $http) {
 		return deferred.promise;
 	};
 
+	/*
+	 * Get object with languages
+	 */
 	that.getLanguageMapped = function (list, language) {
 
 		for(var key in that.languageMapping) {
@@ -48,17 +54,23 @@ daw.service('yifyService', function($q, $http) {
 
 	};
 
+	/*
+	 * Get best subtitles, base on rating
+	 */
 	that.getLink = function (list) {
+
 		var highest = list[0].rating;
-		var index = 0;
-		for (var i=1; i<list.length; i++) {
+		var index 	= 0;
+
+		for (var i = 1; i < list.length; i++) {
 			if (list[i].rating > highest) {
 				highest = list[i].rating;
-				index = i;
+				index 	= i;
 			}
 		}
 		return list[index]['url'];
-	}
+
+	};
 
 	/*
 	 * Mapping use by Yify
