@@ -21,7 +21,7 @@ daw.service('subtitlesService', function($q, settingsService, yifyService, openS
 				episode	: information['episodeNumber'],
 				filename: filename
 			}).then(function(result) {
-				
+
 				if(result && typeof(result[language]) !== 'undefined'){
 					deferred.resolve(result[language]['url']);
 				} else {

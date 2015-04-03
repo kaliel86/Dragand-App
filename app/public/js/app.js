@@ -17,6 +17,7 @@ var fs 		  	  	= require('fs');
 var url 		  	= require('url');
 var pathNode	  	= require('path');
 var download 		= require('download');
+var SubDb 			= require("subdb");
 var upd 			= new updater(pkg);
 var copyPath, execPath;
 

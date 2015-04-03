@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService, theSubdbService, settingsService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -68,6 +68,11 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 */
 	$scope.getSubtitles = function(name, path, directory) {
 
+
+		console.log('Name : ', name);
+		console.log('Path : ', path);
+		console.log('Directory : ', directory);
+
 		// 0. We display page List
 		$rootScope.view = 'list';
 
@@ -99,60 +104,61 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 				$rootScope.list[id]['poster'] = imdb['Poster'];
 				$rootScope.list[id]['imdbId'] = imdb['imdbID'];
 
-				subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
-					// 4. We add URL
-					$rootScope.list[id]['url'] = url;
+				if($rootScope.list[id]['type'] == 'series') { // SERIES
 
-					if(url) {
+					subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
-						console.log('Subtitles finded : ', name);
+						openSubtitlesService.download(name, url, directory).then(function(){
 
-						if ($rootScope.list[id]['type'] == 'series') {
+							console.log('Subtitles found in OpenSubtitles');
 
-							openSubtitlesService.download(name, url, directory).then(function(){
+							// 5. After download change the status to 'done'
+							$rootScope.list[id]['status'] = 'done';
+							$scope.count++;
 
-								// 5. After download change the status to 'done'
-								$rootScope.list[id]['status'] = 'done';
-								$scope.count++;
+						});
 
-							});
+					}).catch(function() {
 
-						} else if ($rootScope.list[id]['type'] == 'movie') {
+						var language = settingsService.get('language');
 
-							yifyService.download(url, directory, name).then(function() {
+						theSubdbService.get(path, directory, name, language).then(function() {
 
-								// 5. After download change the status to 'done'
-								$rootScope.list[id]['status'] = 'done';
-								$scope.count++;
+							console.log('Subtitles found in TheSubDB');
 
-							}).catch(function() {
-								$rootScope.list[id]['status'] = 'fail';
-								$scope.count++;
-							});
+							// 5. After download change the status to 'done'
+							$rootScope.list[id]['status'] = 'done';
+							$scope.count++;
 
-						} else {
+						}).catch(function(){
+
+							// 5. After download change the status to 'done'
 							$rootScope.list[id]['status'] = 'fail';
 							$scope.count++;
-						}
 
-					} else {
+						});
 
-						console.log('Subtitles not find : ', name);
+					});
 
-						// 5. No url so we change the status to 'fail'
-						$rootScope.list[id]['status'] = 'fail';
-						$scope.count++;
+				} else { // MOVIES
+					subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
 
-					}
+						yifyService.download(url, directory, name).then(function() {
 
-				}).catch(function() {
+							console.log('Subtitles found in Yify');
 
-					// 4. Fail so we change the status to 'fail'
-					$rootScope.list[id]['status'] = 'fail';
-					$scope.count++;
+							// 5. After download change the status to 'done'
+							$rootScope.list[id]['status'] = 'done';
+							$scope.count++;
 
-				});
+						}).catch(function() {
+							$rootScope.list[id]['status'] = 'fail';
+							$scope.count++;
+						});
+
+					});
+				}
 
 			});
 
