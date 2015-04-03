@@ -1,14 +1,14 @@
 <div id="middle-container" ng-controller="settingsController">
 	<ul id="list" class="fadeInUp">
 		<li class="settings-el item-stag-anim">
-			<p title="Play video when sub is founded">Auto play at drop</p>
+			<p title="Play video when sub is founded">{{ "SETTINGS.AUTOPLAY" | translate }}</p>
 			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
 				<input ng-checked="autoplay == 'true'" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>
 				<label for="playSwitch">&nbsp;</label>
 			</div>
 		</li>
 		<li class="settings-el item-stag-anim">
-			<p title="Your favorite subtitle language">Subtitle language</p>
+			<p title="Your favorite subtitle language">{{ "SETTINGS.LANGUAGES" | translate }}</p>
 			<div class="dropdown">
 				<select name="subLanguage" id="subLanguage" ng-model="language" ng-change="updateLanguage()">
 					<option ng-repeat="(key, value) in countryCode" value="{{value}}" ng-selected="language == value">{{key | capitalize}}</option>

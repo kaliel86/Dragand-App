@@ -36,5 +36,9 @@
     "TEAM":"The team",
     "DEVELOPER":"Developer",
     "CREDITS":"Credits"
+  },
+  "SETTINGS": {
+    "AUTOPLAY": "Auto play at drop",
+    "LANGUAGES": "Subtitle language"
   }
 }
