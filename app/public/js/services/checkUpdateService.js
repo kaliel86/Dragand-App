@@ -1,6 +1,6 @@
 'use strict';
 
-daw.service('checkUpdateService', function($rootScope, $translate, notificationService) {
+daw.service('checkUpdateService', function($rootScope, $filter, notificationService) {
 
 	var that = this;
 
@@ -43,7 +43,7 @@ daw.service('checkUpdateService', function($rootScope, $translate, notificationS
 			if (!error && newVersionExists && $rootScope.newVersionAvailable) {
 				download(manifest);
 			} else {
-				notificationService.create($translate('NOTIFICATION.UPDATE.TITLE'), $translate('NOTIFICATION.UPDATE.CONTENT'));
+				notificationService.create($filter('translate')('NOTIFICATION.UPDATE.TITLE'), $filter('translate')('NOTIFICATION.UPDATE.CONTENT'));
 			}
 		});
 	};

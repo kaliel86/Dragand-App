@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $translate, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService, theSubdbService, settingsService) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService, theSubdbService, settingsService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -196,7 +196,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
-			notificationService.create($translate('NOTIFICATION.SUB_DONE.TITLE'), $translate('NOTIFICATION.SUB_DONE.CONTENT'));
+			notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
 		}
 	});
 
