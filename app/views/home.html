@@ -40,8 +40,8 @@
 			<div class="poster">
 				<img ng-src="{{item.poster}}" alt="{{item.imdbId}}"/>
 			</div>
-			<p ng-if="item.type === 'series'">{{item.name | limitTo: limit}} (S{{item.season}}E{{item.episode}})</p>
-			<p ng-if="item.type === 'movie'">{{item.name | limitTo: limit}}</p>
+			<p ng-if="item.type === 'series'">{{item.name | cut: limit}} (S{{item.season}}E{{item.episode}})</p>
+			<p ng-if="item.type === 'movie'">{{item.name | cut: limit}}</p>
 			<span class="status">
 				<!-- Status : Loading -->
 				<img src="public/img/loading.png" class="loading" ng-class="{'rotating': item.status === 'loading' }" ng-show="item.status === 'loading'" alt="loading icon"/>
