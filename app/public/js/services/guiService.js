@@ -24,8 +24,10 @@ daw.service('guiService', function($rootScope) {
 	 * So for exemple Width : 400px -> 21.25 -> 21 characters
 	 */
 	that.listenResize = function() {
+		$rootScope.limit = 16;
 		window.addEventListener("resize", function() {
-			$rootScope.width = win.width;
+			$rootScope.limit = window.Math.floor((win.width * 16) / 320);
+			$rootScope.$apply();
 		});
 	};
 
