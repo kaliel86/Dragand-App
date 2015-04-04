@@ -10,7 +10,7 @@ daw.service('yifyService', function($q, $http) {
 	/*
 	 * Get Subtitles link from Yify
 	 */
-	that.get = function (imdbId, language) {
+	that.get = function (imdbId, language, filename, path) {
 
 		var deferred = $q.defer();
 
@@ -23,7 +23,13 @@ daw.service('yifyService', function($q, $http) {
 
 				if(typeof(subtitles) !== 'undefined'){
 					var url = that.getLink(subtitles);
-					deferred.resolve(DOWNLOAD+url);
+
+					that.download(DOWNLOAD+url, path, filename).then(function() {
+						deferred.resolve();
+					}).catch(function() {
+						deferred.reject();
+					});
+
 				} else {
 					deferred.reject();
 				}

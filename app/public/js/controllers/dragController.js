@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, fileInfosService, imdbService, subtitlesService, playerService, notificationService, yifyService, openSubtitlesService, theSubdbService, settingsService) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -20,7 +20,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 			console.log("------------- IS FILE -------------");
 			item.file(function() {
-				$scope.getSubtitles(entry.name, entry.path, entry.directory);
+				subtitlesV2Service.get(entry.name, entry.path, entry.directory);
 			});
 
 		} else if (item.isDirectory && !firstDirectoryChecked) {
@@ -61,129 +61,6 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 			return false;
 		}
 
-	};
-
-	/*
-	 * Get Subtitles and add it to the scope
-	 *
-	 * TODO : Rework ALL this fucking sheet
-	 */
-	$scope.getSubtitles = function(name, path, directory) {
-
-
-		console.log('Name : ', name);
-		console.log('Path : ', path);
-		console.log('Directory : ', directory);
-
-		// 0. We display page List
-		$rootScope.view = 'list';
-
-		var id = $scope.list.length;
-
-		// 1. We add item in SCOPE with status loading
-		$rootScope.list[id] = {
-			'status': 'loading',
-			'path'	: path
-		};
-
-
-		fileInfosService.parse(name).then(function(result) {
-
-			// 2. We add the name
-			if(result['series']) {
-				$rootScope.list[id]['type']    = 'series';
-				$rootScope.list[id]['name']    = result['series'];
-				$rootScope.list[id]['episode'] = (result['episodeNumber'] < 10) ? '0'+result['episodeNumber'] : result['episodeNumber'];
-				$rootScope.list[id]['season']  = (result['season'] < 10) ? '0'+result['season'] : result['season'];
-			} else {
-				$rootScope.list[id]['type'] = 'movie';
-				$rootScope.list[id]['name'] = result['title'];
-			}
-
-			imdbService.get((result['series']) ? result['series'] : result['title']).then(function(imdb) {
-
-				// 3. We add the Poster
-				$rootScope.list[id]['poster'] = imdb['Poster'];
-				$rootScope.list[id]['imdbId'] = imdb['imdbID'];
-
-
-				if($rootScope.list[id]['type'] == 'series') { // SERIES
-
-					if (typeof(imdb['imdbID']) !== 'undefined') {
-
-						subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
-
-							openSubtitlesService.download(name, url, directory).then(function(){
-
-								console.log('Subtitles found in OpenSubtitles');
-
-								// 5. After download change the status to 'done'
-								$rootScope.list[id]['status'] = 'done';
-								$scope.count++;
-
-							});
-
-						} ).catch(function() {
-							var language = settingsService.get('language');
-
-							theSubdbService.get(path, directory, name, language).then(function() {
-
-								console.log('Subtitles found in TheSubDB');
-
-								// 5. After download change the status to 'done'
-								$rootScope.list[id]['status'] = 'done';
-								$scope.count++;
-
-							}).catch(function(){
-
-								// 5. After download change the status to 'done'
-								$rootScope.list[id]['status'] = 'fail';
-								$scope.count++;
-
-							});
-						});
-					} else {
-						var language = settingsService.get('language');
-
-						theSubdbService.get(path, directory, name, language).then(function() {
-
-							console.log('Subtitles found in TheSubDB');
-
-							// 5. After download change the status to 'done'
-							$rootScope.list[id]['status'] = 'done';
-							$scope.count++;
-
-						}).catch(function(){
-
-							// 5. After download change the status to 'done'
-							$rootScope.list[id]['status'] = 'fail';
-							$scope.count++;
-
-						});
-					}
-
-				} else { // MOVIES
-					subtitlesService.find(imdb['imdbID'], result, name).then(function(url) {
-
-						yifyService.download(url, directory, name).then(function() {
-
-							console.log('Subtitles found in Yify');
-
-							// 5. After download change the status to 'done'
-							$rootScope.list[id]['status'] = 'done';
-							$scope.count++;
-
-						}).catch(function() {
-							$rootScope.list[id]['status'] = 'fail';
-							$scope.count++;
-						});
-
-					});
-				}
-
-			});
-
-		});
 	};
 
 	/*
