@@ -19,11 +19,15 @@ daw.service('openSubtitlesService', function($q) {
 		}, 'OSTestUserAgent')
 			.then(function(url) {
 
-				that.download(filename, url, directory).then(function() {
-					deferred.resolve();
-				}).catch(function() {
+				if(url && typeof(url[language]) != 'undefined') {
+					that.download(filename, url[language].url, directory).then(function() {
+						deferred.resolve();
+					}).catch(function() {
+						deferred.reject();
+					});
+				} else {
 					deferred.reject();
-				});
+				}
 
 			}).catch(function() {
 				deferred.reject();
