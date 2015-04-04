@@ -4,9 +4,19 @@ Everyones favorite super team presented in true blockbuster fashion. Veil. New r
 
 #### The Team
 
-Create by 3 students at Hetic.net
-| Name  |  ROle|
-| ------------- | ------------- |
-| Mathieu LE TYRANT  | Developper |
-| Patrick HENG  | Developper |
-| Robin MASTROMARINO  | Designer |
+Create by 3 students at Hetic.net during free time.
+
+
+| Nom  |  Role | Twitter
+| ------------- | ------------- | ------------- |
+| Mathieu LE TYRANT  | Developper | @MathLTY |
+| Patrick HENG  | Developper | @Pat_Hg |
+| Robin MASTROMARINO  | Designer | @cherwoood |
+
+#### TECHNOLOGIES
+
+* NodeWebkit
+* AngularJS
+* Bower
+* GulpJS
+* SCSS
