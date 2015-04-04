@@ -22,3 +22,6 @@ Create by 3 students at Hetic.net during free time.
 * SCSS
 
 #### LICENCE :  **GNU GPL V3**
+
+#### Because we love watch movies and series with subtitles
+![Subtitles](http://giphy.com/static/img/splash.png)
