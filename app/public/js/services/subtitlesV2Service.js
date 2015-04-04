@@ -27,18 +27,19 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 		// 1. We add item in SCOPE with status loading
 		$rootScope.list[idCurrentList] = {
-			'status': 'loading'
+			'status': 'loading',
+			'filename': name
 		};
 
 		fileInfosService.parse(name).then(function(result) {
 
 			// 2. Check type and go to the good function
 			if (result['series']) {
-				that.series(name, path, directory, result ).then(function() {
+				that.series(name, path, directory, result).then(function() {
 					deferred.resolve();
 				});
 			} else {
-				that.movies(name, path, directory, result ).then(function() {
+				that.movies(name, path, directory, result).then(function() {
 					deferred.resolve();
 				});
 			}
