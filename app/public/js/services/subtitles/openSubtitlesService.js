@@ -37,29 +37,26 @@ daw.service('openSubtitlesService', function($q) {
 	};
 
 	/*
-	 * Service for download file and put in good folder
+	 * Download and  rename file !
 	 */
-	that.download = function(name, subUrl, path) {
+	that.download = function (filename, url, path) {
 
-		var deferred = $q.defer();
-		var regex = /(.*)\.[^.]+$/;
+		var deferred 	= $q.defer();
+		var regex 		= /(.*)\.[^.]+$/;
 
-		var file = fs.createWriteStream(path + pathNode.sep + regex.exec(name)[1] + '.srt');
-
-		http.get({
-			host: url.parse(subUrl).host,
-			port: 80,
-			path: url.parse(subUrl).pathname
-		}, function(res) {
-			res.on('data', function(data) {
-				deferred.resolve(file.write(data));
-			}).on('end', function() {
-				deferred.reject(file.end());
+		new download({mode: '755', extract: true})
+			.get(url)
+			.dest(path)
+			.rename(regex.exec(filename)[1] + '.srt')
+			.run(function (err, files) {
+				if(err !== 'null') {
+					deferred.resolve();
+				} else {
+					deferred.reject();
+				}
 			});
-		});
 
 		return deferred.promise;
-
 	};
 
 });
