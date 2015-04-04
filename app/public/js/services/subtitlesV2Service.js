@@ -15,6 +15,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	 */
 	that.get = function(name, path, directory) {
 
+		var deferred = $q.defer();
+
 		that.consoleEntry(name, path, directory);
 
 		$rootScope.view = 'list';
@@ -32,12 +34,18 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 			// 2. Check type and go to the good function
 			if (result['series']) {
-				that.series(name, path, directory, result);
+				that.series(name, path, directory, result ).then(function() {
+					deferred.resolve();
+				});
 			} else {
-				that.movies(name, path, directory, result);
+				that.movies(name, path, directory, result ).then(function() {
+					deferred.resolve();
+				});
 			}
 
 		});
+
+		return deferred.promise;
 
 	};
 
@@ -45,6 +53,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	 *
 	 */
 	that.movies = function(name, path, directory, fileInfos) {
+
+		var deferred = $q.defer();
 
 		$rootScope.list[idCurrentList]['type'] = 'movie';
 		$rootScope.list[idCurrentList]['name'] = fileInfos['title'];
@@ -60,23 +70,33 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 				$rootScope.list[idCurrentList]['status'] = 'done';
 
+				deferred.resolve();
+
 			}).catch(function() {
 
 				$rootScope.list[idCurrentList]['status'] = 'fail';
+
+				deferred.resolve();
 
 			});
 
 		}).catch(function() {
 
-			$rootScope.list[id]['status'] = 'fail';
+			$rootScope.list[idCurrentList]['status'] = 'fail';
+
+			deferred.resolve();
 
 		});
+
+		return deferred.promise;
 	};
 
 	/*
 	 *
 	 */
 	that.series = function(name, path, directory, fileInfos) {
+
+		var deferred = $q.defer();
 
 		$rootScope.list[idCurrentList]['type']    = 'series';
 		$rootScope.list[idCurrentList]['name']    = fileInfos['series'];
@@ -97,6 +117,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 					// 5. After download change the status to 'done'
 					$rootScope.list[idCurrentList]['status'] = 'done';
 
+					deferred.resolve();
+
 				}).catch(function() {
 
 					theSubdbService.get(path, directory, name, languageSubtitles).then(function() {
@@ -106,10 +128,14 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 						// 5. After download change the status to 'done'
 						$rootScope.list[idCurrentList]['status'] = 'done';
 
+						deferred.resolve();
+
 					}).catch(function(){
 
 						// 5. After download change the status to 'done'
 						$rootScope.list[idCurrentList]['status'] = 'fail';
+
+						deferred.resolve();
 
 					});
 
@@ -124,16 +150,22 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 					// 5. After download change the status to 'done'
 					$rootScope.list[idCurrentList]['status'] = 'done';
 
+					deferred.resolve();
+
 				}).catch(function(){
 
 					// 5. After download change the status to 'done'
-					$rootScope.list[id]['status'] = 'fail';
+					$rootScope.list[idCurrentList]['status'] = 'fail';
+
+					deferred.resolve();
 
 				});
 
 			}
 
 		});
+
+		return deferred.promise;
 
 	};
 

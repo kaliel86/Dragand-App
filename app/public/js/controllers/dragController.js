@@ -20,7 +20,9 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 			console.log("------------- IS FILE -------------");
 			item.file(function() {
-				subtitlesV2Service.get(entry.name, entry.path, entry.directory);
+				subtitlesV2Service.get(entry.name, entry.path, entry.directory ).then(function() {
+					$scope.count++;
+				});
 			});
 
 		} else if (item.isDirectory && !firstDirectoryChecked) {
