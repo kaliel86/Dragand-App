@@ -1,6 +1,6 @@
 'use strict';
 
-daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, theSubdbService, openSubtitlesService, yifyService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, theSubdbService, openSubtitlesService, yifyService, theTvDbService) {
 
 	var that = this;
 	var idCurrentList;
@@ -106,8 +106,20 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 		imdbService.get(fileInfos['series']).then(function(imdb) {
 
-			$rootScope.list[idCurrentList]['poster'] = imdb['Poster'];
-			$rootScope.list[idCurrentList]['imdbId'] = imdb['imdbID'];
+			// If Informations on IMDB are empty, we will find it in TheTvDb
+			if(!imdb['Poster']){
+				theTvDbService.getPoster(fileInfos['series']).then(function(result){
+					$rootScope.list[idCurrentList]['poster'] = result;
+
+					theTvDbService.getImdbId(fileInfos['series']).then(function(imdbId){
+						$rootScope.list[idCurrentList]['imdbId'] = imdbId;
+					});
+
+				});
+			} else {
+				$rootScope.list[idCurrentList]['poster'] = imdb['Poster'];
+				$rootScope.list[idCurrentList]['imdbId'] = imdb['imdbID'];
+			}
 
 			if (typeof(imdb['imdbID']) !== 'undefined') {
 
