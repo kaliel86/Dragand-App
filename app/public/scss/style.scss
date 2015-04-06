@@ -550,6 +550,11 @@ body, html {
     border-bottom: 1px solid $lightGrey;
     position : relative;
     z-index : 10000;
+    transition : all 0.3s ease;
+    &:hover {
+        color : white;
+        border-bottom : 1px solid white;
+    }
 }
 #inputTypeFile {
     visibility: hidden;
