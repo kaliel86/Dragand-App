@@ -3,7 +3,6 @@
 daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, theSubdbService, openSubtitlesService, yifyService, theTvDbService) {
 
 	var that = this;
-	var idCurrentList;
 	var languageSubtitles;
 
 	/*
@@ -13,7 +12,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	 * @param string path (Path with fileName)
 	 * @param string directory (Directory where the file is)
 	 */
-	that.get = function(name, path, directory) {
+	that.get = function(name, path, directory, idCurrentList) {
 
 		var deferred = $q.defer();
 
@@ -22,7 +21,6 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 		$rootScope.view = 'list';
 
 		// 0. We display page List
-		idCurrentList 		= $rootScope.list.length;
 		languageSubtitles 	= settingsService.get('language');
 
 		// 1. We add item in SCOPE with status loading
@@ -35,13 +33,13 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 			// 2. Check type and go to the good function
 			if (result['series']) {
-				that.informationSeries(name, path, directory, result).then(function() {
-					that.getSubtitlesSeries(name, path, directory, result, $rootScope.list[idCurrentList]['imdbId']).then(function(){
+				that.informationSeries(name, path, directory, result, idCurrentList).then(function() {
+					that.getSubtitlesSeries(name, path, directory, result, $rootScope.list[idCurrentList]['imdbId'], idCurrentList).then(function(){
 						deferred.resolve();
 					});
 				});
 			} else {
-				that.movies(name, path, directory, result).then(function() {
+				that.movies(name, path, directory, result, idCurrentList).then(function() {
 					deferred.resolve();
 				});
 			}
@@ -52,7 +50,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	};
 
-	that.movies = function(name, path, directory, fileInfos) {
+	that.movies = function(name, path, directory, fileInfos, idCurrentList) {
 
 		var deferred = $q.defer();
 
@@ -94,10 +92,10 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	/*
 	 * Add all Information in $rootScope
 	 */
-	that.informationSeries = function(name, path, directory, fileInfos) {
+	that.informationSeries = function(name, path, directory, fileInfos, idCurrentList) {
 
 		var deferred = $q.defer();
-
+		
 		$rootScope.list[idCurrentList]['type']    = 'series';
 		$rootScope.list[idCurrentList]['name']    = fileInfos['series'];
 		$rootScope.list[idCurrentList]['episode'] = (fileInfos['episodeNumber'] < 10) ? '0' + fileInfos['episodeNumber'] : fileInfos['episodeNumber'];
@@ -110,6 +108,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 				console.log('Movie not found in IMDB');
 
 				theTvDbService.getImdbIdAndPoster(fileInfos['series']).then(function(result){
+
+					console.log("Movie found in TheTvDB");
 
 					$rootScope.list[idCurrentList]['poster'] = (result['Poster']) ? result['Poster'] : null;
 					$rootScope.list[idCurrentList]['imdbId'] = (result['IMDB_ID']) ? result['IMDB_ID'] : null;
@@ -139,7 +139,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	 * Get subtitles
 	 * 1. OpenSubtitles
 	 */
-	that.getSubtitlesSeries = function(name, path, directory, fileInfos, imdbId) {
+	that.getSubtitlesSeries = function(name, path, directory, fileInfos, imdbId, idCurrentList) {
 
 		var deferred = $q.defer();
 
