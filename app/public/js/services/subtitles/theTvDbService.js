@@ -7,46 +7,40 @@ daw.service('theTvDbService', function($q, configService) {
 	var URL = "http://thetvdb.com/banners/_cache/";
 
 	/*
-	 * Return Poster in TheTvDb of the series
-	 */
-	that.getPoster = function(name) {
-
-		var deferred 	= $q.defer();
-
-		tvdb.getSeries(name, function(err, response) {
-
-			tvdb.getBanners(response[0]['id'], function(error, response) {
-
-				for(var i in response){
-					if(response[i]['BannerType'] === 'poster') {
-						deferred.resolve(URL+response[i]['BannerPath']);
-						break;
-					}
-				}
-
-				deferred.resolve();
-
-			});
-
-		});
-
-		return deferred.promise;
-
-	};
-
-	/*
 	 * Return the IMDBID of the series
 	 */
-	that.getImdbId = function(name) {
+	that.getImdbIdAndPoster = function(name) {
 
 		var deferred 	= $q.defer();
 
+		var returnInfo  = {
+			IMDB_ID: null,
+			Poster: null
+		};
+
 		tvdb.getSeries(name, function(err, response) {
+
 			if(response && typeof(response[0]) !== 'undefined'){
-				deferred.resolve(response[0]['IMDB_ID']);
+
+				returnInfo['IMDB_ID'] = response[0]['IMDB_ID'];
+
+				tvdb.getBanners(response[0]['id']).then(function(response) {
+
+					for(var i in response){
+						if(response[i]['BannerType'] === 'poster') {
+							returnInfo['Poster'] = URL+response[i]['BannerPath'];
+							break;
+						}
+					}
+
+					deferred.resolve(returnInfo);
+
+				});
+
 			} else {
-				deferred.resolve();
+				deferred.resolve(returnInfo);
 			}
+
 		});
 
 		return deferred.promise;

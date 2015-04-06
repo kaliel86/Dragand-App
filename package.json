@@ -39,7 +39,7 @@
     "node-webkit-builder": "^1.0.11",
     "node-webkit-updater": "^0.2.4",
     "open": "0.0.5",
-    "popcorn-opensubtitles": "git+https://git.popcorntime.io/popcorntime/opensubtitles.git#a7ad4445a2cc89e3f37d4fe4e6ac06186fd719ea",
+    "popcorn-opensubtitles": "git+https://git.popcorntime.io/popcorntime/opensubtitles.git",
     "subdb": "0.0.2"
   }
 }
