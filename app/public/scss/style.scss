@@ -621,21 +621,27 @@ body, html {
 .dropdown {
     width: 40%;
     position: absolute;
+    border : 1px solid $lightGrey;
+    border-radius : 3px;
     right : 17px;
-    top : 20px;
+    top : 16px;
     vertical-align: middle;
     line-height : normal;
-
+    cursor : pointer;
+    &:hover,&:active,&:focus {
+        border : 1px solid $red;
+    }
+    
     select {
         width: 100%;
-        background-color: $green;
+        background: $darkGrey;
+        
         color: #fff;
         font-size: inherit;
-        padding: .5em;
+        padding: 0.6em 1em;
         padding-right: 2.5em;
         border: 0;
         margin: 0;
-        border-radius: 3px;
         font-size : 0.7em;
         -webkit-appearance: button;
     }
@@ -648,24 +654,17 @@ body, html {
     }
 
     &::after {
-        content: "\25BC";
+        content: "\e61c";
+        font-family: 'icomoon';
         height: 1em;
-        font-size: .65em;
+        font-size: .9em;
         line-height: 1;
         right: 0.5em;
         top: 50%;
         margin-top: -0.5em;
-        color: rgba(0,0,0,0.4);
+        color: white;
     }
 
-    &::before {
-        width: 1.2em;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        border-radius: 0 3px 3px 0;
-        background-color: rgba(0,0,0,0.15);
-    }
 }
 
 

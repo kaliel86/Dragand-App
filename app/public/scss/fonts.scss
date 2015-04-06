@@ -48,6 +48,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-cross3:before {
     content: "\e616";
 }
@@ -78,6 +79,10 @@
 
 .icon-update:before {
     content: "\e605";
+}
+
+.icon-chevron-small-down:before {
+    content: "\e61c";
 }
 
 .icon-controller-play:before {
@@ -115,9 +120,11 @@
 .icon-info-with-circle:before {
     content: "\e602";
 }
+
 .icon-circle:before {
     content: "\e602";
 }
+
 .icon-info:before {
     content: "\e60b";
 }
