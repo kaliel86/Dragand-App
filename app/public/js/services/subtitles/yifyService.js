@@ -35,10 +35,11 @@ daw.service('yifyService', function($q, $http) {
 		var deferred = $q.defer();
 
 		$http.get(URL+imdbId).then(function(result) {
+
 			if(result && typeof(result['data']['subs']) !== 'undefined') {
 
 				var list 			= result['data']['subs'][imdbId];
-				var languageMapped 	= that.getLanguageMapped(list, language);
+				var languageMapped 	= that.getLanguageMapped(language);
 				var subtitles 		= list[languageMapped];
 
 				if(typeof(subtitles) !== 'undefined'){
