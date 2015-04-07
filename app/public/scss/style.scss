@@ -596,8 +596,14 @@ body, html {
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
+<<<<<<< HEAD
     &:checked ~ label:before {
         background-color: $green;
+=======
+    &:checked ~ label:before
+    {
+        background-color: $red;
+>>>>>>> origin/master
     }
 
     &:checked ~ label:after {
@@ -608,7 +614,7 @@ body, html {
 
 /* Custom dropdown */
 .dropdown {
-    width: 40%;
+    width: 36%;
     position: absolute;
     border : 1px solid $lightGrey;
     border-radius : 3px;
@@ -617,6 +623,8 @@ body, html {
     vertical-align: middle;
     line-height : normal;
     cursor : pointer;
+    transition: all 1s ease;
+
     &:hover,&:active,&:focus {
         border : 1px solid $red;
     }
