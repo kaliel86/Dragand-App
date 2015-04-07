@@ -1,6 +1,6 @@
 # Dragand (Dragand.watch)
 
-Everyones favorite super team presented in true blockbuster fashion. Veil. New roster. Meet all of Spideys deadly enemies, from the Green Goblin and Doctor Octopus to Venom and Carnage, plus see Peter Parker fall in love, face tragedy and triumph, and learn that with great power comes great responsibility.
+DragAndWatch is an open source project created by two developers and a designer addicted to series. We wanted a simple and pleasant way to get our subtitles.
 
 #### The Team :
 
