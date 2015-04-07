@@ -95,7 +95,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	that.informationSeries = function(name, path, directory, fileInfos, idCurrentList) {
 
 		var deferred = $q.defer();
-		
+
 		$rootScope.list[idCurrentList]['type']    = 'series';
 		$rootScope.list[idCurrentList]['name']    = fileInfos['series'];
 		$rootScope.list[idCurrentList]['episode'] = (fileInfos['episodeNumber'] < 10) ? '0' + fileInfos['episodeNumber'] : fileInfos['episodeNumber'];

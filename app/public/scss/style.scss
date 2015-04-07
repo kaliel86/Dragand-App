@@ -635,7 +635,6 @@ body, html {
     select {
         width: 100%;
         background: $darkGrey;
-        
         color: #fff;
         font-size: inherit;
         padding: 0.6em 1em;
@@ -644,6 +643,7 @@ body, html {
         margin: 0;
         font-size : 0.7em;
         -webkit-appearance: button;
+        cursor : pointer;
     }
 
     &::before,
