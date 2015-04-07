@@ -1,6 +1,6 @@
 'use strict';
 
-daw.controller('settingsController', function($scope, settingsService, yifyService) {
+daw.controller('settingsController', function($scope, $translate, settingsService, yifyService, configService) {
 
 	/*
 	 * AutoPlay
@@ -9,6 +9,15 @@ daw.controller('settingsController', function($scope, settingsService, yifyServi
 
 	$scope.$watch('autoplay', function(newVal) {
 		settingsService.set('autoplay', newVal);
+	});
+
+	/*
+	 * Notification
+	 */
+	$scope.notification = settingsService.get('notification');
+
+	$scope.$watch('notification', function(newVal) {
+		settingsService.set('notification', newVal);
 	});
 
 	/*
@@ -21,5 +30,17 @@ daw.controller('settingsController', function($scope, settingsService, yifyServi
 	};
 
 	$scope.countryCode = yifyService.languageMapping;
+
+	/*
+	 * App Languages
+	 */
+	$scope.appLanguage = settingsService.get('appLanguage');
+
+	$scope.updateAppLanguage = function() {
+		settingsService.set('appLanguage', $scope.appLanguage);
+		$translate.use($scope.appLanguage);
+	};
+
+	$scope.allAppLanguage = configService.get('languages');
 
 });

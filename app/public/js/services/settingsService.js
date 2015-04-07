@@ -9,7 +9,7 @@
  * Service for manage information in localStorage (Use for user's settings)
  *
  */
-daw.service('settingsService', function(){
+daw.service('settingsService', function(configService){
 
 	var that = this;
 
@@ -23,10 +23,12 @@ daw.service('settingsService', function(){
 	 */
 	that.init = function() {
 
-		if(!localStorage['autoplay'] && !localStorage['player'] && !localStorage['language']) {
+		if(!localStorage['autoplay'] && !localStorage['player'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage']) {
 			that.set('autoplay', false);
 			that.set('player', 'vlc');
-			that.set('language', 'fr');
+			that.set('language', 'en');
+			that.set('appLanguage', configService.get('defaultLanguage'));
+			that.set('notifiction', true);
 		}
 
 	};
@@ -50,8 +52,8 @@ daw.service('settingsService', function(){
 	 * @description
 	 * Set Value in Database
 	 *
-	 * @param {string} key 		- Key
-	 * @param {string} value 	- Value
+	 * @param {string} key 	 - Key
+	 * @param {string} value - Value
 	 *
 	 */
 	that.set = function(key, value) {

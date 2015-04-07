@@ -9,7 +9,7 @@
  * Service use for notification
  *
  */
-daw.service('notificationService', function() {
+daw.service('notificationService', function(settingsService) {
 
 	var that = this;
 
@@ -26,12 +26,14 @@ daw.service('notificationService', function() {
 	 */
 	that.create = function(title, message) {
 
-		// TODO Add 'icon'
-		notifier.notify({
-			'title'	 : title,
-			'message': message,
-			'wait'   : false
-		});
+		if(settingsService.get('notification')) {
+			// TODO Add 'icon'
+			notifier.notify({
+				'title'	 : title,
+				'message': message,
+				'wait'   : false
+			});
+		}
 
 	};
 

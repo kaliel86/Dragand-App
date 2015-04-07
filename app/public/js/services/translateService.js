@@ -10,10 +10,9 @@
  * Service use for the translation of the app
  *
  */
-daw.service('translateService', function($translate, configService) {
+daw.service('translateService', function($translate, settingsService) {
 
 	var that 		= this;
-	var languages 	= configService.get('languages');
 
 	/**
 	 * @ngdoc method
@@ -24,15 +23,7 @@ daw.service('translateService', function($translate, configService) {
 	 *
 	 */
 	that.init = function() {
-
-		for(var i in languages) {
-			if(languages[i] == navigator.language){
-				$translate.use(languages[i]);
-			}
-		}
-
-		return false;
-
+		$translate.use(settingsService.get('appLanguage'));
 	};
 
 });

@@ -59,8 +59,8 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 })
 
 .run(function(settingsService, checkUpdateService, translateService, guiService) {
-	translateService.init();
 	settingsService.init();
+	translateService.init();
 	guiService.init();
 	checkUpdateService.launch();
 });

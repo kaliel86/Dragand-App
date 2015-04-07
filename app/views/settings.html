@@ -8,6 +8,21 @@
 			</div>
 		</li>
 		<li class="settings-el item-stag-anim">
+			<p title="Play video when sub is founded">{{ "SETTINGS.NOTIFICATION" | translate }}</p>
+			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
+				<input ng-checked="notification == 'true'" type="checkbox" id="notificationSwitch" name="notificationSwitch" class="switch" ng-model="notification"/>
+				<label for="notificationSwitch">&nbsp;</label>
+			</div>
+		</li>
+		<li class="settings-el item-stag-anim">
+			<p title="Your favorite subtitle language">{{ "SETTINGS.LANGUAGES_APP" | translate }}</p>
+			<div class="dropdown">
+				<select name="subLanguage" id="appLanguage" ng-model="appLanguage" ng-change="updateAppLanguage()">
+					<option ng-repeat="(key, value) in allAppLanguage" value="{{key}}" ng-selected="appLanguage == key">{{value | capitalize}}</option>
+				</select>
+			</div>
+		</li>
+		<li class="settings-el item-stag-anim">
 			<p title="Your favorite subtitle language">{{ "SETTINGS.LANGUAGES" | translate }}</p>
 			<div class="dropdown">
 				<select name="subLanguage" id="subLanguage" ng-model="language" ng-change="updateLanguage()">
