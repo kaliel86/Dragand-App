@@ -24,13 +24,14 @@ daw.directive('file', function(subtitlesV2Service, $rootScope) {
 
 			var textTypeFile  = document.querySelector('#textTypeFile');
 			var inputTypeFile = document.querySelector('#inputTypeFile');
-			var evObj 		  = document.createEvent('MouseEvents');
+			
 			
 
 			/*
 			 * Trigger click on input type File
 			 */
 			textTypeFile.addEventListener("click", function() {
+				var evObj = document.createEvent('MouseEvents');
 				evObj.initEvent('click', true, false);
 				inputTypeFile.dispatchEvent(evObj);
 			});

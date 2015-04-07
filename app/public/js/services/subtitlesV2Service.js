@@ -49,7 +49,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 		fileInfosService.parse(name).then(function(result) {
 
 			// 2. Check type and go to the good function
-			if (result['series']) {
+			if(result['series']) {
 				that.informationSeries(name, path, directory, result, idCurrentList).then(function() {
 					that.getSubtitlesSeries(name, path, directory, result, $rootScope.list[idCurrentList]['imdbId'], idCurrentList).then(function(){
 						deferred.resolve();
