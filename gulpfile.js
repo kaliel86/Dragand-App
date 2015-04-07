@@ -2,6 +2,8 @@ var gulp 				= require('gulp');
 	scss 				= require('gulp-sass'),
 	autoprefixer 		= require('gulp-autoprefixer'),
 	gulpDocs			= require('gulp-ngdocs'),
+	minifyCSS 			= require('gulp-minify-css'),
+	rename				= require('gulp-rename'),
 	path				= {
 		'public': 'app/public'
 	},
@@ -24,6 +26,9 @@ gulp.task('style', function() {
 	gulp.src(path.public+'/scss/style.scss')
 		.pipe(scss())
 		.pipe(autoprefixer(autoPrefixerBrowers))
+		.pipe(gulp.dest(path.public+'/css'))
+		.pipe(minifyCSS())
+		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.public+'/css'));
 });
 
