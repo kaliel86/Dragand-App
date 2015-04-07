@@ -1,9 +1,20 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @name settingsController
+ * @requires $scope, $translate, settingsService, yifyService, configService
+ * @module daw
+ *
+ * @description
+ * Controller use for the view settings
+ *
+ */
 daw.controller('settingsController', function($scope, $translate, settingsService, yifyService, configService) {
 
-	/*
-	 * AutoPlay
+	/**
+	 * @ngdoc property
+	 * @name autoplay
 	 */
 	$scope.autoplay = settingsService.get('autoplay');
 
@@ -11,8 +22,9 @@ daw.controller('settingsController', function($scope, $translate, settingsServic
 		settingsService.set('autoplay', newVal);
 	});
 
-	/*
-	 * Notification
+	/**
+	 * @ngdoc property
+	 * @name notification
 	 */
 	$scope.notification = settingsService.get('notification');
 
@@ -20,8 +32,9 @@ daw.controller('settingsController', function($scope, $translate, settingsServic
 		settingsService.set('notification', newVal);
 	});
 
-	/*
-	 * Languages
+	/**
+	 * @ngdoc property
+	 * @name language
 	 */
 	$scope.language = settingsService.get('language');
 
@@ -29,10 +42,15 @@ daw.controller('settingsController', function($scope, $translate, settingsServic
 		settingsService.set('language', $scope.language);
 	};
 
+	/**
+	 * @ngdoc property
+	 * @name countryCode
+	 */
 	$scope.countryCode = yifyService.languageMapping;
 
-	/*
-	 * App Languages
+	/**
+	 * @ngdoc property
+	 * @name appLanguage
 	 */
 	$scope.appLanguage = settingsService.get('appLanguage');
 
@@ -41,6 +59,10 @@ daw.controller('settingsController', function($scope, $translate, settingsServic
 		$translate.use($scope.appLanguage);
 	};
 
+	/**
+	 * @ngdoc property
+	 * @name allAppLanguage
+	 */
 	$scope.allAppLanguage = configService.get('languages');
 
 });

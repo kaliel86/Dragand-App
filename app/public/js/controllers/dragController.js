@@ -1,14 +1,32 @@
 'use strict';
 
+/**
+ * @ngdoc controller
+ * @name DragController
+ * @requires $document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service
+ * @module daw
+ *
+ * @description
+ * Controller use for the view home
+ *
+ */
 daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
+	$scope.count 	= 0;
 
-	$scope.count = 0;
-
-	/*
+	/**
+	 * @ngdoc method
+	 * @name getFilesPath
+	 *
+	 * @description
 	 * Return path of file or files in the first folder
+	 *
+	 * @param {string} entry
+	 * @param {string} elPath
+	 * @param {int} firstDirectoryChecked
+	 *
 	 */
 	$scope.getFilesPath = function(entry, elPath, firstDirectoryChecked) {
 
@@ -48,9 +66,16 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 		}
 
 	};
-	
-	/*
+
+	/**
+	 * @ngdoc method
+	 * @name checkExtension
+	 *
+	 * @description
 	 * Check Extension file from config
+	 *
+	 * @param {bool} true | false
+	 *
 	 */
 	$scope.checkExtension = function(filename){
 
@@ -59,14 +84,22 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 		// Check if ext is in the const array of the ext list
 		if(config.acceptedFile.indexOf(ext) > -1) {
 			return true;
-		} else {
-			return false;
 		}
+
+		return false;
 
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name removeItem
+	 *
+	 * @description
 	 * Remove item in list
+	 *
+	 * @param {array} array
+	 * @param {int} index
+	 *
 	 */
 	$scope.removeItem = function(array, index) {
 		array.splice(index, 1);
@@ -75,8 +108,15 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 		}
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name goToImdb
+	 *
+	 * @description
 	 * Show item to imdb
+	 *
+	 * @param {int} imdbId
+	 *
 	 */
 	$scope.goToImdb = function(imdbId) {
 		if(imdbId){
@@ -84,15 +124,26 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 		}
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name play
+	 *
+	 * @description
 	 * Play movie/series with player in preferences
+	 *
+	 * @param {string} path
+	 *
 	 */
 	$scope.play = function(path) {
 		playerService.play(path);
 	};
 
-	/*
-	 * Seed notification when all movies/series are done
+	/**
+	 * @ngdoc method
+	 *
+	 * @description
+	 * Seed notification when all movies/series drop are done
+	 *
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {

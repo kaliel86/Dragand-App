@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Drag your movie, and automatic download subtitles.",
   "main": "app/index.html",
-  "manifestUrl": "https://raw.githubusercontent.com/Mathew78540/subtitles/master/package.json",
+  "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mathew78540/subtitles.git"
+    "url": "https://github.com/DragAndWatch/application.git"
   },
   "license": "GNU GPL",
   "window": {
