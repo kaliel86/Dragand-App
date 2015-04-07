@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * @ngdoc directive
+ * @name open
+ * @module daw
+ *
+ * @description
+ * Directive for open like to the default browser
+ *
+ */
 daw.directive('open', function() {
 
 	return {

@@ -1,5 +1,15 @@
 'use strict';
-var pathNode = require('path');
+
+/**
+ * @ngdoc directive
+ * @name file
+ * @requires $rootScope, subtitlesV2Service
+ * @module daw
+ *
+ * @description
+ * Input type file
+ *
+ */
 daw.directive('file', function(subtitlesV2Service, $rootScope) {
 	return {
 		restrict: 'E',

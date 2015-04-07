@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * @ngdoc directive
+ * @name topWindow
+ * @module daw
+ *
+ * @description
+ * Directive manage top of the application
+ *
+ */
 daw.directive('topWindow', function($timeout) {
 	return {
 		restrict: 'E',

@@ -67,7 +67,7 @@ daw.service('checkUpdateService', function($rootScope, $filter, notificationServ
 			}
 		});
 	};
-	
+
 	/**
 	 * @ngdoc method
 	 * @name download

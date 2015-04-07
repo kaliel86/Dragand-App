@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ * @ngdoc directive
+ * @name bottomWindow
+ * @requires $window, $rootScope, $state, $timeout
+ * @module daw
+ *
+ * @description
+ * Directive manage menu of the application
+ *
+ */
 daw.directive('bottomWindow', function($window, $rootScope, $state, $timeout) {
 	return {
 		restrict: 'E',

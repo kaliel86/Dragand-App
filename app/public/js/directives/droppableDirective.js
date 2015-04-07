@@ -1,5 +1,15 @@
 "use strict";
 
+/**
+ * @ngdoc directive
+ * @name droppable
+ * @requires $rootScope
+ * @module daw
+ *
+ * @description
+ * Directive manage drag zone
+ *
+ */
 daw.directive('droppable', function($rootScope) {
 	return {
 		restrict: 'A',

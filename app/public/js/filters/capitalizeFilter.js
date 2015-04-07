@@ -1,5 +1,14 @@
 'use strict';
 
+/**
+ * @ngdoc filter
+ * @name capitalize
+ * @module daw
+ *
+ * @description
+ * Capitalize a text
+ *
+ */
 daw.filter('capitalize', function() {
 
 	return function (string){
