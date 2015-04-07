@@ -25,8 +25,6 @@ daw.directive('file', function(subtitlesV2Service, $rootScope) {
 			var textTypeFile  = document.querySelector('#textTypeFile');
 			var inputTypeFile = document.querySelector('#inputTypeFile');
 			
-			
-
 			/*
 			 * Trigger click on input type File
 			 */
@@ -43,10 +41,10 @@ daw.directive('file', function(subtitlesV2Service, $rootScope) {
 				// Check if the format of the file is good
 				if($scope.$parent.checkExtension(this.value)) {
 					var path, name, dir = '';
-					path = this.value;
-
-					dir = this.value.split(pathNode.sep);
-					name = dir[dir.length-1];
+					path 	= this.value;
+					dir 	= this.value.split(pathNode.sep);
+					name 	= dir[dir.length-1];
+					
 					dir.pop();
 					dir = dir.join(pathNode.sep);
 
