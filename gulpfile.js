@@ -1,7 +1,6 @@
 var gulp 				= require('gulp');
 	scss 				= require('gulp-sass'),
 	autoprefixer 		= require('gulp-autoprefixer'),
-	gulpDocs			= require('gulp-ngdocs'),
 	minifyCSS 			= require('gulp-minify-css'),
 	rename				= require('gulp-rename'),
 	path				= {
