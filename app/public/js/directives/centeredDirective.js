@@ -10,7 +10,6 @@
  *
  */
 daw.directive("centered", function(){
-
 	return {
 		restrict	: "ECA",
 		replace 	: true,
@@ -20,5 +19,4 @@ daw.directive("centered", function(){
                         </div>\
                     </div>"
 	};
-
 });

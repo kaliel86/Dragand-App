@@ -38,4 +38,3 @@ daw.service('notificationService', function(settingsService) {
 	};
 
 });
-

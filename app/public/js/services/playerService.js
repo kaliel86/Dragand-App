@@ -14,13 +14,13 @@ daw.service('playerService', function(settingsService) {
 
 	var that = this;
 
-
 	/**
 	 * @ngdoc method
 	 * @name play
 	 *
 	 * @description
 	 * Open the movie with a player (VLC)
+	 * TODO Fix thix, don't work, why ?
 	 *
 	 * @param {string} path - Path of the file
 	 *

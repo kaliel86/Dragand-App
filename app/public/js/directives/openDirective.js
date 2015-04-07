@@ -10,7 +10,6 @@
  *
  */
 daw.directive('open', function() {
-
 	return {
 		restrict: 'A',
 		link: function($scope, element, attr) {
@@ -36,5 +35,4 @@ daw.directive('open', function() {
 			});
 		}
 	}
-
 });

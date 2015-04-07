@@ -11,7 +11,6 @@
  *
  */
 daw.filter('cut', function($filter) {
-
 	return function(input, limit) {
 		if (! input) return;
 		if (input.length <= limit) {
@@ -20,5 +19,4 @@ daw.filter('cut', function($filter) {
 
 		return $filter('limitTo')(input, limit) + '...';
 	};
-
 });

@@ -3,20 +3,20 @@
 /*
  * NPM Required
  */
-var path 			= require('path');
-var gui  			= require('nw.gui');
-var pkg 			= require('../package.json');
-var updater 		= require('node-webkit-updater');
+var path 			= require("path");
+var gui  			= require("nw.gui");
+var pkg 			= require("../package.json");
+var updater 		= require("node-webkit-updater");
 var opensubtitles 	= require("popcorn-opensubtitles");
-var guessit 		= require('guessit-wrapper');
-var imdb 			= require('node-movie');
-var notifier 		= require('node-notifier');
+var guessit 		= require("guessit-wrapper");
+var imdb 			= require("node-movie");
+var notifier 		= require("node-notifier");
 var open 			= require("open");
-var http 		  	= require('http');
-var fs 		  	  	= require('fs');
-var url 		  	= require('url');
-var pathNode	  	= require('path');
-var download 		= require('download');
+var http 		  	= require("http");
+var fs 		  	  	= require("fs");
+var url 		  	= require("url");
+var pathNode	  	= require("path");
+var download 		= require("download");
 var SubDb 			= require("subdb");
 var upd 			= new updater(pkg);
 var TVDBClient 		= require("node-tvdb");

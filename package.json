@@ -11,15 +11,15 @@
   "license": "GNU GPL",
   "window": {
     "title": "DragandWatch",
-    "toolbar": false,
-    "frame": false,
+    "toolbar": true,
+    "frame": true,
     "min_width": 320,
     "min_height": 370,
     "width": 320,
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": true
+    "transparent": false
   },
   "webkit": {
     "page-cache": true
