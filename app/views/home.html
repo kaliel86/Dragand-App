@@ -1,4 +1,6 @@
 <div id="middle-container" ng-controller="DragController">
+
+	<!-- DROP ZONE -->
 	<div id="drop" class="fadeIn" ng-show="view === 'drop'" droppable>
 		<centered>
 			<div class="dropZone"></div>
@@ -20,7 +22,8 @@
 			</div>
 		</centered>
 	</div>
-
+	
+	<!-- LIST MOVIES/SERIES -->
 	<ul id="list" class="fadeIn" droppable ng-show="view === 'list'">
 		<div class="dropZone"></div>
 		<li class="item item-stag-anim" ng-repeat="item in list">

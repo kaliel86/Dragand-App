@@ -1,5 +1,6 @@
 <div id="middle-container" ng-controller="settingsController">
 	<ul id="list" class="fadeInUp">
+		<!-- AUTOPLAY -->
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">{{ "SETTINGS.AUTOPLAY" | translate }}</p>
 			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
@@ -7,6 +8,7 @@
 				<label for="playSwitch">&nbsp;</label>
 			</div>
 		</li>
+		<!-- NOTIFICATION -->
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">{{ "SETTINGS.NOTIFICATION" | translate }}</p>
 			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
@@ -14,6 +16,7 @@
 				<label for="notificationSwitch">&nbsp;</label>
 			</div>
 		</li>
+		<!-- APP LANGUAGES -->
 		<li class="settings-el item-stag-anim">
 			<p title="Your favorite subtitle language">{{ "SETTINGS.LANGUAGES_APP" | translate }}</p>
 			<div class="dropdown">
@@ -22,6 +25,7 @@
 				</select>
 			</div>
 		</li>
+		<!-- SUB LANGUAGES -->
 		<li class="settings-el item-stag-anim">
 			<p title="Your favorite subtitle language">{{ "SETTINGS.LANGUAGES" | translate }}</p>
 			<div class="dropdown">

@@ -152,6 +152,7 @@
         transform: none;
     }
 }
+
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -192,6 +193,7 @@
 .fadeIn {
     animation : fadeIn 1s ease;
 }
+
 .fadeInUp {
     animation : fadeInUp 1s ease;
 }
