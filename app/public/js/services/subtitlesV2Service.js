@@ -1,6 +1,6 @@
 'use strict';
 
-daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, theSubdbService, openSubtitlesService, yifyService, theTvDbService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService) {
 
 	var that = this;
 	var languageSubtitles;
@@ -21,12 +21,12 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 		$rootScope.view = 'list';
 
 		// 0. We display page List
-		languageSubtitles 	= settingsService.get('language');
+		languageSubtitles = settingsService.get('language');
 
 		// 1. We add item in SCOPE with status loading
 		$rootScope.list[idCurrentList] = {
-			'status': 'loading',
-			'filename': name
+			'status'	: 'loading',
+			'filename'	: name
 		};
 
 		fileInfosService.parse(name).then(function(result) {
@@ -50,6 +50,15 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	};
 
+	/*
+	 * Get the subtitles for a movie in Yify
+	 *
+	 * @param string name (FileName)
+	 * @param string path (Path with fileName)
+	 * @param string directory (Directory where the file is)
+	 * @param object fileInfos (Information extract on guessit)
+	 * @param int idCurrentList (Current ID in the $rootScope.list)
+	 */
 	that.movies = function(name, path, directory, fileInfos, idCurrentList) {
 
 		var deferred = $q.defer();
@@ -90,7 +99,13 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	};
 
 	/*
-	 * Add all Information in $rootScope
+	 * Add in the RootScope.list information of the episode
+	 *
+	 * @param string name (FileName)
+	 * @param string path (Path with fileName)
+	 * @param string directory (Directory where the file is)
+	 * @param object fileInfos (Information extract on guessit)
+	 * @param int idCurrentList (Current ID in the $rootScope.list)
 	 */
 	that.informationSeries = function(name, path, directory, fileInfos, idCurrentList) {
 
@@ -136,8 +151,14 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	};
 
 	/*
-	 * Get subtitles
-	 * 1. OpenSubtitles
+	 * Get on OpenSubtitles and download the subtitle
+	 *
+	 * @param string name (FileName)
+	 * @param string path (Path with fileName)
+	 * @param string directory (Directory where the file is)
+	 * @param object fileInfos (Information extract on guessit)
+	 * @param int imdbID (IMDBID, if not opensubtitles will use a hash of the name)
+	 * @param int idCurrentList (Current ID in the $rootScope.list)
 	 */
 	that.getSubtitlesSeries = function(name, path, directory, fileInfos, imdbId, idCurrentList) {
 
@@ -167,6 +188,10 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	/*
 	 * Console Entry parameters
+	 *
+	 * @param string name (FileName)
+	 * @param string path (Path with fileName)
+	 * @param string directory (Directory where the file is)
 	 */
 	that.consoleEntry = function(name, path, directory) {
 
