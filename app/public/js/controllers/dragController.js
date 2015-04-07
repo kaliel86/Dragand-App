@@ -23,9 +23,9 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 * @description
 	 * Return path of file or files in the first folder
 	 *
-	 * @param {string} entry
-	 * @param {string} elPath
-	 * @param {int} firstDirectoryChecked
+	 * @param {string} entry - EntryPath
+	 * @param {string} elPath - Elpath
+	 * @param {int} firstDirectoryChecked -- Directory
 	 *
 	 */
 	$scope.getFilesPath = function(entry, elPath, firstDirectoryChecked) {
@@ -97,8 +97,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 * @description
 	 * Remove item in list
 	 *
-	 * @param {array} array
-	 * @param {int} index
+	 * @param {array} array - List $rootScope.list
+	 * @param {int} index - Id of the index to delete
 	 *
 	 */
 	$scope.removeItem = function(array, index) {
@@ -115,7 +115,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 * @description
 	 * Show item to imdb
 	 *
-	 * @param {int} imdbId
+	 * @param {int} imdbId - ID from imdbID (Example : tt453233)
 	 *
 	 */
 	$scope.goToImdb = function(imdbId) {
@@ -131,7 +131,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 * @description
 	 * Play movie/series with player in preferences
 	 *
-	 * @param {string} path
+	 * @param {string} path - Path of the file drag
 	 *
 	 */
 	$scope.play = function(path) {

@@ -23,18 +23,18 @@ daw.service('fileInfosService', function($q) {
 	 *
 	 * SERIE :
 	 *
-	 * @return string 	type (episode)
-	 * @return string 	series (The originals)
-	 * @return int 		episodeNumber (15)
-	 * @return int 		season (2)
-	 * @return string 	format (HTDV)
-	 * @return string 	releaseGroup (LOL)
+	 * string 	type (episode)
+	 * string 	series (The originals)
+	 * int 		episodeNumber (15)
+	 * int 		season (2)
+	 * string 	format (HTDV)
+	 * string 	releaseGroup (LOL)
 	 *
 	 * MOVIE :
 	 *
-	 * @return string	type (movie)
-	 * @return string	title (The Equalizer)
-	 * @return int		years (2014)
+	 * string	type (movie)
+	 * string	title (The Equalizer)
+	 * int		years (2014)
 	 *
 	 */
 	that.parse = function(path) {

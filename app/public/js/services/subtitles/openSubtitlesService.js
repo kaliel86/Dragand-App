@@ -62,8 +62,6 @@ daw.service('openSubtitlesService', function($q) {
 	 * @param {string} url 		 - URL of the subtitle (Exemple : http://google.com/flash.srt)
 	 * @param {string} directory - Path to the directory where the file drag is
 	 *
-	 * @returns {Promise}
-	 *
 	 */
 	that.download = function (filename, url, directory) {
 

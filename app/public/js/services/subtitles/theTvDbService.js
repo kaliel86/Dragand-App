@@ -26,8 +26,6 @@ daw.service('theTvDbService', function($q, configService) {
 	 *
 	 * @param {string} name - Name of the file (Exemple : The Flash)
 	 *
-	 * @returns {Promise} with IMDB_ID and Poster URL
-	 *
 	 */
 	that.getImdbIdAndPoster = function(name) {
 

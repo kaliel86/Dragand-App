@@ -29,8 +29,6 @@ daw.service('theSubdbService', function($q) {
 	 * @param {string} directory - Path to the directory where the file drag is
 	 * @param {string} language  - Wanted language
 	 *
-	 * @returns {Promise}
-	 *
 	 */
 	that.get = function(path, directory, filename, language) {
 

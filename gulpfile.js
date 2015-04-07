@@ -1,6 +1,7 @@
 var gulp 				= require('gulp');
 	scss 				= require('gulp-sass'),
 	autoprefixer 		= require('gulp-autoprefixer'),
+	gulpDocs			= require('gulp-ngdocs'),
 	path				= {
 		'public': 'app/public'
 	},
@@ -16,7 +17,7 @@ var gulp 				= require('gulp');
 		'ff >= 30'
 	];
 
-/*
+/**
  * Compile SCSS
  */
 gulp.task('style', function() {
@@ -26,14 +27,14 @@ gulp.task('style', function() {
 		.pipe(gulp.dest(path.public+'/css'));
 });
 
-/*
+/**
  * Watch Files
  */
 gulp.task('watch', ['style'], function() {
 	gulp.watch(path.public+'/scss/**/*.scss', ['style']);
 });
 
-/*
+/**
  * Default Task
  */
 gulp.task('default', ['style', 'watch']);

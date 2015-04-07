@@ -29,8 +29,6 @@ daw.service('yifyService', function($q, $http) {
 	 * @param {string} filename - File name (Exemple : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
 	 * @param {string} path 	- Path to the directory where the file drag is
 	 *
-	 * @returns {Promise}
-	 *
 	 */
 	that.get = function (imdbId, language, filename, path) {
 
@@ -76,8 +74,6 @@ daw.service('yifyService', function($q, $http) {
 	 *
 	 * @param {string} language - Wanted language
 	 *
-	 * @returns {string}
-	 *
 	 */
 	that.getLanguageMapped = function (language) {
 
@@ -101,8 +97,6 @@ daw.service('yifyService', function($q, $http) {
 	 * Get best subtitles, base on rating
 	 *
 	 * @param {string} list - list of subtitles from Tify
-	 *
-	 * @returns {string} The best URL
 	 *
 	 */
 	that.getLink = function (list) {
@@ -130,8 +124,6 @@ daw.service('yifyService', function($q, $http) {
 	 * @param {string} filename  - File name (Exemple : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
 	 * @param {string} url 		 - URL of the subtitle (Exemple : http://google.com/flash.srt)
 	 * @param {string} directory - Path to the directory where the file drag is
-	 *
-	 * @returns {Promise}
 	 *
 	 */
 	that.download = function (url, directory, filename) {
