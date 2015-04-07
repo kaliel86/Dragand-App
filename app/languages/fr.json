@@ -39,8 +39,8 @@
   },
   "SETTINGS": {
     "AUTOPLAY": "Lancer VLC au drop",
-    "LANGUAGES": "Langue des sous-titres",
+    "LANGUAGES": "Sous-titres par défaut",
     "NOTIFICATION": "Notifications",
-    "LANGUAGES_APP": "Langue de l'application"
+    "LANGUAGES_APP": "Langue par défaut"
   }
 }

@@ -39,8 +39,8 @@
   },
   "SETTINGS": {
     "AUTOPLAY": "Auto-play at drop",
-    "LANGUAGES": "Subtitle language",
+    "LANGUAGES": "Default subtitle",
     "NOTIFICATION": "Notifications",
-    "LANGUAGES_APP": "Langue of the app"
+    "LANGUAGES_APP": "Default language"
   }
 }
