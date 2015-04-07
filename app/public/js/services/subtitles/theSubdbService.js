@@ -1,13 +1,36 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name theSubdbService
+ * @requires $q
+ * @module daw
+ *
+ * @description
+ * Service use for manipulate TheSubDB API
+ *
+ */
 daw.service('theSubdbService', function($q) {
 
 	var that = this;
 
 	var subdb = new SubDb();
 
-	/*
-	 * Get Subtitles from TheSubdb, download it and rename it
+	/**
+	 * @ngdoc method
+	 * @name get
+	 *
+	 * @description
+	 * Get subtitles from opensubtitles.org
+	 * Download a subtitle, if the file is a zip we unzip it and rename the file for VLC
+	 *
+	 * @param {string} path  	 - Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} filename  - Path of the subtitle (Exemple : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory - Path to the directory where the file drag is
+	 * @param {string} language  - Wanted language
+	 *
+	 * @returns {Promise}
+	 *
 	 */
 	that.get = function(path, directory, filename, language) {
 

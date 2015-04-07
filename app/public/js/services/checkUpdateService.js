@@ -1,13 +1,28 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name checkUpdateService
+ * @requires $rootScope, $filter, notificationService
+ * @module daw
+ *
+ * @description
+ * Service for manage update app
+ *
+ */
 daw.service('checkUpdateService', function($rootScope, $filter, notificationService) {
 
 	var that = this;
 
 	$rootScope.newVersionAvailable = false;
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name launch
+	 *
+	 * @description
 	 * Check if new Version
+	 *
 	 */
 	that.launch = function() {
 
@@ -35,8 +50,13 @@ daw.service('checkUpdateService', function($rootScope, $filter, notificationServ
 		}
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name update
+	 *
+	 * @description
 	 * Update the app
+	 *
 	 */
 	that.update = function() {
 		upd.checkNewVersion(function(error, newVersionExists, manifest) {
@@ -47,9 +67,14 @@ daw.service('checkUpdateService', function($rootScope, $filter, notificationServ
 			}
 		});
 	};
-
-	/*
+	
+	/**
+	 * @ngdoc method
+	 * @name download
+	 *
+	 * @description
 	 * Download new app
+	 *
 	 */
 	var download = function(manifest) {
 		upd.download(function(error, filename) {

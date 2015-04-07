@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name yifyService
+ * @requires $q, $http
+ * @module daw
+ *
+ * @description
+ * Service use for manipulate Yify API
+ *
+ */
 daw.service('yifyService', function($q, $http) {
 
 	var that = this;
@@ -7,8 +17,20 @@ daw.service('yifyService', function($q, $http) {
 	var URL 		= "http://api.yifysubtitles.com/subs/";
 	var DOWNLOAD 	= "http://yifysubtitles.com";
 
-	/*
-	 * Get Subtitles link from Yify
+	/**
+	 * @ngdoc method
+	 * @name get
+	 *
+	 * @description
+	 * Get subtitles from Yify.com and launch download method
+	 *
+	 * @param {int} imdbId 		- ID IMDB of the movie
+	 * @param {string} language - Wanted language
+	 * @param {string} filename - File name (Exemple : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 	- Path to the directory where the file drag is
+	 *
+	 * @returns {Promise}
+	 *
 	 */
 	that.get = function (imdbId, language, filename, path) {
 
@@ -45,10 +67,19 @@ daw.service('yifyService', function($q, $http) {
 
 	};
 
-	/*
-	 * Get object with languages
+	/**
+	 * @ngdoc method
+	 * @name getLanguageMapped
+	 *
+	 * @description
+	 * Return the language mapped for Yify
+	 *
+	 * @param {string} language - Wanted language
+	 *
+	 * @returns {string}
+	 *
 	 */
-	that.getLanguageMapped = function (list, language) {
+	that.getLanguageMapped = function (language) {
 
 		for(var key in that.languageMapping) {
 
@@ -62,8 +93,17 @@ daw.service('yifyService', function($q, $http) {
 
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name getLink
+	 *
+	 * @description
 	 * Get best subtitles, base on rating
+	 *
+	 * @param {string} list - list of subtitles from Tify
+	 *
+	 * @returns {string} The best URL
+	 *
 	 */
 	that.getLink = function (list) {
 
@@ -80,17 +120,28 @@ daw.service('yifyService', function($q, $http) {
 
 	};
 
-	/*
-	 * Download a ZIP, unzip, rename file !
+	/**
+	 * @ngdoc method
+	 * @name download
+	 *
+	 * @description
+	 * Download a subtitle, if the file is a zip we unzip it and rename the file for VLC
+	 *
+	 * @param {string} filename  - File name (Exemple : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} url 		 - URL of the subtitle (Exemple : http://google.com/flash.srt)
+	 * @param {string} directory - Path to the directory where the file drag is
+	 *
+	 * @returns {Promise}
+	 *
 	 */
-	that.download = function (url, path, filename) {
+	that.download = function (url, directory, filename) {
 
 		var deferred 	= $q.defer();
 		var regex 		= /(.*)\.[^.]+$/;
 
 		new download({mode: '755', extract: true})
 			.get(url)
-			.dest(path)
+			.dest(directory)
 			.rename(regex.exec(filename)[1] + '.srt')
 			.run(function (err, files) {
 				if(err !== 'null') {
@@ -103,8 +154,13 @@ daw.service('yifyService', function($q, $http) {
 		return deferred.promise;
 	};
 
-	/*
-	 * Mapping use by Yify
+	/**
+	 * @ngdoc properties
+	 * @name languageMapping
+	 *
+	 * @description
+	 * Little mapping use by Yify,
+	 *
 	 */
 	that.languageMapping = {
 		'albanian': 'sq',

@@ -1,16 +1,32 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name subtitlesV2Service
+ * @requires $rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService
+ * @module daw
+ *
+ * @description
+ * Service manage subtitles download
+ *
+ */
 daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService) {
 
 	var that = this;
 	var languageSubtitles;
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name get
+	 *
+	 * @description
 	 * Get information and go works
 	 *
-	 * @param string name (FileName)
-	 * @param string path (Path with fileName)
-	 * @param string directory (Directory where the file is)
+	 * @param {string} name 			- File name (Example : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 			- Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory 		- Directory where the file drag is
+	 * @param {string} idCurrentList 	- Id of the current ID in the list ($rootScope.list)
+	 *
 	 */
 	that.get = function(name, path, directory, idCurrentList) {
 
@@ -50,14 +66,19 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name movies
+	 *
+	 * @description
 	 * Get the subtitles for a movie in Yify
 	 *
-	 * @param string name (FileName)
-	 * @param string path (Path with fileName)
-	 * @param string directory (Directory where the file is)
-	 * @param object fileInfos (Information extract on guessit)
-	 * @param int idCurrentList (Current ID in the $rootScope.list)
+	 * @param {string} name 			- File name (Example : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 			- Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory 		- Directory where the file drag is
+	 * @param {string} fileInfos 		- All infos of the file parse with guessit
+	 * @param {int} idCurrentList 		- Id of the current ID in the list ($rootScope.list)
+	 *
 	 */
 	that.movies = function(name, path, directory, fileInfos, idCurrentList) {
 
@@ -98,14 +119,19 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 		return deferred.promise;
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name informationSeries
+	 *
+	 * @description
 	 * Add in the RootScope.list information of the episode
 	 *
-	 * @param string name (FileName)
-	 * @param string path (Path with fileName)
-	 * @param string directory (Directory where the file is)
-	 * @param object fileInfos (Information extract on guessit)
-	 * @param int idCurrentList (Current ID in the $rootScope.list)
+	 * @param {string} name 			- File name (Example : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 			- Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory 		- Directory where the file drag is
+	 * @param {string} fileInfos 		- All infos of the file parse with guessit
+	 * @param {int} idCurrentList 		- Id of the current ID in the list ($rootScope.list)
+	 *
 	 */
 	that.informationSeries = function(name, path, directory, fileInfos, idCurrentList) {
 
@@ -150,15 +176,20 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name getSubtitlesSeries
+	 *
+	 * @description
 	 * Get on OpenSubtitles and download the subtitle
 	 *
-	 * @param string name (FileName)
-	 * @param string path (Path with fileName)
-	 * @param string directory (Directory where the file is)
-	 * @param object fileInfos (Information extract on guessit)
-	 * @param int imdbID (IMDBID, if not opensubtitles will use a hash of the name)
-	 * @param int idCurrentList (Current ID in the $rootScope.list)
+	 * @param {string} name 			- File name (Example : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 			- Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory 		- Directory where the file drag is
+	 * @param {string} fileInfos 		- All infos of the file parse with guessit
+	 * @param {int} imdbId				- Id of the IMDB
+	 * @param {int} idCurrentList 		- Id of the current ID in the list ($rootScope.list)
+	 *
 	 */
 	that.getSubtitlesSeries = function(name, path, directory, fileInfos, imdbId, idCurrentList) {
 
@@ -186,12 +217,17 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name consoleEntry
+	 *
+	 * @description
 	 * Console Entry parameters
 	 *
-	 * @param string name (FileName)
-	 * @param string path (Path with fileName)
-	 * @param string directory (Directory where the file is)
+	 * @param {string} name 			- File name (Example : The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} path 			- Path of the file (Exemple : Users/desktop/The.Flash.2014.S01E17.720p.HDTV.X264-DIMENSION.mkv)
+	 * @param {string} directory 		- Directory where the file drag is
+	 *
 	 */
 	that.consoleEntry = function(name, path, directory) {
 

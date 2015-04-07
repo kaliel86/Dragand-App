@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name guiService
+ * @requires $rootScope
+ * @module daw
+ *
+ * @description
+ * Service for manage GUI of Node-Webkit
+ *
+ */
 daw.service('guiService', function($rootScope) {
 
 	var that = this;
@@ -7,8 +17,13 @@ daw.service('guiService', function($rootScope) {
 	var win 			= gui.Window.get();
 	var nativeMenuBar 	= new gui.Menu({ type: "menubar" });
 
-	/*
-	 * Init GUI
+	/**
+	 * @ngdoc method
+	 * @name init
+	 *
+	 * @description
+	 * Init Menu of the GUI
+	 *
 	 */
 	that.init = function() {
 		nativeMenuBar.createMacBuiltin("Dragand");
@@ -16,12 +31,14 @@ daw.service('guiService', function($rootScope) {
 		that.listenResize();
 	};
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name listenResize
+	 *
+	 * @description
 	 * Listen Resize and add new Width in RootScope
-	 *
-	 * Width : 320px -> 17 characters
-	 *
 	 * So for exemple Width : 400px -> 21.25 -> 21 characters
+	 *
 	 */
 	that.listenResize = function() {
 		$rootScope.limit = 15;

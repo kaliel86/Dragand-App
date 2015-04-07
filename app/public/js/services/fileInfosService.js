@@ -1,10 +1,24 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name fileInfosService
+ * @requires $q
+ * @module daw
+ *
+ * @description
+ * Service for manage Guissit API
+ *
+ */
 daw.service('fileInfosService', function($q) {
 
 	var that = this;
 
-	/*
+	/**
+	 * @ngdoc method
+	 * @name parse
+	 *
+	 * @description
 	 * Parse the name file and return information in object
 	 *
 	 * SERIE :

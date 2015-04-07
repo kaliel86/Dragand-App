@@ -1,13 +1,33 @@
 'use strict';
 
+/**
+ * @ngdoc service
+ * @name theTvDbService
+ * @requires $q, configService
+ * @module daw
+ *
+ * @description
+ * Service use for manipulate TheTvDb API
+ *
+ */
 daw.service('theTvDbService', function($q, configService) {
 
 	var that = this;
 	var tvdb = new TVDBClient(configService.get('tvDbKey'));
 	var URL = "http://thetvdb.com/banners/_cache/";
 
-	/*
-	 * Return the IMDBID of the series
+	/**
+	 * @ngdoc method
+	 * @name getImdbIdAndPoster
+	 *
+	 * @description
+	 * Get subtitles from opensubtitles.org
+	 * Download a subtitle, if the file is a zip we unzip it and rename the file for VLC
+	 *
+	 * @param {string} name - Name of the file (Exemple : The Flash)
+	 *
+	 * @returns {Promise} with IMDB_ID and Poster URL
+	 *
 	 */
 	that.getImdbIdAndPoster = function(name) {
 
