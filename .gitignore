@@ -32,4 +32,5 @@ node_modules/*
 
 # APP
 app/public/css/
-app/vendor/
+app/vendor/*
+!app/vendor/GALocalStorage.js
