@@ -42,7 +42,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 		// 1. We add item in SCOPE with status loading
 		$rootScope.list[idCurrentList] = {
 			'status'	: 'loading',
-			'filename'	: name
+			'filename'	: name,
+			'path'		: path
 		};
 
 		fileInfosService.parse(name).then(function(result) {
