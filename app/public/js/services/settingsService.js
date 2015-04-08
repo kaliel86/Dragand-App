@@ -9,7 +9,7 @@
  * Service for manage information in localStorage (Use for user's settings)
  *
  */
-daw.service('settingsService', function(configService){
+daw.service('settingsService', function(configService, logService){
 
 	var that = this;
 
@@ -30,8 +30,28 @@ daw.service('settingsService', function(configService){
 			that.set('appLanguage', configService.get('defaultLanguage'));
 			that.set('notifiction', true);
 		}
+		
+		that.consoleSettings();
 
 	};
+
+	/**
+	 * @ngdoc method
+	 * @name consoleSettings
+	 *
+	 * @description
+	 * Add in Console informations from settings
+	 *
+	 */
+	that.consoleSettings = function() {
+		logService.success('============[SETTINGS]============');
+		logService.info('Autoplay : ' + that.get('autoplay'));
+		logService.info('Player : ' + that.get('player'));
+		logService.info('language : ' + that.get('language'));
+		logService.info('AppLanguage : ' + that.get('appLanguage'));
+		logService.info('Notification : ' + that.get('notification'));
+		logService.success('==========[END SETTINGS]==========');
+	}
 
 	/**
 	 * @ngdoc method

@@ -9,7 +9,7 @@
  * Service use for notification
  *
  */
-daw.service('notificationService', function(settingsService) {
+daw.service('notificationService', function(settingsService, logService) {
 
 	var that = this;
 
@@ -28,7 +28,7 @@ daw.service('notificationService', function(settingsService) {
 
 		if(settingsService.get('notification')) {
 
-			console.log('Seed Notification');
+			logService.success('Notification sended');
 
 			notifier.notify({
 				title: title,
@@ -38,6 +38,8 @@ daw.service('notificationService', function(settingsService) {
 			  	wait: false
 			});
 			
+		} else {
+			logService.error('Try to send notification');
 		}
 
 	};

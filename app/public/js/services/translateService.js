@@ -13,6 +13,7 @@
 daw.service('translateService', function($translate, settingsService) {
 
 	var that 		= this;
+	var languageUse = settingsService.get('appLanguage');
 
 	/**
 	 * @ngdoc method
@@ -23,7 +24,7 @@ daw.service('translateService', function($translate, settingsService) {
 	 *
 	 */
 	that.init = function() {
-		$translate.use(settingsService.get('appLanguage'));
+		$translate.use(languageUse);
 	};
 
 });

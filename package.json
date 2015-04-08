@@ -1,5 +1,5 @@
 {
-  "name": "DragAndWatch",
+  "name": "Dragand",
   "version": "1.0.0",
   "description": "Drag your movie, and automatic download subtitles.",
   "main": "app/index.html",
@@ -10,17 +10,17 @@
   },
   "license": "GNU GPL",
   "window": {
-    "title": "DragandWatch",
+    "title": "Dragand",
     "icon": "app/public/img/logoApp.png",
-    "toolbar": false,
-    "frame": false,
+    "toolbar": true,
+    "frame": true,
     "min_width": 320,
     "min_height": 370,
     "width": 320,
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": true
+    "transparent": false
   },
   "webkit": {
     "page-cache": true

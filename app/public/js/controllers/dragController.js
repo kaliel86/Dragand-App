@@ -10,7 +10,7 @@
  * Controller use for the view home
  *
  */
-daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service, logService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -36,7 +36,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 		if (item.isFile && $scope.checkExtension(entry.name)) {
 
-			console.log("------------- IS FILE -------------");
+			logService.success('============[IS FILE]============');
+
 			item.file(function() {
 				subtitlesV2Service.get(entry.name, entry.path, entry.directory, $rootScope.list.length).then(function() {
 					$scope.count++;
@@ -45,7 +46,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 		} else if (item.isDirectory && !firstDirectoryChecked) {
 
-			console.log("------------- IS DIRECTORY -------------");
+			logService.success('============[IS DIRECTORY]============');
 			// Get folder contents
 			var dirReader = item.createReader();
 

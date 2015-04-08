@@ -10,7 +10,7 @@
  * Service manage subtitles download
  *
  */
-daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, logService) {
 
 	var that = this;
 	var languageSubtitles;
@@ -95,13 +95,15 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 			yifyService.get(imdb['imdbID'], languageSubtitles, name, directory).then(function(){
 
-				console.log('Subtitles found on Yify');
+				logService.success('Subtitles found on Yify');
 
 				$rootScope.list[idCurrentList]['status'] = 'done';
 
 				deferred.resolve();
 
 			}).catch(function() {
+
+				logService.error('Subtitles not found on Yify');
 
 				$rootScope.list[idCurrentList]['status'] = 'fail';
 
@@ -110,6 +112,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 			});
 
 		}).catch(function() {
+
+			logService.error('Movie not found on IMDB');
 
 			$rootScope.list[idCurrentList]['status'] = 'fail';
 
@@ -147,11 +151,12 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 			if(typeof(imdb['Response']) !== 'undefined' && imdb['Response'] === "False") {
 
-				console.log('Movie not found in IMDB');
+
+				logService.error('Serie not found on IMDB');
 
 				theTvDbService.getImdbIdAndPoster(fileInfos['series']).then(function(result){
 
-					console.log("Movie found in TheTvDB");
+					logService.success('Serie found on TheTvDB');
 
 					$rootScope.list[idCurrentList]['poster'] = (result['Poster']) ? result['Poster'] : null;
 					$rootScope.list[idCurrentList]['imdbId'] = (result['IMDB_ID']) ? result['IMDB_ID'] : null;
@@ -162,7 +167,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 			} else {
 
-				console.log('Movie found in IMDB');
+				logService.success('Serie found on IMDB');
 
 				$rootScope.list[idCurrentList]['poster'] = imdb['Poster'];
 				$rootScope.list[idCurrentList]['imdbId'] = imdb['imdbID'];
@@ -198,7 +203,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 		openSubtitlesService.get(imdbId, fileInfos['season'], fileInfos['episodeNumber'], name, languageSubtitles, directory).then(function() {
 
-			console.log('Subtitles found on OpenSubtitles');
+			logService.success('Subtitles found on OpenSubtitles');
 
 			// 5. After download change the status to 'done'
 			$rootScope.list[idCurrentList]['status'] = 'done';
@@ -206,6 +211,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 			deferred.resolve();
 
 		}).catch(function(){
+
+			logService.error('Subtitles not found on OpenSubtitles');
 
 			// 5. After download change the status to 'done'
 			$rootScope.list[idCurrentList]['status'] = 'fail';
@@ -232,9 +239,9 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 	 */
 	that.consoleEntry = function(name, path, directory) {
 
-		console.log('Name : ', name);
-		console.log('Path : ', path);
-		console.log('Directory : ', directory);
+		logService.info('Name : '+ name);
+		logService.info('Path : '+ path);
+		logService.info('Directory : '+ directory);
 
 	};
 
