@@ -34,3 +34,6 @@ node_modules/*
 app/public/css/
 app/vendor/*
 !app/vendor/GALocalStorage.js
+
+# NODE WEBKIT
+build/*
