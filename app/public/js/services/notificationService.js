@@ -27,12 +27,17 @@ daw.service('notificationService', function(settingsService) {
 	that.create = function(title, message) {
 
 		if(settingsService.get('notification')) {
-			// TODO Add 'icon'
+
+			console.log('Seed Notification');
+
 			notifier.notify({
-				'title'	 : title,
-				'message': message,
-				'wait'   : false
+				title: title,
+			  	message: message,
+			  	icon: 'app/public/img/logoApp.png',
+			  	sound: true,
+			  	wait: false
 			});
+			
 		}
 
 	};
