@@ -13,7 +13,6 @@
 daw.service('theTvSubsService', function($q, fileInfosService) {
 
 	var that = this;
-	var subUrl = null;
 
 	/**
 	 * @ngdoc method
@@ -50,6 +49,7 @@ daw.service('theTvSubsService', function($q, fileInfosService) {
 		    			var languageMapped = that.getLanguageMapped(language);
 		    			var i 			   = episodes['list'].length;
 
+		    			// Recursive method
 		    			getUrl(i - 1);
 
 		    			function getUrl(i) {
@@ -176,7 +176,7 @@ daw.service('theTvSubsService', function($q, fileInfosService) {
 	 * @name languageMapping
 	 *
 	 * @description
-	 * Little mapping use by Yify,
+	 * Little mapping use by TheTvSubs,
 	 *
 	 */
 	that.languageMapping = {
