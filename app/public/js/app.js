@@ -18,6 +18,7 @@ var url 		  	= require("url");
 var pathNode	  	= require("path");
 var download 		= require("download");
 var SubDb 			= require("subdb");
+var tvsubs 			= require('tv-subs')();
 var upd 			= new updater(pkg);
 var TVDBClient 		= require("node-tvdb");
 var copyPath, execPath;

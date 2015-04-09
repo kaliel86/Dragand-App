@@ -10,7 +10,7 @@
  * Service manage subtitles download
  *
  */
-daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService, theTvSubsService) {
 
 	var that = this;
 	var languageSubtitles;
@@ -227,10 +227,24 @@ daw.service('subtitlesV2Service', function($rootScope, $q, fileInfosService, imd
 
 				logService.error('Subtitles not found on TheSubDB');
 
-				// 5. After download change the status to 'done'
-				$rootScope.list[idCurrentList]['status'] = 'fail';
+				theTvSubsService.get(name, fileInfos['series'], fileInfos['episodeNumber'], fileInfos['season'], languageSubtitles, fileInfos['releaseGroup'], directory).then(function() {
 
-				deferred.resolve();
+					logService.success('Subtitles found on TheTvSubs');
+
+					// 5. After download change the status to 'done'
+					$rootScope.list[idCurrentList]['status'] = 'done';
+
+					deferred.resolve();
+				
+				}).catch(function() {
+
+					logService.error('Subtitles not found on TheTvSubs');
+
+					// 5. After download change the status to 'fail'
+					$rootScope.list[idCurrentList]['status'] = 'fail';
+
+					deferred.reject();
+				});
 
 			});
 

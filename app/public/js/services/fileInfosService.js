@@ -43,6 +43,8 @@ daw.service('fileInfosService', function($q) {
 
 		guessit.parseName(path, true).then(function (data) {
 			deferred.resolve(data);
+		}).catch(function(){
+			deferred.reject();
 		});
 
 		return deferred.promise;
