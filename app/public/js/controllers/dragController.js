@@ -148,11 +148,16 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
-			if($rootScope.list.length == 1 && $rootScope.pressAlt && settingsService.get('autoplay')) {
-				logService.success('Autoplay the movie/series because ALT was press');
+			
+			if(settingsService.get('autoplay') == 'true' && $rootScope.list.length == 1){
+				playerService.play($rootScope.list[0]['path']);
+				logService.success('VLC launched and play the video');
+			} else if($rootScope.pressAlt && $rootScope.list.length == 1) {
 				playerService.play($rootScope.list[0]['path']);
 				$rootScope.pressAlt = false;
+				logService.success('VLC launched and play the video');
 			}
+
 			notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
 		}
 	});

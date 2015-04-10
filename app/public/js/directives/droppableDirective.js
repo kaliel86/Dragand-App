@@ -15,7 +15,9 @@ daw.directive('droppable', function($rootScope) {
 		restrict: 'A',
 
 		link: function($scope, element, attrs, DragController) {
-			$scope.dragState = 'waiting';
+
+			$rootScope.pressAlt = false;
+			$scope.dragState    = 'waiting';
 
 			var el 		 = element[0].getElementsByClassName('dropZone')[0];
 			var dropZone = document.getElementById('drop');
