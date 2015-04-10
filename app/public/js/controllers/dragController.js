@@ -10,7 +10,7 @@
  * Controller use for the view home
  *
  */
-daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service, logService) {
+daw.controller('DragController', function($document, $window, $q, $scope, $rootScope, $filter, config, playerService, notificationService, subtitlesV2Service, logService, settingsService) {
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
@@ -148,6 +148,11 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 */
 	$scope.$watch('count', function() {
 		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
+			if($rootScope.list.length == 1 && $rootScope.pressAlt && settingsService.get('autoplay')) {
+				logService.success('Autoplay the movie/series because ALT was press');
+				playerService.play($rootScope.list[0]['path']);
+				$rootScope.pressAlt = false;
+			}
 			notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
 		}
 	});

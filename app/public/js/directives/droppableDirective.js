@@ -17,7 +17,7 @@ daw.directive('droppable', function($rootScope) {
 		link: function($scope, element, attrs, DragController) {
 			$scope.dragState = 'waiting';
 
-			var el = element[0].getElementsByClassName('dropZone')[0];
+			var el 		 = element[0].getElementsByClassName('dropZone')[0];
 			var dropZone = document.getElementById('drop');
 
 			// :::: Prevent drag / drop auto opening file issues
@@ -26,17 +26,23 @@ daw.directive('droppable', function($rootScope) {
 				return false;
 			};
 
-			window.ondrop = window.ondragover;
+			window.onkeydown = function(e) {
+				if(e.keyCode === 18){
+					$rootScope.pressAlt = true;
+				}
+			};
 
+			window.ondrop = window.ondragover;
+			
 			el.ondragover = function() {
 				dropZone.className = "dragOver";
-				$scope.dragState = 'dragOver';
-				$rootScope.view = 'drop';
+				$scope.dragState   = 'dragOver';
+				$rootScope.view    = 'drop';
 				$scope.$apply();
 			}
 			el.ondragleave = function() {
 				dropZone.className  = "";
-				$scope.dragState = 'waiting';
+				$scope.dragState 	= 'waiting';
 				if($scope.list.length > 0) {
 					$rootScope.view = 'list';
 				} else {
@@ -48,7 +54,7 @@ daw.directive('droppable', function($rootScope) {
 			el.ondrop = function(e) {
 				e.preventDefault();
 
-				var data = e.dataTransfer;
+				var data  = e.dataTransfer;
 				var items = data.items;
 
 				for (var i=0; i<items.length; i++) {
@@ -67,10 +73,11 @@ daw.directive('droppable', function($rootScope) {
 				el.ondragleave();
 				return false;
 			}
+
 			// Greensock animation
-			var dropIconTl = new TimelineMax();
-			var arrow = document.getElementById('arrow');
-			var box = document.getElementById('box');
+			var dropIconTl  = new TimelineMax();
+			var arrow 		= document.getElementById('arrow');
+			var box 		= document.getElementById('box');
 
 
 			dropIconTl
