@@ -35,15 +35,18 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 	$stateProvider
 		.state('home', {
 			url: "/",
-			templateUrl: "views/home.html"
+			templateUrl: "views/home.html",
+			requireRules: true
 		})
 		.state('information', {
 			url: "/",
-			templateUrl: "views/information.html"
+			templateUrl: "views/information.html",
+			requireRules: true
 		})
 		.state('settings', {
 			url: "/",
-			templateUrl: "views/settings.html"
+			templateUrl: "views/settings.html",
+			requireRules: true
 		});
 
 })
@@ -59,9 +62,11 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 
 })
 
-.run(function(settingsService, checkUpdateService, translateService, guiService) {
+.run(function(settingsService, checkUpdateService, translateService, guiService, rulesService) {
 	settingsService.init();
 	translateService.init();
 	guiService.init();
+	guiService.init();
+	rulesService.check();
 	checkUpdateService.launch();
 });
