@@ -1,12 +1,17 @@
 {
   "name": "Dragand",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "Drag your movie, and automatic download subtitles.",
   "main": "app/index.html",
   "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
   "repository": {
     "type": "git",
     "url": "https://github.com/DragAndWatch/application.git"
+  },
+  "packages": {
+    "mac": {
+      "url": "http://preprod.mathieuletyrant.com/DragAndWatch.zip"
+    }
   },
   "license": "GNU GPL",
   "window": {
