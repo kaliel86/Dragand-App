@@ -12,15 +12,15 @@
   "window": {
     "title": "Dragand",
     "icon": "app/public/img/logoApp.png",
-    "toolbar": true,
-    "frame": true,
+    "toolbar": false,
+    "frame": false,
     "min_width": 320,
     "min_height": 370,
     "width": 320,
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": false
+    "transparent": true
   },
   "webkit": {
     "page-cache": true
