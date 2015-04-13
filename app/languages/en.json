@@ -14,7 +14,11 @@
     }
   },
   "NOTIFICATION": {
-    "UPDATE": {
+    "UPDATE_ON": {
+      "TITLE": "Update avaible",
+      "CONTENT": "Go on the website for download the new version"
+    },
+    "UPDATE_OFF": {
       "TITLE": "No update available",
       "CONTENT": "You will be notified when an update will be ready"
     },

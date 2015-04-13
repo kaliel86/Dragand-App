@@ -14,7 +14,11 @@
     }
   },
   "NOTIFICATION": {
-    "UPDATE": {
+    "UPDATE_ON": {
+      "TITLE": "Mise à jour disponible",
+      "CONTENT": "Rendez-vous sur le site internet pour télécharger la nouvelle version"
+    },
+    "UPDATE_OFF": {
       "TITLE": "Aucune mise à jour",
       "CONTENT": "Vous serez averti lorsqu'une mise à jour sera prêt"
     },

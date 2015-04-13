@@ -10,7 +10,7 @@
  * Service for manage update app
  *
  */
-daw.service('checkUpdateService', function($rootScope, $filter, notificationService) {
+daw.service('checkUpdateService', function($rootScope, $filter, $timeout, notificationService) {
 
 	var that = this;
 
@@ -26,28 +26,12 @@ daw.service('checkUpdateService', function($rootScope, $filter, notificationServ
 	 */
 	that.launch = function() {
 
-		if(gui.App.argv.length) {
+		upd.checkNewVersion(function(error, newVersionExists, manifest) {
+			if (!error && newVersionExists) {
+				$rootScope.newVersionAvailable = true;
+			}
+		});
 
-			copyPath = gui.App.argv[0];
-			execPath = gui.App.argv[1];
-
-			upd.install(copyPath, function(err) {
-				if(!err) {
-					upd.run(execPath, null);
-					gui.App.quit();
-				}
-			});
-
-		}
-		else {
-
-			upd.checkNewVersion(function(error, newVersionExists, manifest) {
-				if (!error && newVersionExists) {
-					$rootScope.newVersionAvailable = true;
-				}
-			});
-
-		}
 	};
 
 	/**
@@ -55,38 +39,20 @@ daw.service('checkUpdateService', function($rootScope, $filter, notificationServ
 	 * @name update
 	 *
 	 * @description
-	 * Update the app
+	 * If update availble, fo to the website and send notification
 	 *
 	 */
 	that.update = function() {
 		upd.checkNewVersion(function(error, newVersionExists, manifest) {
 			if (!error && newVersionExists && $rootScope.newVersionAvailable) {
-				download(manifest);
+				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_ON.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_ON.CONTENT'));
+				$timeout(function(){
+					open('http://dragand.watch');
+				}, 2000);
 			} else {
-				notificationService.create($filter('translate')('NOTIFICATION.UPDATE.TITLE'), $filter('translate')('NOTIFICATION.UPDATE.CONTENT'));
+				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_OFF.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_OFF.CONTENT'));
 			}
 		});
-	};
-
-	/**
-	 * @ngdoc method
-	 * @name download
-	 *
-	 * @description
-	 * Download new app
-	 *
-	 */
-	var download = function(manifest) {
-		upd.download(function(error, filename) {
-			if (!error) {
-				upd.unpack(filename, function(error, newAppPath) {
-					if (!error) {
-						upd.runInstaller(newAppPath, [upd.getAppPath(), upd.getAppExec()],{});
-						gui.App.quit();
-					}
-				}, manifest);
-			}
-		}, manifest);
 	};
 
 });
