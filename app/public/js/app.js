@@ -30,32 +30,22 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-	$urlRouterProvider.otherwise("/app/home");
+	$urlRouterProvider.otherwise("/");
 
 	$stateProvider
-		.state('app', {
-			url: "/app",
-			templateUrl: "views/modules/app.html",
-			abstract: true
-		})
-		.state('app.home', {
-			url: "/home",
+		.state('home', {
+			url: "/",
 			templateUrl: "views/home.html",
 			requireRules: true
 		})
-		.state('app.information', {
-			url: "/information",
+		.state('information', {
+			url: "/",
 			templateUrl: "views/information.html",
 			requireRules: true
 		})
-		.state('app.settings', {
-			url: "/settings",
+		.state('settings', {
+			url: "/",
 			templateUrl: "views/settings.html",
-			requireRules: true
-		})
-		.state('update', {
-			url: "/update",
-			templateUrl: "views/update.html",
 			requireRules: true
 		});
 
@@ -75,6 +65,7 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 .run(function(settingsService, checkUpdateService, translateService, guiService, rulesService) {
 	settingsService.init();
 	translateService.init();
+	guiService.init();
 	guiService.init();
 	rulesService.check();
 	checkUpdateService.launch();

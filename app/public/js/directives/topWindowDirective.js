@@ -13,7 +13,7 @@ daw.directive('topWindow', function($timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'views/modules/topWindow.html',
+		templateUrl: 'views/topWindow.html',
 
 		link: function($scope, element, attrs) {
 			$timeout(function() {

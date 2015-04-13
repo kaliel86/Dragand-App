@@ -14,7 +14,7 @@ daw.directive('bottomWindow', function($window, $rootScope, $state, $timeout) {
 	return {
 		restrict: 'E',
 		replace: true,
-		templateUrl: 'views/modules/bottomWindow.html',
+		templateUrl: 'views/bottomWindow.html',
 
 		link: function($scope, element, attrs) {
 
@@ -37,7 +37,7 @@ daw.directive('bottomWindow', function($window, $rootScope, $state, $timeout) {
 					},0.25*tabLength*1000)
 
 				} else {
-					$state.go('app.home');
+					$state.go('home');
 				}
 			};
 
