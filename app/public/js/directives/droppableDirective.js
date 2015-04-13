@@ -13,20 +13,16 @@
 daw.directive('droppable', function($rootScope) {
 	return {
 		restrict: 'A',
-
 		link: function($scope, element, attrs, DragController) {
-
 			$rootScope.pressAlt = false;
 			$scope.dragState    = 'waiting';
 
 			var el 		 = element[0].getElementsByClassName('dropZone')[0];
 			var dropZone = document.getElementById('drop');
 
-			// :::: Prevent drag / drop auto opening file issues
-			window.ondragover = function(e) {
-				e.preventDefault();
-				return false;
-			};
+			if(attrs.droppable == 'list') {
+				el = element[0];
+			}
 
 			window.onkeydown = function(e) {
 				if(e.keyCode === 18){
@@ -34,9 +30,8 @@ daw.directive('droppable', function($rootScope) {
 				}
 			};
 
-			window.ondrop = window.ondragover;
-			
-			el.ondragover = function() {
+			el.ondragover = function(e) {
+				e.preventDefault();
 				dropZone.className = "dragOver";
 				$scope.dragState   = 'dragOver';
 				$rootScope.view    = 'drop';
