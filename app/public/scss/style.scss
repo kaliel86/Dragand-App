@@ -293,6 +293,8 @@ body, html {
                 z-index: 1;
                 display : none;
                 animation: flipInX 1s ease;
+                animation-fill-mode: both;
+                
                 ul {
                     float : right;
                     list-style: none;
