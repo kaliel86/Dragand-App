@@ -22,36 +22,31 @@ daw.directive('droppable', function($rootScope) {
 			var el 		 = element[0].getElementsByClassName('dropZone')[0];
 			var dropZone = document.getElementById('drop');
 
-			// :::: Prevent drag / drop auto opening file issues
-			window.ondragover = function(e) {
-				e.preventDefault();
-				return false;
-			};
-
 			window.onkeydown = function(e) {
 				if(e.keyCode === 18){
 					$rootScope.pressAlt = true;
 				}
 			};
-
-			window.ondrop = window.ondragover;
 			
-			el.ondragover = function() {
-				dropZone.className = "dragOver";
-				$scope.dragState   = 'dragOver';
-				$rootScope.view    = 'drop';
-				$scope.$apply();
-			}
-			el.ondragleave = function() {
-				dropZone.className  = "";
-				$scope.dragState 	= 'waiting';
-				if($scope.list.length > 0) {
-					$rootScope.view = 'list';
+			el.ondragover = function(e) {
+				e.preventDefault();
+				if(attrs['droppable'] == 'drop'){
+					dropZone.className = "dragOver";
+					$scope.dragState   = 'dragOver';
+					$rootScope.view    = 'drop';
 				} else {
-					$scope.dragState = 'waiting';
+					$rootScope.view = 'list';
 				}
 				$scope.$apply();
-			}
+			};
+
+			el.ondragleave = function() {
+				if(attrs['droppable'] =='drop'){
+					dropZone.className  = "";
+					$scope.dragState 	= 'waiting';
+				}
+				$scope.$apply();
+			};
 
 			el.ondrop = function(e) {
 				e.preventDefault();
@@ -74,7 +69,7 @@ daw.directive('droppable', function($rootScope) {
 
 				el.ondragleave();
 				return false;
-			}
+			};
 
 			// Greensock animation
 			var dropIconTl  = new TimelineMax();
