@@ -482,7 +482,7 @@ body, html {
                     left: 10px;
                 }
                 &:hover {
-                    color: #bf343e;
+                    color: $redHover;
                 }
             }
         }
@@ -495,7 +495,7 @@ body, html {
                 color: $red;
                 transition: all 0.8s;
                 &:hover {
-                    color: #bf343e;
+                    color: $redHover;
                 }
             }
         }
