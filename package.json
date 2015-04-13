@@ -4,6 +4,7 @@
   "description": "Drag your movie, and automatic download subtitles.",
   "main": "app/index.html",
   "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
+  "changeLogUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/CHANGELOG.md",
   "repository": {
     "type": "git",
     "url": "https://github.com/DragAndWatch/application.git"
