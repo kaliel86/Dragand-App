@@ -10,6 +10,6 @@ daw.constant('config', {
 	},
 	tvDbKey			: '1ED16E5151E57242',
 	betaSeriesKey	: 'cc5f5500cc30',
-	devMode			: true,
+	devMode			: false,
 	rules			: false
 });

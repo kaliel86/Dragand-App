@@ -447,6 +447,7 @@ body, html {
             font-size: 0.8rem;
             font-weight: 200;
             margin-bottom: 30px;
+            line-height: 1.4;
         }
         .team {
             margin-bottom: 20px;
@@ -470,6 +471,7 @@ body, html {
             .links {
                 color: $red;
                 font-size: 0.8rem;
+                transition: all 0.8s;
                 .website {
                     position: relative;
                     top: -5px;
@@ -478,6 +480,9 @@ body, html {
                     position: relative;
                     top: -5px;
                     left: 10px;
+                }
+                &:hover {
+                    color: #bf343e;
                 }
             }
         }
@@ -488,6 +493,10 @@ body, html {
                 display: block;
                 font-size: 0.8rem;
                 color: $red;
+                transition: all 0.8s;
+                &:hover {
+                    color: #bf343e;
+                }
             }
         }
     }
