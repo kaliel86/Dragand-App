@@ -14,10 +14,10 @@ daw.directive('topWindow', function($timeout) {
 		templateUrl: 'views/topWindow.html',
 
 		link: function($scope, element, attrs) {
+
 			$timeout(function() {
 				angular.element(element[0]).addClass('loaded');
 			}, 100);
-
 
 			$scope.win = gui.Window.get();
 			$scope.appWindow = {

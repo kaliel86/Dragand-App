@@ -30,6 +30,7 @@ daw.directive('bottomWindow', function($window, $rootScope, $state, $timeout) {
 				if($scope.currentState === 'home') {
 					var tabLength = $rootScope.list.length;
 					$rootScope.list = [];
+
 					$timeout(function(){
 						$rootScope.view = 'drop';
 					},0.25*tabLength*1000)

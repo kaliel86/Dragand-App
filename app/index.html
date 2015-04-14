@@ -15,6 +15,7 @@
 	<bottom-window></bottom-window>
 
     <!-- JAVASCRIPT -->
+    <!-- build:js app.min.js -->
     <script src="vendor/angular/angular.min.js"></script>
     <script src="vendor/angular-animate/angular-animate.min.js"></script>
     <script src="vendor/greensock/src/minified/TimelineMax.min.js"></script>
@@ -23,10 +24,6 @@
     <script src="vendor/angular-translate/angular-translate.min.js"></script>
     <script src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script src="vendor/GALocalStorage.js"></script>
-    <script>
-        ga_storage._setAccount('UA-61669451-1');
-        ga_storage._trackPageview('/index.html');
-    </script>
 
     <!-- APP -->
     <script src="public/js/app.js"></script>
@@ -70,5 +67,11 @@
     <script src="public/js/directives/centeredDirective.js"></script>
     <script src="public/js/directives/inputFileDirective.js"></script>
     <script src="public/js/directives/openDirective.js"></script>
+
+    <script>
+        ga_storage._setAccount('UA-61669451-1');
+        ga_storage._trackPageview('/index.html');
+    </script>
+    <!-- endbuild -->
 </body>
 </html>

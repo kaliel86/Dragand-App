@@ -33,6 +33,7 @@ node_modules/*
 # APP
 app/public/css/
 app/vendor/*
+app/public/js/app.min.js
 !app/vendor/GALocalStorage.js
 
 # NODE WEBKIT

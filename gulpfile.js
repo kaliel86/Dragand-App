@@ -6,6 +6,10 @@ var gulp 				= require('gulp');
 	NwBuilder 			= require('node-webkit-builder'),
 	util				= require('gulp-util'),
 	rimraf		 		= require('gulp-rimraf'),
+	useref				= require('gulp-useref'),
+	uglify				= require('gulp-uglify'),
+	gulpif				= require('gulp-if'),
+	ngAnnotate			= require('gulp-ng-annotate'),
 	path				= {
 		'public': 'app/public'
 	},
@@ -32,6 +36,23 @@ gulp.task('style', function() {
 		.pipe(minifyCSS())
 		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.public+'/css'));
+});
+
+/**
+ * Compile Javascript
+ */
+gulp.task('script', function() {
+
+	var assets = useref.assets();
+
+	gulp.src('app/index.html')
+		.pipe(assets)
+		.pipe(ngAnnotate())
+		.pipe(gulpif('*.js', ngAnnotate()))
+		.pipe(uglify())
+		.pipe(useref())
+		.pipe(gulp.dest('app/public/js'));
+
 });
 
 /**
