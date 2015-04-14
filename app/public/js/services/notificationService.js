@@ -7,7 +7,7 @@
  * Service use for notification
  *
  */
-daw.service('notificationService', function(settingsService, logService) {
+daw.service('notificationService', function($timeout, settingsService, logService) {
 
 	var that = this;
 
@@ -26,15 +26,16 @@ daw.service('notificationService', function(settingsService, logService) {
 
 		if(settingsService.get('notification')) {
 
+			var notification = new Notification(title, {body: message});
+
+			notification.onshow = function () {
+				$timeout(function(){
+					notification.close();
+				}, 1000);
+			};
+
 			logService.success('Notification sended');
 
-			notifier.notify({
-				title: title,
-			  	message: message,
-			  	icon: 'app/public/img/logoApp.png',
-			  	sound: true,
-			  	wait: false
-			});
 			
 		} else {
 			logService.error('Try to send notification');
