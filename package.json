@@ -1,6 +1,6 @@
 {
   "name": "Dragand",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Drag your movie, and automatic download subtitles.",
   "main": "app/index.html",
   "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
