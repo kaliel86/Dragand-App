@@ -7,7 +7,7 @@
  * Service use for notification
  *
  */
-daw.service('notificationService', function($timeout, settingsService, logService) {
+daw.service('notificationService', function($timeout, settingsService, logService, configService) {
 
 	var that = this;
 
@@ -31,7 +31,7 @@ daw.service('notificationService', function($timeout, settingsService, logServic
 			notification.onshow = function () {
 				$timeout(function(){
 					notification.close();
-				}, 1000);
+				}, configService.get('notificationTime') * 1000);
 			};
 
 			logService.success('Notification sended');
