@@ -108,7 +108,8 @@ gulp.task('cleanBuildFolder', function() {
     	macIcns 	: '../application/app/public/img/logoApp.icns',
     	winIco		: '../application/app/public/img/windows.ico',
     	platforms 	: platforms,
-    	appName 	: 'Dragand'
+    	appName 	: 'Dragand',
+		version		: '0.12.0'
   	});
 
 	nw.on('log', function (msg) {

@@ -12,15 +12,15 @@
   "window": {
     "title": "Dragand",
     "icon": "app/public/img/logoApp.png",
-    "toolbar": true,
-    "frame": true,
+    "toolbar": false,
+    "frame": false,
     "min_width": 320,
     "min_height": 370,
     "width": 320,
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": false
+    "transparent": true
   },
   "webkit": {
     "page-cache": true
@@ -50,6 +50,10 @@
     "open": "0.0.5",
     "popcorn-opensubtitles": "git+https://git.popcorntime.io/popcorntime/opensubtitles.git",
     "subdb": "0.0.2",
-    "tv-subs": "^0.1.3"
+    "tv-subs": "^0.1.3",
+    "through2": "*",
+    "gulp-rename": "*",
+    "gulp-if": "*",
+    "gulp-util": "*"
   }
 }
