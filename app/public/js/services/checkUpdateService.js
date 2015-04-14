@@ -8,7 +8,7 @@
  * Service for manage update app
  *
  */
-daw.service('checkUpdateService', function($rootScope, $filter, $timeout, notificationService) {
+daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout, notificationService) {
 
 	var that = this;
 
@@ -24,10 +24,15 @@ daw.service('checkUpdateService', function($rootScope, $filter, $timeout, notifi
 	 */
 	that.launch = function() {
 
-		upd.checkNewVersion(function(error, newVersionExists, manifest) {
-			if (!error && newVersionExists) {
+		var currentVersion = pkg['version'];
+
+		$http.get(pkg['manifestUrl']).then(function(result) {
+			var gitVersion = result['data']['version'];
+			
+			if(semver.compare(currentVersion, gitVersion) == -1){
 				$rootScope.newVersionAvailable = true;
 			}
+
 		});
 
 	};
@@ -41,16 +46,25 @@ daw.service('checkUpdateService', function($rootScope, $filter, $timeout, notifi
 	 *
 	 */
 	that.update = function() {
-		upd.checkNewVersion(function(error, newVersionExists, manifest) {
-			if (!error && newVersionExists && $rootScope.newVersionAvailable) {
+
+		var currentVersion = pkg['version'];
+
+		$http.get(pkg['manifestUrl']).then(function(result) {
+			var gitVersion = result['data']['version'];
+			
+			if(semver.compare(currentVersion, gitVersion) == -1){
+				
 				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_ON.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_ON.CONTENT'));
 				$timeout(function(){
 					open('http://dragand.watch');
 				}, 2000);
+
 			} else {
 				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_OFF.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_OFF.CONTENT'));
 			}
+
 		});
+
 	};
 
 });
