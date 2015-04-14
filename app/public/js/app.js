@@ -63,7 +63,6 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 	settingsService.init();
 	translateService.init();
 	guiService.init();
-	guiService.init();
 	rulesService.check();
 	checkUpdateService.launch();
 });
