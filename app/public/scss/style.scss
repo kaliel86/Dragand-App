@@ -218,6 +218,14 @@ body, html {
             background: url('../img/patternBg.png') center repeat;
             animation: bgMove 10s linear infinite;
         }
+        .dropZone {
+            position : absolute;
+            top : 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            z-index : 100;
+        }
         a {
             color: #888d94;
             font-weight: 200;
@@ -248,14 +256,6 @@ body, html {
                 }
             }
         }
-    }
-    .dropZone {
-        position : absolute;
-        top : 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        z-index : 100;
     }
     #list{
         width: 100%;
