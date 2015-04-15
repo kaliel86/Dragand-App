@@ -1,7 +1,7 @@
 <div id="middle-container" ng-controller="DragController">
 
 	<!-- DROP ZONE -->
-	<div id="drop" class="fadeIn" ng-show="view === 'drop'" droppable>
+	<div id="drop" class="fadeIn" ng-show="view === 'drop'" droppable="drop">
 		<centered>
 			<div class="dropZone"></div>
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="dropIcon" x="0px" y="0px" width="66.5px" height="71px" viewBox="18 0 66.5 71" enable-background="new 18 0 66.5 71" xml:space="preserve">
@@ -24,8 +24,9 @@
 	</div>
 
 	<!-- LIST MOVIES/SERIES -->
-	<ul id="list" class="fadeIn" droppable ng-show="view === 'list'">
+	<div droppable="list" ng-show="view === 'list'">
 		<div class="dropZone"></div>
+		<ul id="list" class="fadeIn">
 		<li class="item item-stag-anim" ng-repeat="item in list">
 			<div class="itemOver">
 				<ul>
@@ -58,5 +59,6 @@
 			</span>
 		</li>
 	</ul>
+	</div>
 
 </div>
