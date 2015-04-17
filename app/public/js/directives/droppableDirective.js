@@ -33,7 +33,7 @@ daw.directive('droppable', function($rootScope) {
 			};
 
 			window.ondrop = window.ondragover;
-			
+
 			el.ondragover = function() {
 				dropZone.className = "dragOver";
 				$scope.dragState   = 'dragOver';

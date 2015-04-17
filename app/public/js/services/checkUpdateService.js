@@ -19,21 +19,14 @@ daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout,
 	 * @name launch
 	 *
 	 * @description
-	 * Check if new Version
+	 * If update available, change the icon in the top bar
 	 *
 	 */
 	that.launch = function() {
 
-		var currentVersion = pkg['version'];
-
-		$http.get(pkg['manifestUrl']).then(function(result) {
-			var gitVersion = result['data']['version'];
-			
-			if(semver.compare(currentVersion, gitVersion) == -1){
-				$rootScope.newVersionAvailable = true;
-			}
-
-		});
+		if(testIfNewVersion()) {
+			$rootScope.newVersionAvailable = true;
+		}
 
 	};
 
@@ -42,29 +35,43 @@ daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout,
 	 * @name update
 	 *
 	 * @description
-	 * If update availble, fo to the website and send notification
+	 * If update availble, go to the website and send notification
 	 *
 	 */
 	that.update = function() {
 
+		if(testIfNewVersion()) {
+			notificationService.create($filter('translate')('NOTIFICATION.UPDATE_ON.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_ON.CONTENT'));
+			$timeout(function(){
+				open('http://dragand.watch');
+			}, 2000);
+		} else {
+			notificationService.create($filter('translate')('NOTIFICATION.UPDATE_OFF.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_OFF.CONTENT'));
+		}
+
+	};
+
+	/**
+	 * @ngdoc method
+	 * @name testIfNewVersion
+	 *
+	 * @description
+	 * Return true if update are available
+	 *
+	 */
+	var testIfNewVersion = function() {
 		var currentVersion = pkg['version'];
 
 		$http.get(pkg['manifestUrl']).then(function(result) {
 			var gitVersion = result['data']['version'];
-			
-			if(semver.compare(currentVersion, gitVersion) == -1){
-				
-				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_ON.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_ON.CONTENT'));
-				$timeout(function(){
-					open('http://dragand.watch');
-				}, 2000);
 
+			if(semver.compare(currentVersion, gitVersion) == -1){
+				return true;
 			} else {
-				notificationService.create($filter('translate')('NOTIFICATION.UPDATE_OFF.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_OFF.CONTENT'));
+				return false;
 			}
 
 		});
-
 	};
 
 });
