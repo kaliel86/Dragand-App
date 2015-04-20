@@ -1,7 +1,7 @@
 {
   "name": "Dragand",
   "version": "1.0.0",
-  "description": "Drag your movie, and automatic download subtitles.",
+  "description": "DragAndWatch is a free desktop application for Mac and PC that allows you to get your favorite subtitles by dragging and dropping your file in the app.",
   "main": "app/index.html",
   "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
   "repository": {
@@ -11,7 +11,6 @@
   "license": "GNU GPL",
   "window": {
     "title": "Dragand",
-    "icon": "app/public/img/logoApp.png",
     "toolbar": false,
     "frame": false,
     "min_width": 320,
@@ -20,8 +19,7 @@
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": true,
-    "always-on-top": true
+    "transparent": true
   },
   "webkit": {
     "page-cache": true
