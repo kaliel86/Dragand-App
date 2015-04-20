@@ -209,11 +209,10 @@ body, html {
             content: '';
             display: block;
             position: relative;
-            width : 130%;
-            height : 160%;
+            width: 190%;
+            height: 190%;
             margin-left : -20%;
             margin-top : -20%;
-            transform : rotate(30deg);
             z-index: 1;
             background: url('../img/patternBg.png') center repeat;
             animation: bgMove 10s linear infinite;
