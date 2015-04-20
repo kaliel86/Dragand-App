@@ -8,8 +8,8 @@
 // KEYFRAMES
 
 @keyframes bgMove {
-    0%   { background-position: 0 0 }
-    100% { background-position: -200px -162px }
+    0%   { transform : translate3D(0,0,0); }
+    100% { transform : translate3D(-200px, -162px, 0); }
 }
 
 @keyframes jumping {
