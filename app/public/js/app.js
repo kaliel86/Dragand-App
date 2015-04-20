@@ -25,7 +25,7 @@ var TVDBClient 		= require("node-tvdb");
  */
 var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.translate'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, config) {
 
 	$urlRouterProvider.otherwise("/");
 
@@ -45,6 +45,8 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 			templateUrl: "views/settings.html",
 			requireRules: true
 		});
+
+		$compileProvider.debugInfoEnabled(config['devMode']);
 
 })
 
