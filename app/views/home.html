@@ -41,9 +41,9 @@
 				</ul>
 			</div>
 			<div class="poster">
-				<img ng-src="{{item.poster}}" alt="{{item.imdbId}}"/>
+				<img ng-src="{{::item.poster}}" alt="{{::item.imdbId}}"/>
 			</div>
-			<p ng-if="item.type === 'series'">{{item.name | cut: limit}} (S{{item.season}}E{{item.episode}})</p>
+			<p ng-if="item.type === 'series'">{{item.name | cut: limit}} (S{{::item.season}}E{{::item.episode}})</p>
 			<p ng-if="item.type === 'movie'">{{item.name | cut: limit}}</p>
 			<span class="status">
 				<!-- Status : Loading -->

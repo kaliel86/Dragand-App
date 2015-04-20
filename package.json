@@ -20,7 +20,7 @@
     "height": 370,
     "resizable": true,
     "position": "center",
-    "transparent": false,
+    "transparent": true,
     "always-on-top": true
   },
   "webkit": {
