@@ -4,6 +4,7 @@
   "description": "DragAndWatch is a free desktop application for Mac and PC that allows you to get your favorite subtitles by dragging and dropping your file in the app.",
   "main": "app/index.html",
   "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/package.json",
+  "bugs": "mailto:mathieu.letyrant@gmail.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/DragAndWatch/application.git"
