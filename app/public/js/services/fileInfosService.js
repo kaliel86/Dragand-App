@@ -37,15 +37,14 @@ daw.service('fileInfosService', function($q) {
 	 */
 	that.parse = function(path) {
 
-		var deferred = $q.defer();
-
-		guessit.parseName(path, true).then(function (data) {
-			deferred.resolve(data);
-		}).catch(function(){
-			deferred.reject();
+		return $q(function(resolve, reject) {
+			guessit.parseName(path, true).then(function (data) {
+				resolve(data);
+			}).catch(function(){
+				reject();
+			});
 		});
 
-		return deferred.promise;
 	};
 
 });

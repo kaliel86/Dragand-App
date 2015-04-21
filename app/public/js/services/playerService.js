@@ -18,7 +18,6 @@ daw.service('playerService', function(settingsService) {
 	 *
 	 * @description
 	 * Open the movie with a player (VLC)
-	 * TODO Fix thix, don't work, why ?
 	 *
 	 * @param {string} path - Path of the file
 	 *

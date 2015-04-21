@@ -24,17 +24,16 @@ daw.service('imdbService', function($q) {
 	 */
 	that.get = function(name) {
 
-		var deferred = $q.defer();
-
-		imdb(name, function (err, data) {
-			if(!err) {
-				deferred.resolve(data);
-			} else {
-				deferred.reject(err);
-			}
+		return $q(function(resolve, reject) {
+			imdb(name, function (err, data) {
+				if(!err) {
+					resolve(data);
+				} else {
+					reject(err);
+				}
+			});
 		});
 
-		return deferred.promise;
 	};
 
 });
