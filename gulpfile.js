@@ -12,9 +12,9 @@ var gulp 				= require('gulp');
 	ngAnnotate			= require('gulp-ng-annotate'),
 	ngHtml2Js 			= require("gulp-ng-html2js"),
 	shell 				= require('gulp-shell'),
-	pkg 				= require('./package.json'),
+	pkg 				= require('./app/package.json'),
 	path				= {
-		'public': 'public'
+		'public': 'app/public'
 	},
 	autoPrefixerBrowers = [
 		'chrome >= 34',
@@ -48,13 +48,13 @@ gulp.task('script', function() {
 
 	var assets = useref.assets();
 
-	gulp.src('index.html')
+	gulp.src('app/index.html')
 		.pipe(assets)
 		.pipe(ngAnnotate())
 		.pipe(gulpif('*.js', ngAnnotate()))
 		.pipe(uglify())
 		.pipe(useref())
-		.pipe(gulp.dest('public/js'));
+		.pipe(gulp.dest('app/public/js'));
 
 });
 
@@ -89,31 +89,31 @@ gulp.task('clean', function() {
  */
 gulp.task('build', ['clean'], function() {
 
+	shell.task('ulimit -n 2560');
+
 	// Find out which modules to include
 	var modules = [];
 	if (!!pkg.dependencies) {
 		modules = Object.keys(pkg.dependencies)
 			.filter(function(m) { return m != 'nodewebkit' })
-			.map(function(m) { return 'node_modules/'+m+'/**/*' })
+			.map(function(m) { return './app/node_modules/'+m+'/**/*' })
 	}
 
 	var nw = new NwBuilder({
 		appName: pkg.window.title,
 		appVersion: pkg.version,
 		buildDir: 'build',
+		macZip: true,
 		files: [
-			'package.json',
-			'languages/**/*',
-			'index.html',
-			'LICENSE',
-			'views/**/*',
-			'public/css/style.min.css',
-			'public/fonts/**/*',
-			'public/img/**/*',
-			'public/js/app.min.js',
+			'./app/package.json',
+			'./app/languages/**/*',
+			'./app/index.html',
+			'./app/views/**/*',
+			'./app/public/**/*',
+			'./app/vendor/**/*'
 		].concat(modules),
-		macIcns: 'public/img/logoApp.icns',
-		platforms: ['osx'],
+		macIcns: 'app/public/img/logoApp.icns',
+		platforms: ['win', 'osx'],
 		version: '0.12.1'
 	});
 
