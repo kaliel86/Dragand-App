@@ -10,8 +10,7 @@
  */
 daw.service('theSubdbService', function($q) {
 
-	var that = this;
-
+	var that  = this;
 	var subdb = new SubDb();
 
 	/**
@@ -30,36 +29,37 @@ daw.service('theSubdbService', function($q) {
 	 */
 	that.get = function(path, directory, filename, language) {
 
-		var deferred 	= $q.defer();
 		var regex 		= /(.*)\.[^.]+$/;
 
-		subdb.computeHash(path, function(err, res) {
+		return $q(function(resolve, reject) {
 
-			if(err) {
-				deferred.reject();
-			}
-
-			var hash = res;
-			subdb.api.search_subtitles(hash, function(err, res){
+			subdb.computeHash(path, function(err, res) {
 
 				if(err) {
-					deferred.reject();
+					reject();
 				}
 
-				subdb.api.download_subtitle(hash, language, directory + pathNode.sep + regex.exec(filename)[1]+'.srt', function(err, res) {
+				var hash = res;
+				subdb.api.search_subtitles(hash, function(err, res){
 
-					if(err || !res) {
-						deferred.reject();
-					} else {
-						deferred.resolve();
+					if(err) {
+						reject();
 					}
 
+					subdb.api.download_subtitle(hash, language, directory + pathNode.sep + regex.exec(filename)[1]+'.srt', function(err, res) {
+
+						if(err || !res) {
+							reject();
+						} else {
+							resolve();
+						}
+
+					});
+
 				});
-
 			});
-		});
 
-		return deferred.promise;
+		});
 
 	};
 

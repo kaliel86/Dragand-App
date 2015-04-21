@@ -27,39 +27,39 @@ daw.service('theTvDbService', function($q, configService) {
 	 */
 	that.getImdbIdAndPoster = function(name) {
 
-		var deferred 	= $q.defer();
-
-		var returnInfo  = {
+		var returnInfo = {
 			IMDB_ID: null,
-			Poster: null
+			Poster : null
 		};
 
-		tvdb.getSeries(name, function(err, response) {
+		return $q(function(resolve) {
 
-			if(response && typeof(response[0]) !== 'undefined'){
+			tvdb.getSeries(name, function(err, response) {
 
-				returnInfo['IMDB_ID'] = response[0]['IMDB_ID'];
+				if(response && typeof(response[0]) !== 'undefined'){
 
-				tvdb.getBanners(response[0]['id']).then(function(response) {
+					returnInfo['IMDB_ID'] = response[0]['IMDB_ID'];
 
-					for(var i in response){
-						if(response[i]['BannerType'] === 'poster') {
-							returnInfo['Poster'] = URL+response[i]['BannerPath'];
-							break;
+					tvdb.getBanners(response[0]['id']).then(function(response) {
+
+						for(var i in response){
+							if(response[i]['BannerType'] === 'poster') {
+								returnInfo['Poster'] = URL+response[i]['BannerPath'];
+								break;
+							}
 						}
-					}
 
-					deferred.resolve(returnInfo);
+						resolve(returnInfo);
 
-				});
+					});
 
-			} else {
-				deferred.resolve(returnInfo);
-			}
+				} else {
+					resolve(returnInfo);
+				}
+
+			});
 
 		});
-
-		return deferred.promise;
 
 	};
 

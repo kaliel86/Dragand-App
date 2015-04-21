@@ -30,37 +30,37 @@ daw.service('yifyService', function($q, $http) {
 	 */
 	that.get = function (imdbId, language, filename, path) {
 
-		var deferred = $q.defer();
+		return $q(function(resolve, reject) {
 
-		$http.get(URL+imdbId).then(function(result) {
+			$http.get(URL+imdbId).then(function(result) {
 
-			if(result && typeof(result['data']['subs']) !== 'undefined') {
+				if(result && typeof(result['data']['subs']) !== 'undefined') {
 
-				var list 			= result['data']['subs'][imdbId];
-				var languageMapped 	= that.getLanguageMapped(language);
-				var subtitles 		= list[languageMapped];
+					var list 			= result['data']['subs'][imdbId];
+					var languageMapped 	= that.getLanguageMapped(language);
+					var subtitles 		= list[languageMapped];
 
-				if(typeof(subtitles) !== 'undefined'){
-					var url = that.getLink(subtitles);
+					if(typeof(subtitles) !== 'undefined'){
+						var url = that.getLink(subtitles);
 
-					that.download(DOWNLOAD+url, path, filename).then(function() {
-						deferred.resolve();
-					}).catch(function() {
-						deferred.reject();
-					});
+						that.download(DOWNLOAD+url, path, filename).then(function() {
+							resolve();
+						}).catch(function() {
+							reject();
+						});
+
+					} else {
+						reject();
+					}
 
 				} else {
-					deferred.reject();
+					reject();
 				}
+			}).catch(function() {
+				reject();
+			});
 
-			} else {
-				deferred.reject();
-			}
-		}).catch(function() {
-			deferred.reject();
 		});
-
-		return deferred.promise;
 
 	};
 
@@ -127,22 +127,24 @@ daw.service('yifyService', function($q, $http) {
 	 */
 	that.download = function (url, directory, filename) {
 
-		var deferred 	= $q.defer();
-		var regex 		= /(.*)\.[^.]+$/;
+		return $q(function(resolve, reject) {
 
-		new download({mode: '755', extract: true})
-			.get(url)
-			.dest(directory)
-			.rename(regex.exec(filename)[1] + '.srt')
-			.run(function (err, files) {
-				if(err !== 'null') {
-					deferred.resolve();
-				} else {
-					deferred.reject();
-				}
-			});
+			var regex 		= /(.*)\.[^.]+$/;
 
-		return deferred.promise;
+			new download({mode: '755', extract: true})
+				.get(url)
+				.dest(directory)
+				.rename(regex.exec(filename)[1] + '.srt')
+				.run(function (err, files) {
+					if(err !== 'null') {
+						resolve();
+					} else {
+						reject();
+					}
+				});
+
+		});
+
 	};
 
 	/**

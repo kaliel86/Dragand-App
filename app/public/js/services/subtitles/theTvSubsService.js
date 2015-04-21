@@ -31,85 +31,84 @@ daw.service('theTvSubsService', function($q, fileInfosService) {
 	 */
 	that.get = function(fileName, serieName, episode, season, language, releaseGroup, directory) {
 
-		var deferred = $q.defer();
+		return $q(function(resolve, reject) {
 
-		tvsubs.search({query:serieName}).then(function(data){
+			tvsubs.search({query:serieName}).then(function(data){
 
-		    if(data && typeof(data[0]) !== 'undefined') {
+				if(data && typeof(data[0]) !== 'undefined') {
 
-		    	var value = data[0]['value'];
+					var value = data[0]['value'];
 
-		    	tvsubs.episode({path:"/tv/"+value+"/season-"+season+"/episode-"+episode+"/"}).then(function(result){
+					tvsubs.episode({path:"/tv/"+value+"/season-"+season+"/episode-"+episode+"/"}).then(function(result){
 
-		    		if(result) {
+						if(result) {
 
-		    			var episodes 	   = result;
-		    			var languageMapped = that.getLanguageMapped(language);
-		    			var i 			   = episodes['list'].length;
+							var episodes 	   = result;
+							var languageMapped = that.getLanguageMapped(language);
+							var i 			   = episodes['list'].length;
 
-		    			// Recursive method
-		    			getUrl(i - 1);
+							// Recursive method
+							getUrl(i - 1);
 
-		    			function getUrl(i) {
+							function getUrl(i) {
 
-		    				if(i == 0) {
-		    					deferred.reject();
-		    				}
+								if(i == 0) {
+									reject();
+								}
 
-		    				if(i != 0) {
+								if(i != 0) {
 
-		    					if(episodes['list'][i]['lang'] == languageMapped) {
+									if(episodes['list'][i]['lang'] == languageMapped) {
 
-		    						var pathEpisode = episodes['list'][i]['path'];
-		    						var title 		= episodes['list'][i]['title'];
+										var pathEpisode = episodes['list'][i]['path'];
+										var title 		= episodes['list'][i]['title'];
 
-			    					fileInfosService.parse(fileName).then(function(fileParse) {
+										fileInfosService.parse(fileName).then(function(fileParse) {
 
-			    						if(releaseGroup == fileParse['releaseGroup']){
+											if(releaseGroup == fileParse['releaseGroup']){
 
-			    							tvsubs.subtitle({path:pathEpisode}).then(function(url){
+												tvsubs.subtitle({path:pathEpisode}).then(function(url){
 
-			    								that.download(url['path'], directory, fileName).then(function(){
-			    									deferred.resolve();
-			    								}).catch(function(){
-			    									deferred.reject();
-			    								});
+													that.download(url['path'], directory, fileName).then(function(){
+														resolve();
+													}).catch(function(){
+														reject();
+													});
 
-											});
+												});
 
-			    						} else {
-			    							getUrl(i-1);
-			    						}
-			    					
-			    					});
+											} else {
+												getUrl(i-1);
+											}
 
-		    					} else {
-									getUrl(i-1);
-		    					}
-		    					
-		    				}
-		    				
-		    			}
+										});
 
-		    		} else {
-		    			deferred.reject();
-		    		}
+									} else {
+										getUrl(i-1);
+									}
 
-				}).catch(function(){
-					deferred.reject();
-				});
+								}
+
+							}
+
+						} else {
+							reject();
+						}
+
+					}).catch(function(){
+						reject();
+					});
 
 
-		    } else {
-		    	deferred.reject();
-		    }
-		
-		}).catch(function(err){
-			deferred.reject();
+				} else {
+					reject();
+				}
+
+			}).catch(function(){
+				reject();
+			});
+
 		});
-
-
-		return deferred.promise;
 
 	};
 
@@ -151,22 +150,24 @@ daw.service('theTvSubsService', function($q, fileInfosService) {
 	 */
 	that.download = function (url, directory, filename) {
 
-		var deferred 	= $q.defer();
-		var regex 		= /(.*)\.[^.]+$/;
+		return $q(function(resolve, reject) {
 
-		new download({mode: '755', extract: true})
-			.get(url)
-			.dest(directory)
-			.rename(regex.exec(filename)[1] + '.srt')
-			.run(function (err, files) {
-				if(err !== 'null') {
-					deferred.resolve();
-				} else {
-					deferred.reject();
-				}
-			});
+			var regex 		= /(.*)\.[^.]+$/;
 
-		return deferred.promise;
+			new download({mode: '755', extract: true})
+				.get(url)
+				.dest(directory)
+				.rename(regex.exec(filename)[1] + '.srt')
+				.run(function (err, files) {
+					if(err !== 'null') {
+						resolve();
+					} else {
+						reject();
+					}
+				});
+
+		});
+
 	};
 
 	/**
