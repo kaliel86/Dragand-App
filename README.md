@@ -21,6 +21,15 @@ Create by 3 students at Hetic.net during free time.
 * GulpJS
 * SCSS
 
+#### INSTALLATION :
+```shell
+npm i -g gulp bower
+npm i && bower install
+gulp script
+gulp style
+gulp serve
+```
+
 #### LICENCE :  **GNU GPL V3**
 
 #### Because we love watch movies and series with subtitles
