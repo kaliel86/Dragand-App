@@ -1,12 +1,12 @@
 {
-  "name": "DragAndWatch",
+  "name": "Dragand",
   "version": "1.0.0",
   "license": "GNU GPL",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "app/vendor",
+    "vendor",
     "test",
     "tests"
   ],

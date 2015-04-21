@@ -31,10 +31,10 @@ node_modules/*
 .idea/
 
 # APP
-app/public/css/
-app/vendor/*
-app/public/js/app.min.js
-!app/vendor/GALocalStorage.js
+public/css/
+vendor/*
+public/js/app.min.js
+!vendor/GALocalStorage.js
 
 # NODE WEBKIT
 build/*

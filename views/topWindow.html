@@ -1,0 +1,26 @@
+<div id="top-window" ng-controller="topWindowController">
+	
+	<!-- BTN for manipulate size of the app -->
+	<ul id="buttons">
+		<li id="close-btn" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
+			<span>&times;</span>
+		</li>
+		<li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ 'MENU.TOP.MINIMIZE' | translate }}">
+			<span>&ndash;</span>
+		</li>
+		<li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ 'MENU.TOP.MAXIMIZE' | translate }}">
+			<span>+</span>
+		</li>
+	</ul>
+
+	<!-- APP Name -->
+	<h1>{{ "COMMON.NAME_APP" | translate }}</h1>
+
+	<!-- UPDATE ICON -->
+	<!-- TODO Test it -->
+	<div id="update" ng-click="update()" ng-class="{'available' : newVersionAvailable}">
+		<div class="icon-update"></div>
+		<div id="update-indicator"></div>
+	</div>
+	
+</div>

@@ -1,0 +1,171 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Montserrat-Light.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Montserrat-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Montserrat-Light.svg#c152625b71562a7bb7b752375273b2d5') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  200;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/Montserrat-Regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/Montserrat-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/Montserrat-Regular.svg#95d90f2cd2aa64bdfee0e9f34c516e71') format('svg'); /* Legacy iOS */
+
+    font-style:   normal;
+    font-weight:  400;
+}
+
+
+@font-face {
+    font-family: 'icomoon';
+    src:url('../fonts/icomoon.eot?u914mn');
+    src:url('../fonts/icomoon.eot?#iefixu914mn') format('embedded-opentype'),
+    url('../fonts/icomoon.woff?u914mn') format('woff'),
+    url('../fonts/icomoon.ttf?u914mn') format('truetype'),
+    url('../fonts/icomoon.svg?u914mn#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-cross3:before {
+    content: "\e616";
+}
+
+.icon-movie:before {
+    content: "\e617";
+}
+
+.icon-play:before {
+    content: "\e618";
+}
+
+.icon-fail:before {
+    content: "\e619";
+}
+
+.icon-success:before {
+    content: "\e61a";
+}
+
+.icon-cross:before {
+    content: "\e603";
+}
+
+.icon-drop:before {
+    content: "\e604";
+}
+
+.icon-update:before {
+    content: "\e605";
+}
+
+.icon-chevron-small-down:before {
+    content: "\e61c";
+}
+
+.icon-controller-play:before {
+    content: "\e606";
+}
+
+.icon-trash:before {
+    content: "\e600";
+}
+
+.icon-triangle-right:before {
+    content: "\e607";
+}
+
+.icon-attachment:before {
+    content: "\e608";
+}
+
+.icon-cog:before {
+    content: "\e601";
+}
+
+.icon-cross2:before {
+    content: "\e609";
+}
+
+.icon-drop2:before {
+    content: "\e60a";
+}
+
+.icon-home:before {
+    content: "\e61b";
+}
+
+.icon-info-with-circle:before {
+    content: "\e602";
+}
+
+.icon-circle:before {
+    content: "\e602";
+}
+
+.icon-info:before {
+    content: "\e60b";
+}
+
+.icon-switch:before {
+    content: "\e60c";
+}
+
+.icon-thumbs-down:before {
+    content: "\e60d";
+}
+
+.icon-thumbs-up:before {
+    content: "\e60e";
+}
+
+.icon-ticket:before {
+    content: "\e60f";
+}
+
+.icon-time-slot:before {
+    content: "\e610";
+}
+
+.icon-tools:before {
+    content: "\e611";
+}
+
+.icon-traffic-cone:before {
+    content: "\e612";
+}
+
+.icon-typing:before {
+    content: "\e613";
+}
+
+.icon-users:before {
+    content: "\e614";
+}
+
+.icon-video:before {
+    content: "\e615";
+}
+

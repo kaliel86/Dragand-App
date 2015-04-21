@@ -1,0 +1,51 @@
+{
+  "COMMON":{
+    "NAME_APP":"DRAGAND"
+  },
+  "MENU":{
+    "BOTTOM":{
+      "SETTINGS":"Paramètres",
+      "INFORMATION":"Information"
+    },
+    "TOP":{
+      "CLOSE":"Fermer",
+      "MINIMIZE":"Minimiser",
+      "MAXIMIZE":"Maximiser"
+    }
+  },
+  "NOTIFICATION": {
+    "UPDATE_ON": {
+      "TITLE": "Mise à jour disponible",
+      "CONTENT": "Rendez-vous sur le site internet pour télécharger la nouvelle version"
+    },
+    "UPDATE_OFF": {
+      "TITLE": "Aucune mise à jour",
+      "CONTENT": "Vous serez averti(e) lorsqu'une mise à jour sera disponible"
+    },
+    "SUB_DONE": {
+      "TITLE": "Téléchargement fini",
+      "CONTENT": "Bon film :)"
+    }
+  },
+  "HOME":{
+    "DRAG_AND_DROP":"DRAG AND DROP",
+    "OR":"Ou parcourir vos",
+    "FILES":"fichiers",
+    "WANT_TO_PLAY_IT":"Envie de lancer le film ?",
+    "PRESS_BTN":"Appuyez sur la touche ALT pour lancer VLC"
+  },
+  "INFORMATION":{
+    "THE_PROJECT":"Le projet",
+    "THE_PROJECT_CONTENT":"DragAndWatch est un projet open source créé par deux développeurs et un designer fans de séries souhaitant obtenir le plus simplement possible leurs sous-titres.",
+    "TEAM":"L'équipe",
+    "DEVELOPER":"Développeur",
+    "DESIGNER":"Designer",
+    "CREDITS":"Crédits"
+  },
+  "SETTINGS": {
+    "AUTOPLAY": "Lancer VLC au drop",
+    "LANGUAGES": "Sous-titres par défaut",
+    "NOTIFICATION": "Notifications",
+    "LANGUAGES_APP": "Langue par défaut"
+  }
+}

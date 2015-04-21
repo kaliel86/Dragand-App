@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" ng-app="daw">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag And Watch</title>
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="public/css/style.min.css"/>
+</head>
+<body>
+
+	<top-window></top-window>
+
+	<div ui-view></div>
+
+	<bottom-window></bottom-window>
+
+    <!-- JAVASCRIPT -->
+    <!-- build:js app.min.js -->
+    <script src="vendor/angular/angular.min.js"></script>
+    <script src="vendor/angular-animate/angular-animate.min.js"></script>
+    <script src="vendor/greensock/src/minified/TimelineMax.min.js"></script>
+    <script src="vendor/greensock/src/minified/TweenMax.min.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="vendor/angular-translate/angular-translate.min.js"></script>
+    <script src="vendor/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+    <script src="vendor/GALocalStorage.js"></script>
+
+    <!-- APP -->
+    <script src="public/js/app.js"></script>
+
+	<!-- CONFIG -->
+    <script src="public/js/config/config.js"></script>
+
+	<!-- CONTROLLERS -->
+    <script src="public/js/controllers/dragController.js"></script>
+    <script src="public/js/controllers/topWindowController.js"></script>
+    <script src="public/js/controllers/settingsController.js"></script>
+
+    <!-- FILTERS -->
+    <script src="public/js/filters/capitalizeFilter.js"></script>
+    <script src="public/js/filters/cutFilter.js"></script>
+    <script src="public/js/filters/numberFilter.js"></script>
+
+	<!-- SERVICES -->
+    <script src="public/js/services/settingsService.js"></script>
+    <script src="public/js/services/configService.js"></script>
+    <script src="public/js/services/rulesService.js"></script>
+    <script src="public/js/services/logService.js"></script>
+    <script src="public/js/services/playerService.js"></script>
+    <script src="public/js/services/fileInfosService.js"></script>
+    <script src="public/js/services/imdbService.js"></script>
+    <script src="public/js/services/checkUpdateService.js"></script>
+    <script src="public/js/services/subtitlesV2Service.js"></script>
+    <script src="public/js/services/translateService.js"></script>
+    <script src="public/js/services/notificationService.js"></script>
+    <script src="public/js/services/guiService.js"></script>
+    <script src="public/js/services/subtitles/yifyService.js"></script>
+    <script src="public/js/services/subtitles/openSubtitlesService.js"></script>
+    <script src="public/js/services/subtitles/theSubdbService.js"></script>
+    <script src="public/js/services/subtitles/theTvDbService.js"></script>
+    <script src="public/js/services/subtitles/betaseriesService.js"></script>
+    <script src="public/js/services/subtitles/theTvSubsService.js"></script>
+
+	<!-- DIRECTIVES -->
+	<script src="public/js/directives/topWindowDirective.js"></script>
+	<script src="public/js/directives/bottomWindowDirective.js"></script>
+	<script src="public/js/directives/droppableDirective.js"></script>
+    <script src="public/js/directives/centeredDirective.js"></script>
+    <script src="public/js/directives/inputFileDirective.js"></script>
+    <script src="public/js/directives/openDirective.js"></script>
+
+    <script>
+        ga_storage._setAccount('UA-61669451-1');
+        ga_storage._trackPageview('/index.html');
+    </script>
+    <!-- endbuild -->
+
+    <!-- VIEWS -->
+    <script src="views/dist/bottomWindow.js"></script>
+    <script src="views/dist/home.js"></script>
+    <script src="views/dist/information.js"></script>
+    <script src="views/dist/settings.js"></script>
+    <script src="views/dist/topWindow.js"></script>
+
+</body>
+</html>
