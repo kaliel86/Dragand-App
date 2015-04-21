@@ -10,6 +10,7 @@ var gulp 				= require('gulp');
 	uglify				= require('gulp-uglify'),
 	gulpif				= require('gulp-if'),
 	ngAnnotate			= require('gulp-ng-annotate'),
+	ngHtml2Js 			= require("gulp-ng-html2js"),
 	path				= {
 		'public': 'app/public'
 	},
@@ -53,6 +54,18 @@ gulp.task('script', function() {
 		.pipe(useref())
 		.pipe(gulp.dest('app/public/js'));
 
+});
+
+/**
+ * Add in Cache all view
+ */
+gulp.task('view', function() {
+	gulp.src('app/views/*.html')
+		.pipe(ngHtml2Js({
+			moduleName: "daw",
+			prefix: "views/"
+		}))
+		.pipe(gulp.dest("app/views/dist"));
 });
 
 /**
