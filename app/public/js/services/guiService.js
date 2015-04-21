@@ -24,8 +24,10 @@ daw.service('guiService', function($rootScope) {
 	 *
 	 */
 	that.init = function() {
-		nativeMenuBar.createMacBuiltin("Dragand");
-		win.menu = nativeMenuBar;
+		if(process.platform === "darwin") {
+			nativeMenuBar.createMacBuiltin("Dragand");
+			win.menu = nativeMenuBar;
+		}
 		that.listenResize();
 	};
 

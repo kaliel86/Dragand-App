@@ -110,9 +110,10 @@ gulp.task('build', ['clean'], function() {
 			'./app/index.html',
 			'./app/views/**/*',
 			'./app/public/**/*',
-			'./app/vendor/**/*'
-		].concat(modules),
+			'./app/node_modules/**/*'
+		],
 		macIcns: 'app/public/img/logoApp.icns',
+		winIco: 'app/public/img/logoApp.ico',
 		platforms: ['win', 'osx'],
 		version: '0.12.1'
 	});
@@ -126,7 +127,7 @@ gulp.task('build', ['clean'], function() {
  * Task for launch the application
  */
 gulp.task('serve', shell.task([
-	'./node_modules/nw/bin/nw .'
+	'./node_modules/nw/bin/nw ./app'
 ]));
 
 /**
