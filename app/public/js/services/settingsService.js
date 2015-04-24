@@ -21,9 +21,8 @@ daw.service('settingsService', function(configService, logService){
 	 */
 	that.init = function() {
 
-		if(!localStorage['autoplay'] && !localStorage['player'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage'] && !localStorage['rules']) {
+		if(!localStorage['autoplay'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage'] && !localStorage['rules']) {
 			that.set('autoplay', false);
-			that.set('player', 'vlc');
 			that.set('language', 'en');
 			that.set('appLanguage', configService.get('defaultLanguage'));
 			that.set('notification', true);
@@ -45,7 +44,6 @@ daw.service('settingsService', function(configService, logService){
 	that.consoleSettings = function() {
 		logService.success('============[SETTINGS]============');
 		logService.info('Autoplay : ' + that.get('autoplay'));
-		logService.info('Player : ' + that.get('player'));
 		logService.info('language : ' + that.get('language'));
 		logService.info('AppLanguage : ' + that.get('appLanguage'));
 		logService.info('Notification : ' + that.get('notification'));
