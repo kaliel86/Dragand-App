@@ -12,7 +12,7 @@ module.run(['$templateCache', function($templateCache) {
     '		<li class="settings-el item-stag-anim">\n' +
     '			<p title="Play video when sub is founded">{{ "SETTINGS.AUTOPLAY" | translate }}</p>\n' +
     '			<div class="switchCtn"> <!-- TODO Sometimes don\'t work ... I don\'t know why -->\n' +
-    '				<input ng-checked="autoplay == \'true\'" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>\n' +
+    '				<input ng-checked="autoplay" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>\n' +
     '				<label for="playSwitch">&nbsp;</label>\n' +
     '			</div>\n' +
     '		</li>\n' +
@@ -20,7 +20,7 @@ module.run(['$templateCache', function($templateCache) {
     '		<li class="settings-el item-stag-anim">\n' +
     '			<p title="Play video when sub is founded">{{ "SETTINGS.NOTIFICATION" | translate }}</p>\n' +
     '			<div class="switchCtn"> <!-- TODO Sometimes don\'t work ... I don\'t know why -->\n' +
-    '				<input ng-checked="notification == \'true\'" type="checkbox" id="notificationSwitch" name="notificationSwitch" class="switch" ng-model="notification"/>\n' +
+    '				<input ng-checked="notification" type="checkbox" id="notificationSwitch" name="notificationSwitch" class="switch" ng-model="notification"/>\n' +
     '				<label for="notificationSwitch">&nbsp;</label>\n' +
     '			</div>\n' +
     '		</li>\n' +
