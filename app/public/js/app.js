@@ -17,8 +17,10 @@ var url 		  	= require("url");
 var pathNode	  	= require("path");
 var download 		= require("download");
 var SubDb 			= require("subdb");
-var tvsubs 			= require('tv-subs')();
+var tvsubs 			= require("tv-subs")();
 var TVDBClient 		= require("node-tvdb");
+var childProcess	= require("child_process");
+var registry 		= require('windows-no-runnable').registry;
 
 /*
  * Init APP

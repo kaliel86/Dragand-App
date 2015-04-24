@@ -33,6 +33,10 @@
     "SUB_DONE": {
       "TITLE": "Téléchargement fini",
       "CONTENT": "Bon film :)"
+    },
+    "SUB_NOT_VLC": {
+      "TITLE": "Erreur",
+      "CONTENT": "Vous devez avoir VLC pour pouvoir lancer la vidéo"
     }
   },
   "HOME":{

@@ -8,7 +8,7 @@
  * Service use for the player (VLC)
  *
  */
-daw.service('playerService', function(settingsService) {
+daw.service('playerService', function(notificationService) {
 
 	var that = this;
 
@@ -24,14 +24,55 @@ daw.service('playerService', function(settingsService) {
 	 */
 	that.play = function(path) {
 
-		var player = settingsService.get('player');
+		var platform = process.platform;
+		var vlcArgs  = '-q --play-and-exit';
 
-		if(!player) {
-			open(encodeURI(path));
+		if(platform === "darwin") { // MAC
+
+			var root 	 = '/Applications/VLC.app/Contents/MacOS/VLC';
+			var home 	 = (process.env.HOME || '') + root;
+
+			var vlc = childProcess.exec('vlc ' + vlcArgs + ' ' + path + ' || ' + root + ' ' + vlcArgs + ' ' + path + ' || ' + home + ' ' + vlcArgs + ' ' + path, function (error, stdout, stderror) {
+				if (error) {
+					notificationService.create($filter('translate')('NOTIFICATION.NOT_VLC.TITLE'), $filter('translate')('NOTIFICATION.NOT_VLC.CONTENT'));
+					process.exit(0)
+				}
+			});
+
+		} else if(platform === "win32") { // WIN
+
+			var key;
+
+			if (process.arch === 'x64') {
+				try {
+					key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC')
+				} catch (e) {
+					try {
+						key = registry('HKLM/Software/VideoLAN/VLC')
+					} catch (err) {}
+				}
+			} else {
+				try {
+					key = registry('HKLM/Software/VideoLAN/VLC')
+				} catch (err) {
+					try {
+						key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC')
+					} catch (e) {}
+				}
+			}
+
+			if (key) {
+				var vlcPath = key['InstallDir'].value + pathNode.sep + 'vlc';
+				vlcArgs 	= vlcArgs.split(' ');
+				vlcArgs.unshift(path);
+				childProcess.execFile(vlcPath, vlcArgs);
+			} else {
+				notificationService.create($filter('translate')('NOTIFICATION.NOT_VLC.TITLE'), $filter('translate')('NOTIFICATION.NOT_VLC.CONTENT'));
+			}
+
 		} else {
-			open(encodeURI(path), player);
+			// TODO Support Linux ? :)
 		}
 
-	};
-
+	}
 });
