@@ -64,6 +64,7 @@ body, html {
     cursor: default;
     position : relative;
     &::before {
+        content :'';
         position : absolute;
         display : block;
         top : 0;
