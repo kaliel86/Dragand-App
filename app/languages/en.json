@@ -22,6 +22,14 @@
       "TITLE": "No update available",
       "CONTENT": "You will be notified when an update will be ready"
     },
+    "SUB_NOT_FIND": {
+      "TITLE": "No subtitles find",
+      "CONTENT": "We are sorry but we haven't find subtitles"
+    },
+    "SUB_FIND_AND_NOT": {
+      "TITLE": "Subtitles missing",
+      "CONTENT": "Some subtitles have not been found"
+    },
     "SUB_DONE": {
       "TITLE": "Download complete",
       "CONTENT": "Enjoy your movie :)"

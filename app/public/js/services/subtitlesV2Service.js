@@ -30,7 +30,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 		that.consoleEntry(name, path, directory);
 
-		return $q(function(resolve) {
+		return $q(function(resolve, reject) {
 
 			$rootScope.view = 'list';
 
@@ -51,6 +51,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 					that.informationSeries(name, path, directory, result, idCurrentList).then(function() {
 						that.getSubtitlesSeries(name, path, directory, result, $rootScope.list[idCurrentList]['imdbId'], idCurrentList).then(function(){
 							resolve();
+						}).catch(function(){
+							reject();
 						});
 					});
 				} else {

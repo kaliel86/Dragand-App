@@ -22,6 +22,14 @@
       "TITLE": "Aucune mise à jour",
       "CONTENT": "Vous serez averti(e) lorsqu'une mise à jour sera disponible"
     },
+    "SUB_NOT_FIND": {
+      "TITLE": "Aucun sous-titre",
+      "CONTENT": "Aucun sous-titre trouvé"
+    },
+    "SUB_FIND_AND_NOT": {
+      "TITLE": "Téléchargement fini",
+      "CONTENT": "Certain sous-titres n'ont pas été trouvé"
+    },
     "SUB_DONE": {
       "TITLE": "Téléchargement fini",
       "CONTENT": "Bon film :)"

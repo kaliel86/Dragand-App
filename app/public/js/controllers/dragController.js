@@ -39,6 +39,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 			item.file(function() {
 				subtitlesV2Service.get(entry.name, entry.path, entry.directory, $rootScope.list.length).then(function() {
 					$scope.count++;
+				}).catch(function() {
+					$scope.count++;
 				});
 			});
 
@@ -156,7 +158,37 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 				logService.success('VLC launched and play the video');
 			}
 
-			notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
+			if($rootScope.list.length == 1) {
+				var status = $rootScope.list[0]['status'];
+
+				if(status == 'fail') {
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_NOT_FIND.TITLE'), $filter('translate')('NOTIFICATION.SUB_NOT_FIND.CONTENT'));
+				} else {
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
+				}
+			} else {
+				var doneStatus = false,
+					failStatus = false;
+
+				for(var i in $rootScope.list){
+					if($rootScope.list[i]['status'] == 'done'){
+						doneStatus = true;
+					}
+					if($rootScope.list[i]['status'] == 'fail'){
+						failStatus = true;
+					}
+				}
+
+				if(doneStatus && !failStatus){
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
+				} else if (doneStatus && failStatus){
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_FIND_AND_NOT.TITLE'), $filter('translate')('NOTIFICATION.SUB_FIND_AND_NOT.CONTENT'));
+				} else {
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_NOT_FIND.TITLE'), $filter('translate')('NOTIFICATION.SUB_NOT_FIND.CONTENT'));
+				}
+
+			}
+
 		}
 	});
 
