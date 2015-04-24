@@ -30,6 +30,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 		elPath = elPath || "";
 
+		$scope.count = 0;
+
 		var item = entry.item;
 
 		if (item.isFile && $scope.checkExtension(entry.name)) {
