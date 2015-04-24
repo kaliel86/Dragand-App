@@ -12,7 +12,6 @@
   },
   "window": {
     "title": "Dragand",
-    "icon": "public/img/logoApp.ico",
     "toolbar": false,
     "frame": false,
     "min_width": 320,

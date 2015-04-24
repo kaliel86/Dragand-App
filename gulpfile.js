@@ -105,12 +105,7 @@ gulp.task('build', ['clean'], function() {
 		buildDir: 'build',
 		macZip: true,
 		files: [
-			'./app/package.json',
-			'./app/languages/**/*',
-			'./app/index.html',
-			'./app/views/**/*',
-			'./app/public/**/*',
-			'./app/node_modules/**/*'
+			'./app/**/*'
 		],
 		macIcns: 'app/public/img/logoApp.icns',
 		winIco: 'app/public/img/logoApp.ico',
