@@ -26,7 +26,7 @@ daw.service('settingsService', function(configService, logService){
 			that.set('player', 'vlc');
 			that.set('language', 'en');
 			that.set('appLanguage', configService.get('defaultLanguage'));
-			that.set('notifiction', true);
+			that.set('notification', true);
 			that.set('rules', 'notAccepted');
 		}
 		
@@ -62,7 +62,9 @@ daw.service('settingsService', function(configService, logService){
 	 *
 	 */
 	that.get = function(key) {
-		return localStorage[key];
+		if (localStorage.getItem(key)!=null) {
+			return JSON.parse(localStorage.getItem(key));
+		}
 	};
 
 	/**
@@ -77,7 +79,7 @@ daw.service('settingsService', function(configService, logService){
 	 *
 	 */
 	that.set = function(key, value) {
-		localStorage[key] = value;
+		localStorage.setItem(key, JSON.stringify(value));
 	};
 
 });
