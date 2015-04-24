@@ -7,10 +7,10 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('views/topWindow.html',
     '<div id="top-window" ng-controller="topWindowController">\n' +
-    '    <div class="macVersion" ng-class="{\'windowsVersion\' : true}">\n' +
+    '    <div class="macVersion" ng-class="::{\'windowsVersion\' : platform == \'win\'}">\n' +
     '\n' +
     '        <!-- BTN for manipulate size of the app Mac version-->\n' +
-    '        <ul id="buttons" ng-if="false">\n' +
+    '        <ul id="buttons" ng-if="::platform == \'darwin\'">\n' +
     '            <li id="close-btn" ng-click="appWindow.close()" title="{{ \'MENU.TOP.CLOSE\' | translate }}">\n' +
     '                <span>&times;</span>\n' +
     '            </li>\n' +
@@ -23,7 +23,7 @@ module.run(['$templateCache', function($templateCache) {
     '        </ul>\n' +
     '\n' +
     '        <!-- BTN for manipulate size of the app Windows version-->\n' +
-    '        <ul id="buttons" ng-if="true">\n' +
+    '        <ul id="buttons" ng-if="::platform == \'win\'">\n' +
     '            <li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ \'MENU.TOP.MINIMIZE\' | translate }}">\n' +
     '                <span>&ndash;</span>\n' +
     '            </li><!-- \n' +

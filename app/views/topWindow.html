@@ -1,8 +1,8 @@
 <div id="top-window" ng-controller="topWindowController">
-    <div class="macVersion" ng-class="{'windowsVersion' : true}">
+    <div class="macVersion" ng-class="::{'windowsVersion' : platform == 'win'}">
 
         <!-- BTN for manipulate size of the app Mac version-->
-        <ul id="buttons" ng-if="false">
+        <ul id="buttons" ng-if="::platform == 'darwin'">
             <li id="close-btn" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
                 <span>&times;</span>
             </li>
@@ -15,7 +15,7 @@
         </ul>
 
         <!-- BTN for manipulate size of the app Windows version-->
-        <ul id="buttons" ng-if="true">
+        <ul id="buttons" ng-if="::platform == 'win'">
             <li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ 'MENU.TOP.MINIMIZE' | translate }}">
                 <span>&ndash;</span>
             </li><!-- 
