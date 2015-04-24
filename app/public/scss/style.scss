@@ -86,6 +86,7 @@ body, html {
         transform : translateY(-50px);
         transition: all 0.5s ease;
     }
+
     #buttons {
         list-style: none;
         margin: 0;
@@ -117,9 +118,11 @@ body, html {
                 cursor: pointer;
                 transition: opacity 0.3s ease;
             }
+            &:first-child {
+                margin-left : 0;
+            }
         }
         #close-btn {
-            margin-left: 0;
             background: #ff6052;
             transition : transform 0.2s ease;
             span {
@@ -191,6 +194,21 @@ body, html {
             #update-indicator {
                 display: block;
             }
+        }
+    }
+
+    .windowsVersion {
+
+        #buttons {
+            right : 15px;
+            left : auto;
+            li {
+                overflow : visible;
+            }
+        }
+        #update {
+            right : auto;
+            left : 17px;
         }
     }
 }
