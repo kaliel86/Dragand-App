@@ -8,7 +8,7 @@
  * Service use for the player (VLC)
  *
  */
-daw.service('playerService', function(notificationService) {
+daw.service('playerService', function($filter, notificationService) {
 
 	var that = this;
 
@@ -32,7 +32,7 @@ daw.service('playerService', function(notificationService) {
 			var root 	 = '/Applications/VLC.app/Contents/MacOS/VLC';
 			var home 	 = (process.env.HOME || '') + root;
 
-			var vlc = childProcess.exec('vlc ' + vlcArgs + ' ' + path + ' || ' + root + ' ' + vlcArgs + ' ' + path + ' || ' + home + ' ' + vlcArgs + ' ' + path, function (error, stdout, stderror) {
+			childProcess.exec('vlc ' + vlcArgs + ' ' + path + ' || ' + root + ' ' + vlcArgs + ' ' + path + ' || ' + home + ' ' + vlcArgs + ' ' + path, function (error, stdout, stderror) {
 				if (error) {
 					notificationService.create($filter('translate')('NOTIFICATION.NOT_VLC.TITLE'), $filter('translate')('NOTIFICATION.NOT_VLC.CONTENT'));
 					process.exit(0)
