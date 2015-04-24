@@ -45,18 +45,18 @@ daw.service('playerService', function($filter, notificationService) {
 
 			if (process.arch === 'x64') {
 				try {
-					key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC')
+					key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC');
 				} catch (e) {
 					try {
-						key = registry('HKLM/Software/VideoLAN/VLC')
+						key = registry('HKLM/Software/VideoLAN/VLC');
 					} catch (err) {}
 				}
 			} else {
 				try {
-					key = registry('HKLM/Software/VideoLAN/VLC')
+					key = registry('HKLM/Software/VideoLAN/VLC');
 				} catch (err) {
 					try {
-						key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC')
+						key = registry('HKLM/Software/Wow6432Node/VideoLAN/VLC');
 					} catch (e) {}
 				}
 			}
