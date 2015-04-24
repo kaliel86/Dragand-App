@@ -32,9 +32,10 @@ app/node_modules/*
 .idea/
 
 # APP
-public/css/
-vendor/*
+app/public/css/
+view/dist/
 public/js/app.min.js
+vendor/*
 !vendor/GALocalStorage.js
 
 # NODE WEBKIT
