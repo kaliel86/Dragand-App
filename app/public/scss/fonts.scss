@@ -48,6 +48,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-closeWindows:before {
+    content: "\e61f";
+}
+
+.icon-minWindows:before {
+    content: "\e620";
+}
+
+.icon-zoomWindows:before {
+    content: "\e621";
+}
+
 
 .icon-cross3:before {
     content: "\e616";

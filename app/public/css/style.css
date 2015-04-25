@@ -35,6 +35,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.icon-closeWindows:before {
+  content: "\e61f"; }
+
+.icon-minWindows:before {
+  content: "\e620"; }
+
+.icon-zoomWindows:before {
+  content: "\e621"; }
+
 .icon-cross3:before {
   content: "\e616"; }
 
@@ -640,7 +649,29 @@ body, html {
     right: 15px;
     left: auto; }
     #top-window .windowsVersion #buttons li {
-      overflow: visible; }
+      width: auto;
+      overflow: hidden;
+      border-radius: 0 !important;
+      background: transparent !important;
+      color: white;
+      margin: 0;
+      font-size: 2rem;
+      cursor: pointer;
+      position: absolute; }
+      #top-window .windowsVersion #buttons li:hover {
+        color: #e73e4a !important; }
+    #top-window .windowsVersion #buttons #close-btn {
+      top: 5px;
+      right: -10px;
+      font-size: 2.1rem; }
+    #top-window .windowsVersion #buttons #zoom-btn {
+      top: 5px;
+      right: 9px;
+      font-size: 1.9rem; }
+    #top-window .windowsVersion #buttons #minimize-btn {
+      top: 7px;
+      right: 37px;
+      font-size: 1.9rem; }
   #top-window .windowsVersion #update {
     right: auto;
     left: 17px; }

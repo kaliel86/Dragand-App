@@ -24,14 +24,11 @@ module.run(['$templateCache', function($templateCache) {
     '\n' +
     '        <!-- BTN for manipulate size of the app Windows version-->\n' +
     '        <ul id="buttons" ng-if="::platform == \'win\'">\n' +
-    '            <li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ \'MENU.TOP.MINIMIZE\' | translate }}">\n' +
-    '                <span>&ndash;</span>\n' +
+    '            <li id="minimize-btn" class="icon-minWindows" ng-click="appWindow.minimize()" title="{{ \'MENU.TOP.MINIMIZE\' | translate }}">\n' +
     '            </li><!-- \n' +
-    '         --><li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ \'MENU.TOP.MAXIMIZE\' | translate }}">\n' +
-    '                <span>+</span>\n' +
+    '         --><li id="zoom-btn" class="icon-zoomWindows" ng-click="appWindow.zoom()" title="{{ \'MENU.TOP.MAXIMIZE\' | translate }}">\n' +
     '            </li><!-- \n' +
-    '         --><li id="close-btn" ng-click="appWindow.close()" title="{{ \'MENU.TOP.CLOSE\' | translate }}">\n' +
-    '                <span>&times;</span>\n' +
+    '         --><li id="close-btn" class="icon-closeWindows" ng-click="appWindow.close()" title="{{ \'MENU.TOP.CLOSE\' | translate }}">\n' +
     '            </li>\n' +
     '        </ul>\n' +
     '\n' +

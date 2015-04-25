@@ -16,14 +16,11 @@
 
         <!-- BTN for manipulate size of the app Windows version-->
         <ul id="buttons" ng-if="::platform == 'win'">
-            <li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ 'MENU.TOP.MINIMIZE' | translate }}">
-                <span>&ndash;</span>
+            <li id="minimize-btn" class="icon-minWindows" ng-click="appWindow.minimize()" title="{{ 'MENU.TOP.MINIMIZE' | translate }}">
             </li><!-- 
-         --><li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ 'MENU.TOP.MAXIMIZE' | translate }}">
-                <span>+</span>
+         --><li id="zoom-btn" class="icon-zoomWindows" ng-click="appWindow.zoom()" title="{{ 'MENU.TOP.MAXIMIZE' | translate }}">
             </li><!-- 
-         --><li id="close-btn" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
-                <span>&times;</span>
+         --><li id="close-btn" class="icon-closeWindows" ng-click="appWindow.close()" title="{{ 'MENU.TOP.CLOSE' | translate }}">
             </li>
         </ul>
 
