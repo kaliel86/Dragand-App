@@ -5,6 +5,7 @@
  */
 var path 			= require("path");
 var gui  			= require("nw.gui");
+var win 			= gui.Window.get();
 var pkg 			= require("./package.json");
 var semver 			= require("semver");
 var opensubtitles 	= require("popcorn-opensubtitles");

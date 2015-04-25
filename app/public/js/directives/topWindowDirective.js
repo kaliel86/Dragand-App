@@ -15,24 +15,39 @@ daw.directive('topWindow', function($timeout) {
 
 		link: function($scope, element, attrs) {
 
+			// Animation when user launch app
 			$timeout(function() {
 				angular.element(element[0]).addClass('loaded');
 			}, 100);
 
-			$scope.win = gui.Window.get();
+			// Listen if window in Maximize or not
+			win.on('maximize', function(){
+	            win.isMaximized = true;
+	        });
+
+	        win.on('unmaximize', function(){
+	            win.isMaximized = false;
+	        });
+
+	        // Control the Top BAR
 			$scope.appWindow = {
+				
 				close : function() {
-					$scope.win.close();
+					win.close();
 				},
 
 				minimize : function() {
-					$scope.win.minimize();
+					win.minimize();
 				},
 
 				zoom : function() {
-					$scope.win.show();
-					$scope.win.maximize();
+					if(win.isMaximized){
+                		win.unmaximize();
+					} else {
+                		win.maximize();
+            		}
 				}
+
 			}
 
 		}
