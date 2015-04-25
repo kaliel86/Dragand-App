@@ -7,17 +7,17 @@ try {
 module.run(['$templateCache', function($templateCache) {
   $templateCache.put('views/topWindow.html',
     '<div id="top-window" ng-controller="topWindowController">\n' +
-    '    <div class="macVersion" ng-class="::{\'windowsVersion\' : platform == \'win\'}">\n' +
+    '    <div ng-class="::{\'windowsVersion\' : platform == \'win\'}">\n' +
     '\n' +
     '        <!-- BTN for manipulate size of the app Mac version-->\n' +
     '        <ul id="buttons" ng-if="::platform == \'darwin\'">\n' +
     '            <li id="close-btn" ng-click="appWindow.close()" title="{{ \'MENU.TOP.CLOSE\' | translate }}">\n' +
     '                <span>&times;</span>\n' +
-    '            </li>\n' +
-    '            <li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ \'MENU.TOP.MINIMIZE\' | translate }}">\n' +
+    '            </li><!--\n' +
+    '			--><li id="minimize-btn" ng-click="appWindow.minimize()" title="{{ \'MENU.TOP.MINIMIZE\' | translate }}">\n' +
     '                <span>&ndash;</span>\n' +
-    '            </li>\n' +
-    '            <li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ \'MENU.TOP.MAXIMIZE\' | translate }}">\n' +
+    '            </li><!--\n' +
+    '		--><li id="zoom-btn" ng-click="appWindow.zoom()" title="{{ \'MENU.TOP.MAXIMIZE\' | translate }}">\n' +
     '                <span>+</span>\n' +
     '            </li>\n' +
     '        </ul>\n' +
