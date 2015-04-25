@@ -87,26 +87,16 @@ gulp.task('clean', function() {
 /*
  * Build APP
  */
-gulp.task('build', ['clean'], function() {
+gulp.task('build', ['clean', 'style', 'view', 'script'], function() {
 
 	shell.task('ulimit -n 2560');
-
-	// Find out which modules to include
-	var modules = [];
-	if (!!pkg.dependencies) {
-		modules = Object.keys(pkg.dependencies)
-			.filter(function(m) { return m != 'nodewebkit' })
-			.map(function(m) { return './app/node_modules/'+m+'/**/*' })
-	}
 
 	var nw = new NwBuilder({
 		appName: pkg.window.title,
 		appVersion: pkg.version,
 		buildDir: 'build',
 		macZip: true,
-		files: [
-			'./app/**/*'
-		],
+		files: ['./app/**/*'],
 		macIcns: 'app/public/img/logoApp.icns',
 		winIco: 'app/public/img/logoApp.ico',
 		platforms: ['win', 'osx'],
