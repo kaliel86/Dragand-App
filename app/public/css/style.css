@@ -573,7 +573,8 @@ body, html {
       overflow: hidden;
       -webkit-transform: scale(0);
           -ms-transform: scale(0);
-              transform: scale(0); }
+              transform: scale(0);
+      -webkit-app-region: no-drag; }
       #top-window #buttons li span {
         opacity: 0;
         vertical-align: top;

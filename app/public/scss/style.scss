@@ -125,6 +125,7 @@ html {
             border-radius: 100%;
             overflow: hidden;
             transform: scale(0);
+            -webkit-app-region: no-drag;
             span {
                 opacity: 0;
                 vertical-align: top;
