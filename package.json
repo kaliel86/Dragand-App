@@ -2,6 +2,7 @@
   "name": "Dragand",
   "version": "1.0.0",
   "license": "GNU GPL",
+  "manifestUrl": "https://raw.githubusercontent.com/DragAndWatch/application/master/app/package.json",
   "description": "DragAndWatch is a free desktop application for Mac and PC that allows you to get your favorite subtitles by dragging and dropping your file in the app.",
   "repository": {
     "type": "git",
