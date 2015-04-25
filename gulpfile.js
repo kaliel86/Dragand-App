@@ -87,7 +87,7 @@ gulp.task('clean', function() {
 /*
  * Build APP
  */
-gulp.task('build', ['clean', 'style', 'view', 'script'], function() {
+gulp.task('build', ['clean', 'style', 'view'], function() {
 
 	shell.task('ulimit -n 2560');
 

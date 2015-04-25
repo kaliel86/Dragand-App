@@ -21,12 +21,18 @@ daw.service('settingsService', function(configService, logService){
 	 */
 	that.init = function() {
 
+		if(typeof(that.get('version')) === 'undefined'
+		||(typeof(that.get('version') !== 'undefined') && semver.compare(that.get('version'), pkg['version']) == -1)) { 
+			localStorage.clear();
+		}
+
 		if(!localStorage['autoplay'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage'] && !localStorage['rules']) {
 			that.set('autoplay', false);
 			that.set('language', 'en');
 			that.set('appLanguage', configService.get('defaultLanguage'));
 			that.set('notification', true);
 			that.set('rules', 'notAccepted');
+			that.set('version', pkg['version']);
 		}
 		
 		that.consoleSettings();
