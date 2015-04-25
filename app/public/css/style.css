@@ -658,7 +658,9 @@ body, html {
       margin: 0;
       font-size: 2rem;
       cursor: pointer;
-      position: absolute; }
+      position: absolute;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
       #top-window .windowsVersion #buttons li:hover {
         color: #e73e4a !important; }
     #top-window .windowsVersion #buttons #close-btn {

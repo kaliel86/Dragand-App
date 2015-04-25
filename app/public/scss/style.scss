@@ -224,6 +224,7 @@ html {
                 font-size: 2rem;
                 cursor: pointer;
                 position: absolute;
+                transition: all 0.3s ease;
                 &:hover {
                     color: $red !important;
                 }
