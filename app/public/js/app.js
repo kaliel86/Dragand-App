@@ -22,6 +22,8 @@ var tvsubs 			= require("tv-subs")();
 var TVDBClient 		= require("node-tvdb");
 var childProcess	= require("child_process");
 var registry 		= require('windows-no-runnable').registry;
+var natural			= require('natural');
+var cheerio 		= require('cheerio');
 
 /*
  * Init APP

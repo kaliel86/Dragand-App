@@ -8,7 +8,7 @@
  * Service manage subtitles download
  *
  */
-daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService, theTvSubsService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService, theTvSubsService, addic7edService) {
 
 	var that = this;
 	var languageSubtitles;
@@ -240,10 +240,25 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 						logService.error('Subtitles not found on TheTvSubs');
 
-						// 5. After download change the status to 'fail'
-						$rootScope.list[idCurrentList]['status'] = 'fail';
+						addic7edService.get(fileInfos['series'], languageSubtitles, fileInfos['season'], fileInfos['episodeNumber'], fileInfos['releaseGroup'], name, directory).then(function(){
 
-						reject();
+							logService.success('Subtitles found on Addic7ed');
+
+							// 5. After download change the status to 'done'
+							$rootScope.list[idCurrentList]['status'] = 'done';
+
+							resolve();
+
+						}).catch(function(){
+
+							logService.error('Subtitles not found on Addic7ed');
+
+							// 5. After download change the status to 'fail'
+							$rootScope.list[idCurrentList]['status'] = 'fail';
+
+							reject();
+
+						});
 
 					});
 
