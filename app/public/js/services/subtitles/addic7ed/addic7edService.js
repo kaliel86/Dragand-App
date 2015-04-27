@@ -6,6 +6,7 @@
  *
  * @description
  * Service use for manipulate addic7ed
+ * Show List : http://www.addic7ed.com/ajax_getShows.php
  *
  */
 daw.service('addic7edService', function($q, $http) {
@@ -243,7 +244,7 @@ daw.service('addic7edService', function($q, $http) {
 
 		return $q(function(resolve, reject){
 			new download({mode: '755', extract: true, headers: {
-					referer: 'http://www.addic7ed.com'
+					referer: link
 				}})
 				.get(url)
 				.dest(directory)

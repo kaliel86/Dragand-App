@@ -14,6 +14,7 @@
 * Use OneTimeBinding (Angular 1.3) for improve speed.
 * Use Promiss (Angular 1.3) for improve speed.
 * Design change between Windows / Mac.
+* Add addic7ed
 
 ## 1.0.0 : First version
 

@@ -34,7 +34,7 @@ app/node_modules/*
 # APP
 app/public/css/
 view/dist/
-public/js/app.min.js
+app/public/js/app.min.js
 vendor/*
 
 # NODE WEBKIT

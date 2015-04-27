@@ -8,7 +8,7 @@
  * Service for manage update app
  *
  */
-daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout, notificationService) {
+daw.service('checkUpdateService', function($rootScope, $q, $http, $filter, $timeout, notificationService) {
 
 	var that = this;
 
@@ -24,9 +24,10 @@ daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout,
 	 */
 	that.launch = function() {
 
-		if(testIfNewVersion()) {
+
+		that.testIfNewVersion().then(function() {
 			$rootScope.newVersionAvailable = true;
-		}
+		});
 
 	};
 
@@ -40,14 +41,14 @@ daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout,
 	 */
 	that.update = function() {
 
-		if(testIfNewVersion()) {
+		that.testIfNewVersion().then(function() {
 			notificationService.create($filter('translate')('NOTIFICATION.UPDATE_ON.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_ON.CONTENT'));
 			$timeout(function(){
 				open('http://dragand.watch');
 			}, 2000);
-		} else {
+		}).catch(function() {
 			notificationService.create($filter('translate')('NOTIFICATION.UPDATE_OFF.TITLE'), $filter('translate')('NOTIFICATION.UPDATE_OFF.CONTENT'));
-		}
+		})
 
 	};
 
@@ -59,19 +60,24 @@ daw.service('checkUpdateService', function($rootScope, $http, $filter, $timeout,
 	 * Return true if update are available
 	 *
 	 */
-	var testIfNewVersion = function() {
+	that.testIfNewVersion = function() {
+		
 		var currentVersion = pkg['version'];
 
-		$http.get(pkg['manifestUrl']).then(function(result) {
-			var gitVersion = result['data']['version'];
+		return $q(function(resolve, reject) {
+			$http.get(pkg['manifestUrl']).then(function(result) {
 
-			if(semver.compare(currentVersion, gitVersion) == -1){
-				return true;
-			} else {
-				return false;
-			}
+				var gitVersion = result['data']['version'];
 
+				if(semver.compare(currentVersion, gitVersion) == -1){
+					resolve();
+				} else {
+					reject();
+				}
+
+			});
 		});
+
 	};
 
 });
