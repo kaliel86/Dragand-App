@@ -40,7 +40,7 @@
     },
     "EXTENSION_FAIL": {
       "TITLE": "Erreur",
-      "CONTENT": "Votre fichier ne peut pas être glisser parce que ce n'est pas un film"
+      "CONTENT": "Vous ne pouvez glisser ici que des films !"
     }
   },
   "HOME":{

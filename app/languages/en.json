@@ -40,7 +40,7 @@
     },
     "EXTENSION_FAIL": {
       "TITLE": "Error",
-      "CONTENT": "Your file can't be drag because it's not a movie"
+      "CONTENT": "The dropped file is not a video"
     }
   },
   "HOME":{
