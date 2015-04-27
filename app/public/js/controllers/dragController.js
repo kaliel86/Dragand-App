@@ -87,9 +87,10 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 		// Check if ext is in the const array of the ext list
 		if(config.acceptedFile.indexOf(ext) > -1) {
 			return true;
+		} else {
+			notificationService.create($filter('translate')('NOTIFICATION.EXTENSION_FAIL.TITLE'), $filter('translate')('NOTIFICATION.EXTENSION_FAIL.CONTENT'));
+			return false;
 		}
-
-		return false;
 
 	};
 

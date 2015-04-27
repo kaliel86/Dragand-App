@@ -37,6 +37,10 @@
     "SUB_NOT_VLC": {
       "TITLE": "Error",
       "CONTENT": "You must have VLC for play the video"
+    },
+    "EXTENSION_FAIL": {
+      "TITLE": "Error",
+      "CONTENT": "Your file can't be drag because it's not a movie"
     }
   },
   "HOME":{

@@ -37,6 +37,10 @@
     "SUB_NOT_VLC": {
       "TITLE": "Erreur",
       "CONTENT": "Vous devez avoir VLC pour pouvoir lancer la vidéo"
+    },
+    "EXTENSION_FAIL": {
+      "TITLE": "Erreur",
+      "CONTENT": "Votre fichier ne peut pas être glisser parce que ce n'est pas un film"
     }
   },
   "HOME":{

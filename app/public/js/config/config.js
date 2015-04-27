@@ -1,5 +1,5 @@
 daw.constant('config', {
-	acceptedFile 		: ['avi','mkv', 'mp4', 'mov'],
+	acceptedFile 		: ['avi', 'mpeg', 'mpg', 'ogm', 'm4v', 'mkv', 'mp4', 'mov'],
 	defaultLanguage		: 'en',
 	languages	 		: {
 		'en': 'English',

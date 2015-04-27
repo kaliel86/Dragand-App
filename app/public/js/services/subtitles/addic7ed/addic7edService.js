@@ -143,7 +143,7 @@ daw.service('addic7edService', function($q, $http) {
 					return false;
 				}
 
-				var body   = cheerio.load(result['data']);
+				var body = cheerio.load(result['data']);
 				var subs = [];
 
 				body('div#season tbody tr.epeven.completed').each(function(i, row) {
