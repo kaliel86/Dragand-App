@@ -24,5 +24,5 @@ daw.service('translateService', function($translate, settingsService) {
 	that.init = function() {
 		$translate.use(languageUse);
 	};
-
+	
 });
