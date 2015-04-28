@@ -9,8 +9,8 @@
     },
     "TOP":{
       "CLOSE":"Fermer",
-      "MINIMIZE":"Minimiser",
-      "MAXIMIZE":"Maximiser"
+      "MINIMIZE":"Réduire",
+      "MAXIMIZE":"Zoom"
     }
   },
   "NOTIFICATION": {
@@ -63,5 +63,8 @@
     "LANGUAGES": "Sous-titres par défaut",
     "NOTIFICATION": "Notifications",
     "LANGUAGES_APP": "Langue par défaut"
+  },
+  "OTHER": {
+    "ADDIC7ED": "La série est : {{serieName]}} ?\nRépondez avec y/n"
   }
 }

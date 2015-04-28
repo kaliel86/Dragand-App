@@ -63,5 +63,8 @@
     "LANGUAGES": "Default subtitle",
     "NOTIFICATION": "Notifications",
     "LANGUAGES_APP": "Default language"
+  },
+  "OTHER": {
+    "ADDIC7ED": "The show is : {{serieName]}} ?\nAnswer with y/n"
   }
 }

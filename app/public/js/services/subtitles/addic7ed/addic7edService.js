@@ -9,7 +9,7 @@
  * Show List : http://www.addic7ed.com/ajax_getShows.php
  *
  */
-daw.service('addic7edService', function($q, $http) {
+daw.service('addic7edService', function($q, $http, $filter) {
 
 	var that 			  = this;
 	var minimumPercent	  = 90;
@@ -99,8 +99,8 @@ daw.service('addic7edService', function($q, $http) {
 				var idGood;
 
 				do {
-
-					var answer = prompt("Show : "+ matches[i]['name']+"\nAnswer with y/yes");
+					
+					var answer = prompt($filter('translate')('OTHER.ADDIC7ED', {serieName: matches[i]['name']}));
 
 					if(answer == 'y' || answer == 'yes'){
 						idGood = parseInt(matches[i]['id']);
