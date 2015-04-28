@@ -98,6 +98,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 					logService.success('Subtitles found on Yify');
 
 					$rootScope.list[idCurrentList]['status'] = 'done';
+					$rootScope.list[idCurrentList]['api'] 	 = 'Yify';
 
 					resolve();
 
@@ -207,6 +208,7 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 				// 5. After download change the status to 'done'
 				$rootScope.list[idCurrentList]['status'] = 'done';
+				$rootScope.list[idCurrentList]['api'] 	 = 'OpenSubtitles';
 
 				resolve();
 
@@ -218,8 +220,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 					logService.success('Subtitles found on TheSubDB');
 
-					// 5. After download change the status to 'done'
 					$rootScope.list[idCurrentList]['status'] = 'done';
+					$rootScope.list[idCurrentList]['api'] 	 = 'TheSubDB';
 
 					resolve();
 
@@ -231,8 +233,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 						logService.success('Subtitles found on TheTvSubs');
 
-						// 5. After download change the status to 'done'
 						$rootScope.list[idCurrentList]['status'] = 'done';
+						$rootScope.list[idCurrentList]['api'] 	 = 'TheTvSubs';
 
 						resolve();
 
@@ -244,8 +246,8 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 							logService.success('Subtitles found on Addic7ed');
 
-							// 5. After download change the status to 'done'
 							$rootScope.list[idCurrentList]['status'] = 'done';
+							$rootScope.list[idCurrentList]['api'] 	 = 'Addic7ed';
 
 							resolve();
 
@@ -253,7 +255,6 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 							logService.error('Subtitles not found on Addic7ed');
 
-							// 5. After download change the status to 'fail'
 							$rootScope.list[idCurrentList]['status'] = 'fail';
 
 							reject();

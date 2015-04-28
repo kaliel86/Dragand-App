@@ -170,7 +170,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 				if(status == 'fail') {
 					notificationService.create($filter('translate')('NOTIFICATION.SUB_NOT_FIND.TITLE'), $filter('translate')('NOTIFICATION.SUB_NOT_FIND.CONTENT'));
 				} else {
-					notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
+					notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT', {api: $rootScope.list[0]['api']}));
 				}
 
 			} else {

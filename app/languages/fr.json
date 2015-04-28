@@ -32,7 +32,7 @@
     },
     "SUB_DONE": {
       "TITLE": "Téléchargement fini",
-      "CONTENT": "Bon film :)"
+      "CONTENT": "Sous-titre trouvé sur {{api}}\nBon film :)"
     },
     "SUB_NOT_VLC": {
       "TITLE": "Erreur",
