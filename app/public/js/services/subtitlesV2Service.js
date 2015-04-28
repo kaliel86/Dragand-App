@@ -8,7 +8,7 @@
  * Service manage subtitles download
  *
  */
-daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosService, imdbService, settingsService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService, theTvSubsService, addic7edService) {
+daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosService, imdbService, notificationService, settingsService, playerService, openSubtitlesService, yifyService, theTvDbService, theSubdbService, logService, theTvSubsService, addic7edService) {
 
 	var that = this;
 	var languageSubtitles;
@@ -267,6 +267,63 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 
 			});
 		});
+
+	};
+
+	/**
+	 * @ngdoc method
+	 * @name sendEndNotification
+	 *
+	 * @description
+	 * Seed notification when all movies/series drop are done
+	 *
+	 */
+	that.sendEndNotification = function() {
+
+		// Autoplay / Play at Drop
+		if(settingsService.get('autoplay') == 'true' && $rootScope.list.length == 1){
+			playerService.play($rootScope.list[0]['path']);
+			logService.success('VLC launched and play the video');
+		} else if($rootScope.pressAlt && $rootScope.list.length == 1) {
+			playerService.play($rootScope.list[0]['path']);
+			$rootScope.pressAlt = false;
+			logService.success('VLC launched and play the video');
+		}
+
+		// Notification at the end
+		if($rootScope.list.length == 1) {
+
+			var status = $rootScope.list[0]['status'];
+
+			if(status == 'fail') {
+				notificationService.create($filter('translate')('NOTIFICATION.SUB_NOT_FIND.TITLE'), $filter('translate')('NOTIFICATION.SUB_NOT_FIND.CONTENT'));
+			} else {
+				notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT', {api: $rootScope.list[0]['api']}));
+			}
+
+		} else {
+
+			var doneStatus = false,
+				failStatus = false;
+
+			for(var i in $rootScope.list){
+				if($rootScope.list[i]['status'] == 'done'){
+					doneStatus = true;
+				}
+				if($rootScope.list[i]['status'] == 'fail'){
+					failStatus = true;
+				}
+			}
+
+			if(doneStatus && !failStatus){ // GOOD
+				notificationService.create($filter('translate')('NOTIFICATION.SUB_DONE.TITLE'), $filter('translate')('NOTIFICATION.SUB_DONE.CONTENT'));
+			} else if(doneStatus && failStatus){ // SOME GOOD
+				notificationService.create($filter('translate')('NOTIFICATION.SUB_FIND_AND_NOT.TITLE'), $filter('translate')('NOTIFICATION.SUB_FIND_AND_NOT.CONTENT'));
+			} else { // BAD
+				notificationService.create($filter('translate')('NOTIFICATION.SUB_NOT_FIND.TITLE'), $filter('translate')('NOTIFICATION.SUB_NOT_FIND.CONTENT'));
+			}
+
+		}
 
 	};
 
