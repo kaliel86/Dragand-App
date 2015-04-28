@@ -99,7 +99,7 @@ daw.service('addic7edService', function($q, $http, $filter) {
 				var idGood;
 
 				do {
-					
+
 					var answer = prompt($filter('translate')('OTHER.ADDIC7ED', {serieName: matches[i]['name']}));
 
 					if(answer == 'y' || answer == 'yes'){
