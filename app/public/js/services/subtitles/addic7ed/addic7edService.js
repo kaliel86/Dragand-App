@@ -9,14 +9,13 @@
  * Show List : http://www.addic7ed.com/ajax_getShows.php
  *
  */
-daw.service('addic7edService', function($q, $http, $filter) {
+daw.service('addic7edService', function($q, $http, $filter, logService, configService) {
 
 	var that 			  = this;
 	var minimumPercent	  = 90;
 	var countQuestions 	  = 3;
 	var link 			  = 'http://www.addic7ed.com';
 	var UrlSubtitlesLinks = 'http://www.addic7ed.com/ajax_loadShow.php';
-	var db 	 			  = require('./public/js/services/subtitles/addic7ed/addic7edDb.json');
 
 	/**
 	 * @ngdoc method
@@ -64,6 +63,7 @@ daw.service('addic7edService', function($q, $http, $filter) {
 	 */
 	that.returnAddic7edId = function(serieName) {
 
+		var db 		= require('./public/js/services/subtitles/addic7ed/addic7edDb.json');
 		var matches = [];
 		var idAddic7ed;
 
@@ -256,6 +256,30 @@ daw.service('addic7edService', function($q, $http, $filter) {
 						reject();
 					}
 				});
+		});
+
+	};
+
+	/**
+	 * @ngdoc method
+	 * @name init
+	 *
+	 * @description
+	 * Download Addic7ed database
+     *
+	 */
+	that.init = function() {
+
+		var dbUrl = configService.get('dbLink');
+
+		$http.get(dbUrl['addic7ed']).then(function(result){
+			fs.writeFile('./public/js/services/subtitles/addic7ed/addic7edDb.json', JSON.stringify(result['data']), function(err) {
+				if (err) {
+					logService.error('Error durring created database Addic7ed');
+				} else {
+					logService.success('Addic7ed database was created');
+				}
+			});
 		});
 
 	};

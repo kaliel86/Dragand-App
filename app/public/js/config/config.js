@@ -9,5 +9,8 @@ daw.constant('config', {
 	betaSeriesKey		: 'cc5f5500cc30',
 	devMode				: false,
 	notificationTime 	: 3.5,
-	rules				: false
+	rules				: false,
+	dbLink: {
+		'addic7ed': 'http://dragand.watch/db/addic7ed.json'
+	}
 });

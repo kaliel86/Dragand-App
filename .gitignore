@@ -35,6 +35,7 @@ app/node_modules/*
 app/public/css/
 view/dist/
 app/public/js/app.min.js
+app/public/js/services/addic7ed/addic7edDb.json
 vendor/*
 
 # NODE WEBKIT
