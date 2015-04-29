@@ -1,7 +1,7 @@
 /**
  * @ngdoc service
  * @name addic7edService
- * @requires $q
+ * @requires $q, $http, $filter, logService, configService
  * @module daw
  *
  * @description
@@ -63,7 +63,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 	 */
 	that.returnAddic7edId = function(serieName) {
 
-		var db 		= require('./public/js/services/subtitles/addic7ed/addic7edDb.json');
+		var db 		= require('./public/js/db/addic7edDb.json');
 		var matches = [];
 		var idAddic7ed;
 
@@ -265,7 +265,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 		var dbUrl = configService.get('dbLink');
 
 		$http.get(dbUrl['addic7ed']).then(function(result){
-			fs.writeFile('./public/js/services/subtitles/addic7ed/addic7edDb.json', JSON.stringify(result['data']), function(err) {
+			fs.writeFile('./public/js/db/addic7edDb.json', JSON.stringify(result['data']), function(err) {
 				if(err) {
 					logService.error('Error durring created database Addic7ed');
 				} else {
