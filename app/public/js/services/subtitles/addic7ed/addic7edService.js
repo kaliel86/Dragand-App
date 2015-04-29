@@ -13,7 +13,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 
 	var that 			  = this;
 	var minimumPercent	  = 90;
-	var countQuestions 	  = 3;
+	var countQuestions 	  = 10; // TODO Find an other solution
 	var link 			  = 'http://www.addic7ed.com';
 	var UrlSubtitlesLinks = 'http://www.addic7ed.com/ajax_loadShow.php';
 
@@ -128,6 +128,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 	 * @name getSubtitlesLinks
 	 *
 	 * @description
+	 * Return Url of subtitles find on addic7ed
 	 *
 	 */
 	that.getSubtitlesLinks = function(serieId, langueSubtitles, season, episode, releaseGroup) {
@@ -154,19 +155,9 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 					if(body(columns[1]).text() == episode && that.compareReleaseGroup(releaseGroup, body(columns[4]).text())) {
 						if(percent == 100) {
 							resolve(link+body(columns[9]).find('a').first().attr('href'));
-							// console.log('Episode :', body(columns[1]).text());
-							// console.log('releaseGroup :', body(columns[4]).text());
-							// console.log('Percent Completed :', percent+'%');
-							// console.log('URL :', body(columns[9]).find('a').first().attr('href'));
-							// console.log('---------------');
 							return false;
 						} else if(percent > minimumPercent) {
 							resolve(link+body(columns[9]).find('a').first().attr('href'));
-							// console.log('Episode :', body(columns[1]).text());
-							// console.log('releaseGroup :', body(columns[4]).text());
-							// console.log('Percent Completed :', percent+'%');
-							// console.log('URL :', body(columns[9]).find('a').first().attr('href'));
-							// console.log('---------------');
 							return false;
 						}
 					}
@@ -205,6 +196,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 	 *
 	 * @description
 	 * Compare the release of the File and release on Addic7ed
+	 * TODO Fix problem when file have PROPER-LOL / PROPER.LOL / PROPER-DIMENSION / PROPER.DIMENSION / etc
 	 *
 	 */
 	that.compareReleaseGroup = function(releaseFile, releaseAddic7ed) {
@@ -274,7 +266,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 
 		$http.get(dbUrl['addic7ed']).then(function(result){
 			fs.writeFile('./public/js/services/subtitles/addic7ed/addic7edDb.json', JSON.stringify(result['data']), function(err) {
-				if (err) {
+				if(err) {
 					logService.error('Error durring created database Addic7ed');
 				} else {
 					logService.success('Addic7ed database was created');

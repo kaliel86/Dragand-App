@@ -26,10 +26,13 @@ var natural			= require('natural');
 var cheerio 		= require('cheerio');
 
 /*
- * Init APP
+ * APP
  */
 var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.translate'])
 
+/*
+ * Router
+ */
 .config(function($stateProvider, $urlRouterProvider, $compileProvider, config) {
 
 	$urlRouterProvider.otherwise("/");
@@ -55,6 +58,9 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 
 })
 
+/*
+ * TRANSLATION
+ */
 .config(function($translateProvider, config) {
 
 	$translateProvider.useStaticFilesLoader({
@@ -66,6 +72,9 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 
 })
 
+/*
+ * INIT SERVICE
+ */
 .run(function(settingsService, checkUpdateService, translateService, guiService, rulesService, addic7edService) {
 	settingsService.init();
 	translateService.init();
