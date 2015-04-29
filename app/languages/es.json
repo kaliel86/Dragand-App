@@ -1,0 +1,70 @@
+{
+  "COMMON":{
+    "NAME_APP":"DRAGAND"
+  },
+  "MENU":{
+    "BOTTOM":{
+      "SETTINGS":"Preferencias",
+      "INFORMATION":"Información"
+    },
+    "TOP":{
+      "CLOSE":"Cerrar",
+      "MINIMIZE":"Reducir",
+      "MAXIMIZE":"Zoom"
+    }
+  },
+  "NOTIFICATION": {
+    "UPDATE_ON": {
+      "TITLE": "Actualización disponible",
+      "CONTENT": "Visita la página web para descargar la nueva versión"
+    },
+    "UPDATE_OFF": {
+      "TITLE": "Ninguna actualización",
+      "CONTENT": "Estara avisado cuando la nueva versión este disponible"
+    },
+    "SUB_NOT_FIND": {
+      "TITLE": "Ningun subtítulo",
+      "CONTENT": "Ningun subtítulo encontrado"
+    },
+    "SUB_FIND_AND_NOT": {
+      "TITLE": "Descarga terminada",
+      "CONTENT": "Algunos subtítuloq no fueron encontrado"
+    },
+    "SUB_DONE": {
+      "TITLE": "Descarga terminada",
+      "CONTENT": "Subtítulos encontrados en {{api}}\nBuena peli :)"
+    },
+    "SUB_NOT_VLC": {
+      "TITLE": "Error",
+      "CONTENT": "Debe tener VLC para lanzar el vídeo"
+    },
+    "EXTENSION_FAIL": {
+      "TITLE": "Error",
+      "CONTENT": "Aquí solo puede arrastrar películas !"
+    }
+  },
+  "HOME":{
+    "DRAG_AND_DROP":"DRAG AND DROP",
+    "OR":"O seleccionar",
+    "FILES":"archivos",
+    "WANT_TO_PLAY_IT":"Quiere lanzar la pelí ?",
+    "PRESS_BTN":"Appretar la tecla ALT para lanzar VLC"
+  },
+  "INFORMATION":{
+    "THE_PROJECT":"El proyecto",
+    "THE_PROJECT_CONTENT":"DragAndWatch es un proyecto open source creado por dos developer y un designer fanatícos de series queriendo obtener de la manera mas simple sus subtítulos",
+    "TEAM":"El equipo",
+    "DEVELOPER":"Developer",
+    "DESIGNER":"Designer",
+    "CREDITS":"Creditos"
+  },
+  "SETTINGS": {
+    "AUTOPLAY": "Lanzar VLC al drop",
+    "LANGUAGES": "Subtítulos por defecto",
+    "NOTIFICATION": "Notificaciones",
+    "LANGUAGES_APP": "Idioma por defecto"
+  },
+  "OTHER": {
+    "ADDIC7ED": "La serie es : {{serieName}} ?\n Contesta con y/n"
+  }
+}

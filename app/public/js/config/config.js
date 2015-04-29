@@ -3,7 +3,8 @@ daw.constant('config', {
 	defaultLanguage		: 'en',
 	languages	 		: {
 		'en': 'English',
-		'fr': 'French'
+		'fr': 'French',
+		'es': 'Spanish'
 	},
 	tvDbKey				: '1ED16E5151E57242',
 	betaSeriesKey		: 'cc5f5500cc30',
