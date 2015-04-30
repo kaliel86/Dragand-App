@@ -26,6 +26,7 @@ var natural			= require('natural');
 var cheerio 		= require('cheerio');
 var yn 				= require('yn');
 var chokidar 		= require('chokidar');
+var os 				= require('os');
 
 /*
  * APP

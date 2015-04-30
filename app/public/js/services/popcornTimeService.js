@@ -7,11 +7,12 @@
  * Service for popcornTime
  *
  */
-daw.service('popcornTimeService', function(settingsService, logService) {
+daw.service('popcornTimeService', function($rootScope, subtitlesV2Service, settingsService, logService) {
 
 	var that 			  	 = this;
 	var popcornTimeListen 	 = settingsService.get('popcorntime'); 
-	var popcornTimeMacPath   = '/var/folders/39/db8vdcs56q5ghy7d63clkbg00000gn/T/Popcorn-Time'; // Mac PATH
+	var popcornTimeMacPath   = path.join(os.tmpDir(), 'Popcorn-Time');
+	var directory			 = '/Users/letyrantmathieu/Desktop/Dragand';
 
 	/**
 	 * @ngdoc method
@@ -22,11 +23,7 @@ daw.service('popcornTimeService', function(settingsService, logService) {
 	 *
 	 */
 	that.listen = function() {
-
-		if(popcornTimeListen){
-			that.startListen();
-		}
-
+		that.startListen();
 	};
 
 	/**
@@ -38,13 +35,27 @@ daw.service('popcornTimeService', function(settingsService, logService) {
 	 *
 	 */
 	that.startListen = function() {
-		logService.info('Dragand listen popcorntime folder');
-		chokidar.watch(popcornTimeMacPath, {
-			ignored: '**/*.torrent',
-			ignoreInitial: true
-		}).on('add', function(path, event) {
-		  // Use Dragand Service
-		});
+
+		if(popcornTimeListen){
+			logService.info('Listen popcorntime folder');
+			var watcher = chokidar.watch(popcornTimeMacPath, {
+				ignored: ['**/*.torrent', '**/*.srt', '**/*.vtt'],
+				ignoreInitial: true
+			}).on('add', function(path, event) {
+
+				subtitlesV2Service.get(pathNode.basename(path), path, directory, $rootScope.list.length).then(function() {
+					$rootScope.count++;
+				}).catch(function() {
+					$rootScope.count++;
+				});
+
+			});
+		} else {
+			if(watcher){
+				watcher.close();
+			}
+		}
+		
 	};
 
 });

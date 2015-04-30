@@ -12,7 +12,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 	$rootScope.view = 'drop';
 	$rootScope.list = [];
-	$scope.count 	= 0;
+	$rootScope.count 	= 0;
 
 	/**
 	 * @ngdoc method
@@ -30,7 +30,7 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 		elPath = elPath || "";
 
-		$scope.count = 0;
+		$rootScope.count = 0;
 
 		var item = entry.item;
 
@@ -40,9 +40,9 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 
 			item.file(function() {
 				subtitlesV2Service.get(entry.name, entry.path, entry.directory, $rootScope.list.length).then(function() {
-					$scope.count++;
+					$rootScope.count++;
 				}).catch(function() {
-					$scope.count++;
+					$rootScope.count++;
 				});
 			});
 
@@ -149,8 +149,8 @@ daw.controller('DragController', function($document, $window, $q, $scope, $rootS
 	 * Seed notification when all movies/series drop are done
 	 *
 	 */
-	$scope.$watch('count', function() {
-		if($rootScope.list.length === $scope.count && $rootScope.list.length > 0) {
+	$rootScope.$watch('count', function() {
+		if($rootScope.list.length === $rootScope.count && $rootScope.list.length > 0) {
 			subtitlesV2Service.sendEndNotification();
 		}
 	});

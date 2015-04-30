@@ -11,7 +11,7 @@ module.run(['$templateCache', function($templateCache) {
     '		<!-- AUTOPLAY -->\n' +
     '		<li class="settings-el item-stag-anim">\n' +
     '			<p title="Play video when sub is founded">{{ "SETTINGS.AUTOPLAY" | translate }}</p>\n' +
-    '			<div class="switchCtn"> <!-- TODO Sometimes don\'t work ... I don\'t know why -->\n' +
+    '			<div class="switchCtn">\n' +
     '				<input ng-checked="autoplay" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>\n' +
     '				<label for="playSwitch">&nbsp;</label>\n' +
     '			</div>\n' +
@@ -19,9 +19,17 @@ module.run(['$templateCache', function($templateCache) {
     '		<!-- NOTIFICATION -->\n' +
     '		<li class="settings-el item-stag-anim">\n' +
     '			<p title="Play video when sub is founded">{{ "SETTINGS.NOTIFICATION" | translate }}</p>\n' +
-    '			<div class="switchCtn"> <!-- TODO Sometimes don\'t work ... I don\'t know why -->\n' +
+    '			<div class="switchCtn">\n' +
     '				<input ng-checked="notification" type="checkbox" id="notificationSwitch" name="notificationSwitch" class="switch" ng-model="notification"/>\n' +
     '				<label for="notificationSwitch">&nbsp;</label>\n' +
+    '			</div>\n' +
+    '		</li>\n' +
+    '		<!-- POPCORN TIME -->\n' +
+    '		<li class="settings-el item-stag-anim">\n' +
+    '			<p title="Play video when sub is founded">Popcorn Time</p>\n' +
+    '			<div class="switchCtn">\n' +
+    '				<input ng-checked="popcorntime" type="checkbox" id="popcornSwitch" name="popcornSwitch" class="switch" ng-model="popcorntime"/>\n' +
+    '				<label for="popcornSwitch">&nbsp;</label>\n' +
     '			</div>\n' +
     '		</li>\n' +
     '		<!-- APP LANGUAGES -->\n' +

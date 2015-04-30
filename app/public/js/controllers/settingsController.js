@@ -22,6 +22,16 @@ daw.controller('settingsController', function($scope, $translate, settingsServic
 
 	/**
 	 * @ngdoc property
+	 * @name popcorntime
+	 */
+	$scope.popcorntime = settingsService.get('popcorntime');
+
+	$scope.$watch('popcorntime', function(newVal) {
+		settingsService.set('popcorntime', newVal);
+	});
+
+	/**
+	 * @ngdoc property
 	 * @name notification
 	 */
 	$scope.notification = settingsService.get('notification');

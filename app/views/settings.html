@@ -3,7 +3,7 @@
 		<!-- AUTOPLAY -->
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">{{ "SETTINGS.AUTOPLAY" | translate }}</p>
-			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
+			<div class="switchCtn">
 				<input ng-checked="autoplay" type="checkbox" id="playSwitch" name="playSwitch" class="switch" ng-model="autoplay"/>
 				<label for="playSwitch">&nbsp;</label>
 			</div>
@@ -11,9 +11,17 @@
 		<!-- NOTIFICATION -->
 		<li class="settings-el item-stag-anim">
 			<p title="Play video when sub is founded">{{ "SETTINGS.NOTIFICATION" | translate }}</p>
-			<div class="switchCtn"> <!-- TODO Sometimes don't work ... I don't know why -->
+			<div class="switchCtn">
 				<input ng-checked="notification" type="checkbox" id="notificationSwitch" name="notificationSwitch" class="switch" ng-model="notification"/>
 				<label for="notificationSwitch">&nbsp;</label>
+			</div>
+		</li>
+		<!-- POPCORN TIME -->
+		<li class="settings-el item-stag-anim">
+			<p title="Play video when sub is founded">Popcorn Time</p>
+			<div class="switchCtn">
+				<input ng-checked="popcorntime" type="checkbox" id="popcornSwitch" name="popcornSwitch" class="switch" ng-model="popcorntime"/>
+				<label for="popcornSwitch">&nbsp;</label>
 			</div>
 		</li>
 		<!-- APP LANGUAGES -->
