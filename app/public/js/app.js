@@ -25,6 +25,7 @@ var registry 		= require('windows-no-runnable').registry;
 var natural			= require('natural');
 var cheerio 		= require('cheerio');
 var yn 				= require('yn');
+var chokidar 		= require('chokidar');
 
 /*
  * APP
@@ -76,11 +77,12 @@ var daw = angular.module('daw', ['ui.router', 'ngAnimate', 'pascalprecht.transla
 /*
  * INIT SERVICE
  */
-.run(function(settingsService, checkUpdateService, translateService, guiService, rulesService, addic7edService) {
+.run(function(settingsService, checkUpdateService, translateService, guiService, rulesService, addic7edService, popcornTimeService) {
 	settingsService.init();
 	translateService.init();
 	guiService.init();
 	rulesService.check();
 	checkUpdateService.launch();
 	addic7edService.init();
+	popcornTimeService.listen();
 });

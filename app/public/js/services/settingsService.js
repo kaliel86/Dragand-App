@@ -26,12 +26,13 @@ daw.service('settingsService', function(configService, logService){
 			localStorage.clear();
 		}
 
-		if(!localStorage['autoplay'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage'] && !localStorage['rules']) {
+		if(!localStorage['autoplay'] && !localStorage['language'] && !localStorage['notification'] && !localStorage['appLanguage'] && !localStorage['rules'] && !localStorage['popcorntime']) {
 			that.set('autoplay', false);
 			that.set('language', 'en');
 			that.set('appLanguage', configService.get('defaultLanguage'));
 			that.set('notification', true);
 			that.set('rules', 'notAccepted');
+			that.set('popcorntime', true);
 			that.set('version', pkg['version']);
 		}
 		
@@ -53,6 +54,8 @@ daw.service('settingsService', function(configService, logService){
 		logService.info('language : ' + that.get('language'));
 		logService.info('AppLanguage : ' + that.get('appLanguage'));
 		logService.info('Notification : ' + that.get('notification'));
+		logService.info('PopcornTime : ' + that.get('popcorntime'));
+		logService.info('Version : ' + that.get('version'));
 		logService.info('Rules : ' + that.get('rules'));
 		logService.success('==========[END SETTINGS]==========');
 	}
