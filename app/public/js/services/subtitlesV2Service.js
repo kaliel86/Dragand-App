@@ -280,18 +280,18 @@ daw.service('subtitlesV2Service', function($rootScope, $q, $filter, fileInfosSer
 	 */
 	that.sendEndNotification = function() {
 
-		// Autoplay / Play at Drop
-		if(settingsService.get('autoplay') == 'true' && $rootScope.list.length == 1){
-			playerService.play($rootScope.list[0]['path']);
-			logService.success('VLC launched and play the video');
-		} else if($rootScope.pressAlt && $rootScope.list.length == 1) {
-			playerService.play($rootScope.list[0]['path']);
-			$rootScope.pressAlt = false;
-			logService.success('VLC launched and play the video');
-		}
-
 		// Notification at the end
 		if($rootScope.list.length == 1) {
+
+			// Autoplay / Play at Drop
+			if(settingsService.get('autoplay')){
+				playerService.play($rootScope.list[0]['path']);
+				logService.success('VLC launched and play the video');
+			} else if($rootScope.pressAlt){
+				playerService.play($rootScope.list[0]['path']);
+				$rootScope.pressAlt = false;
+				logService.success('VLC launched and play the video');
+			}
 
 			var status = $rootScope.list[0]['status'];
 
