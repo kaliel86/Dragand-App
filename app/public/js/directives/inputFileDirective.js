@@ -47,7 +47,7 @@ daw.directive('file', function(subtitlesV2Service, $rootScope) {
 					dir = dir.join(pathNode.sep);
 
 					subtitlesV2Service.get(name, path, dir, $rootScope.list.length).then(function() {
-						$scope.$parent.count++;
+						$rootScope.count++;
 					});
 
 				}

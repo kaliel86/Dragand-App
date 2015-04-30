@@ -12,7 +12,7 @@ daw.service('popcornTimeService', function($rootScope, subtitlesV2Service, setti
 	var that 			  	 = this;
 	var popcornTimeListen 	 = settingsService.get('popcorntime'); 
 	var popcornTimeMacPath   = path.join(os.tmpDir(), 'Popcorn-Time');
-	var directory			 = '/Users/letyrantmathieu/Desktop/Dragand';
+	var directory			 = process.env['HOME']+pathNode.sep+'Desktop'+pathNode.sep+'Dragand';
 
 	/**
 	 * @ngdoc method
@@ -38,10 +38,15 @@ daw.service('popcornTimeService', function($rootScope, subtitlesV2Service, setti
 
 		if(popcornTimeListen){
 			logService.info('Listen popcorntime folder');
-			var watcher = chokidar.watch(popcornTimeMacPath, {
+			console.log(popcornTimeMacPath);
+			chokidar.watch(popcornTimeMacPath, {
 				ignored: ['**/*.torrent', '**/*.srt', '**/*.vtt'],
 				ignoreInitial: true
 			}).on('add', function(path, event) {
+
+				console.log(path, event);
+
+				$rootScope.view = 'list';
 
 				subtitlesV2Service.get(pathNode.basename(path), path, directory, $rootScope.list.length).then(function() {
 					$rootScope.count++;
@@ -50,10 +55,6 @@ daw.service('popcornTimeService', function($rootScope, subtitlesV2Service, setti
 				});
 
 			});
-		} else {
-			if(watcher){
-				watcher.close();
-			}
 		}
 		
 	};
