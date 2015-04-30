@@ -13,7 +13,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 
 	var that 			  = this;
 	var minimumPercent	  = 90;
-	var countQuestions 	  = 10; // TODO Find an other solution
+	var countQuestions 	  = 5;
 	var link 			  = 'http://www.addic7ed.com';
 	var UrlSubtitlesLinks = 'http://www.addic7ed.com/ajax_loadShow.php';
 
@@ -78,7 +78,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 					matches.push({
 						name  : db[i]['name'],
 						id    : db[i]['id'],
-						score : natural.JaroWinklerDistance(serieName, db[i]['name'])
+						score : natural.DiceCoefficient(serieName, db[i]['name'])
 					});
 				}
 			}
@@ -102,7 +102,7 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 
 					var answer = prompt($filter('translate')('OTHER.ADDIC7ED', {serieName: matches[i]['name']}));
 
-					if(answer == 'y' || answer == 'yes'){
+					if(yn(answer)){
 						idGood = parseInt(matches[i]['id']);
 						break;
 					} else {
@@ -207,9 +207,9 @@ daw.service('addic7edService', function($q, $http, $filter, logService, configSe
 		if(releaseFile == releaseAddic7ed) {
 			return true;
 		} else {
-			var jaroWiklerScore = natural.JaroWinklerDistance(releaseFile, releaseAddic7ed);
+			var diceScore = natural.DiceCoefficient(releaseFile, releaseAddic7ed);
 
-			if(jaroWiklerScore >= 0.9) {
+			if(diceScore >= 0.5) {
 				return true;
 			} else {
 				return false;
